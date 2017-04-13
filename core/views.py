@@ -36,3 +36,19 @@ def index(req):
     '''
 
     return render(req, 'web/index.html', locals())
+
+
+def about(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/about.html', locals())
+
+
+def product(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/product.html', locals())

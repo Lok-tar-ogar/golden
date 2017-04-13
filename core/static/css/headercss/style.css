@@ -325,6 +325,10 @@ h1, h2, h3, h4, h5, h6, figure {
   transform: scale(1.2);
 }
 
+.hxco-video:hover i {
+  color:#52d3aa;
+}
+
 .hxco-cover {
   height: 900px;
   background-size: cover;
