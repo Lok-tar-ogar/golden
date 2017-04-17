@@ -52,3 +52,27 @@ def product(req):
     '''
 
     return render(req, 'web/product.html', locals())
+
+
+def faclity(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/faclity.html', locals())
+
+
+def jobs(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/jobs.html', locals())
+
+
+def contact(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/contact.html', locals())

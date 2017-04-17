@@ -20,6 +20,9 @@ from core import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
-    url(r'^product/$', views.product, name="about"),
+    url(r'^product/$', views.product, name="product"),
+    url(r'^facility/$', views.faclity, name="faclity"),
+    url(r'^jobs/$', views.jobs, name="jobs"),
     url(r'^admin/', admin.site.urls),
+    url(r'^contact/$', views.contact, name="contact"),
 ]
