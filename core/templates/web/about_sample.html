@@ -1,0 +1,190 @@
+{% extends "inc/master.html" %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/static/css/headercss/amazeui.css">
+    <link rel="stylesheet" href="/static/css/headercss/common.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/join.min.css">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#home').prop('class', 'actived');
+        });
+        /*var a,b,c;
+         a=$("#dh").offset().top;//元素相对于窗口的距离
+         b=$(window).scrollTop(); //监控窗口已滚动的距离;
+         c=$(document).height();//整个文档的高度
+         d=$(window).height();//浏览器窗口的高度
+         element  标签
+         cssname  动画
+         offset  相对于窗口的距离
+         */
+        function scrollnumber(element,cssname,offset) {
+            var a, b, c, d;
+            d = $(element).offset().top;
+            a = eval(d + offset);
+            b = $(window).scrollTop();
+            c = $(window).height();
+            if (b + c > a) {
+                $((element)).addClass((cssname));
+            }
+        }
+        function scrollfun(){
+            {#            scrollnumber("#product_title",'animated-ourservice',10);#}
+            {#            scrollnumber("#anli",'animated-ourservice',10);#}
+        }
+
+        $(document).ready(function(e) {
+            scrollfun();
+            $(window).scroll(function(){
+                scrollfun();
+            });
+        });
+
+    </script>
+    <script src="/static/js/headerjs/amazeui.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="course-header">
+        <img  src="/static/images/web/index/2.jpg">
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section--header">
+                <h2 class="section--title">我们的优势</h2>
+                <p class="section--description">
+                    我们开创了中国首个开源HTML5跨屏前端框架、可见即可得的IDE、无障碍网页我们是全球独一无二的
+                    <br>云适配技术，我们的目标是打造极致的网页体验。
+                </p>
+            </div>
+
+            <div class="join-container">
+                <div class="am-g">
+                    <div class="am-u-md-3">
+                        <div class="careers--articles">
+                            <h3 class="careers--subtitle">Why Work For Us?</h3>
+                            <div class="" style="border: 1px solid #e9e9e9; border-radius: 3px;position: relative;text-align: center;padding: 0 0 0;border-top: 1px solid #e9e9e9;">
+                                <div class="">
+                                    <div class="menu-div">关于金镭</div>
+                                    {# <i class="careers_article--icon am-icon-diamond"></i>#}
+                                    <a href="#"><div class="menu-son">公司简介</div></a>
+                                    <a href="#"><div class="menu-son">企业文化</div></a>
+                                    <a href="#"><div class="menu-son">发展历程</div></a>
+                                    <a href="#"><div class="menu-son">公司荣誉</div></a>
+                                    <a href="#"><div class="menu-son">组织架构</div></a>
+                                    <a href="#"><div class="menu-son">企业规划</div></a>
+                                    <a href="#"><div class="menu-son">企业形象</div></a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="am-u-md-9">
+                        <h3 class="careers--subtitle">We Are Looking For:</h3>
+                        <div class="son-title">
+                            公司简介
+                        </div>
+                        <div class="son-content animate-box"   data-animate-effect="Zoomin">
+                            <p>
+                                 金镭公司系私营企业，公司总资产5000万元，公司总部位于威远县境内。 公司占地面积近25000ｍ2。 主厂房面积8000ｍ2 。 公司专业生产各种耐蚀、耐热、超低碳不锈钢；高、中、低合金钢铸件。
+                            </p>
+                            <p>
+                                公司拥有1吨、3吨中频快速熔炼炉各一台3.5吨中频快速熔炼炉两台、可生产单件最大重量7吨以下的铸件、另配备有Q3730吊钩式抛丸机,两台 150ＫＷ、400KW电加热高温处理淬火炉各一台、56m3天燃气加热烘模炉一台、20吨天燃气高温热处理炉一台、20m3空压机一台、S114C碾轮式混砂机 、转子式混砂机各 1台、10吨与5吨双梁行车各一台、5吨单梁行车5台10吨单梁行车2台以及与之相匹配的炉前化学分析、斯派克光谱分析、机械性能、磁粉探伤、超声探伤试验、红外测温、超声波测厚、布洛氏台式硬度计、里氏硬度计等各种检测装备。 年总生产能力为5000吨。
+                            </p>
+                            <p>
+                                在产品质量保证体系上， 公司拥有铸造专业的研究生, 高级工程师, 冶金化学分析工程师等工程技术人员十余名。 同时, 公司在铸造工艺技术设计中， 运用ＣＡＤ、 ＣＡＥ计算机辅助设计作技术支持， 保障公司产品质量。 在车间从事铸造作业的员工中, 90%以上的员工都具有五年以上的操作经验。
+                            </p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p><p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>
+
+
+
+                            <p>公司的铸造产品， 特别是阀门铸造件在国际国内市场上具有很强的竞争力。 多年以来, 一直为自贡高压阀门股份有限公司、成都高压阀门厂、成都乘风阀门有限公司、成都天立化工科技公司、青岛电站阀门有限公司、、格利特阀门制造有限公司、乐山长江仪表阀门制造有限公司、泸州邦力重机有限公司、哈尔滨汽轮机厂、东方汽轮机厂有限责任公司、东方锅炉阀门有限公司、武汉锅炉阀门有限公司、哈尔滨锅炉阀门有限公司、杭州华惠,三一重机等数十家大中型企业与成都优机公司等出口企业生产各种承压阀门铸件和机械、化工、电力、石油、铁路、船舶工业方面重要部件所使用的铸件。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <div class="row animate-box">#}
+    {#        <div class="col-md-8 col-md-offset-2 text-center hxco-heading hxco-heading-sm">#}
+    {#            <h2>岗位招聘</h2>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    #}
+    {#    <div class="container">#}
+    {#        <div class="col-xs-12">#}
+    {#            <!-- Nav tabs -->#}
+    {#            <ul class="nav nav-tabs" role="tablist">#}
+    {#                <li role="presentation" class="active"><a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Home</a></li>#}
+    {#                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>#}
+    {#                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>#}
+    {#                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>#}
+    {#            </ul>#}
+    {##}
+    {#            <!-- Tab panes -->#}
+    {#            <div class="tab-content">#}
+    {#                <div role="tabpanel" class="tab-pane active" id="home1">#}
+    {#                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">#}
+    {#                        <div class="panel panel-default">#}
+    {#                            <div class="panel-heading" role="tab" id="headingOne">#}
+    {#                                <h4 class="panel-title">#}
+    {#                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">#}
+    {#                                        Collapsible Group Item #1#}
+    {#                                    </a>#}
+    {#                                </h4>#}
+    {#                            </div>#}
+    {#                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">#}
+    {#                                <div class="panel-body">#}
+    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="panel panel-default">#}
+    {#                            <div class="panel-heading" role="tab" id="headingTwo">#}
+    {#                                <h4 class="panel-title">#}
+    {#                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">#}
+    {#                                        Collapsible Group Item #2#}
+    {#                                    </a>#}
+    {#                                </h4>#}
+    {#                            </div>#}
+    {#                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">#}
+    {#                                <div class="panel-body">#}
+    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="panel panel-default">#}
+    {#                            <div class="panel-heading" role="tab" id="headingThree">#}
+    {#                                <h4 class="panel-title">#}
+    {#                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">#}
+    {#                                        Collapsible Group Item #3#}
+    {#                                    </a>#}
+    {#                                </h4>#}
+    {#                            </div>#}
+    {#                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">#}
+    {#                                <div class="panel-body">#}
+    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <div role="tabpanel" class="tab-pane" id="profile">2</div>#}
+    {#                <div role="tabpanel" class="tab-pane" id="messages">3</div>#}
+    {#                <div role="tabpanel" class="tab-pane" id="settings">4</div>#}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
+{% endblock %}

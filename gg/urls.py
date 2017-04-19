@@ -25,4 +25,6 @@ urlpatterns = [
     url(r'^jobs/$', views.jobs, name="jobs"),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name="contact"),
+    url(r'^about_sample/$', views.about_sample, name="contact"),
+    url(r'^success/$', views.success, name="success"),
 ]

@@ -76,3 +76,18 @@ def contact(req):
     '''
 
     return render(req, 'web/contact.html', locals())
+
+
+def about_sample(req):
+    '''
+    关于子页面
+    '''
+
+    return render(req, 'web/about_sample.html', locals())
+
+
+def success(req):
+    '''
+
+    '''
+    return render(req, 'web/success.html', locals())

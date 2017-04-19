@@ -1,6 +1,10 @@
 {% extends "inc/master.html" %}
 {% block title %}首页{% endblock %}
 {% block head %}
+    <link rel="stylesheet" href="/static/css/headercss/amazeui.css">
+    <link rel="stylesheet" href="/static/css/headercss/common.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/example.min.css">
+
     <script type="text/javascript">
         $(document).ready(function () {
             $('#home').prop('class', 'actived');
@@ -37,87 +41,458 @@
         });
 
     </script>
+    <script src="/static/js/headerjs/amazeui.js"></script>
+    <script src="/static/js/headerjs/common.js"></script>
 {% endblock %}
 {% block content %}
     <div class="course-header">
         <img  src="/static/images/web/index/2.jpg">
     </div>
-    <div id="hxco-features">
-        <div class="hxco-container">
-            <div class="row feature-title text-center" id="anli">
-                <h3>产品中心</h3>
-            </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center text-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Retina Ready</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center text-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Fully Responsive</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Web Starter</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Retina Ready</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Fully Responsive</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
-                    <div class="feature-center">
-						<img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">
-                        <h3>Web Starter</h3>
-                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                    </div>
-                </div>
-
+    <div class="section">
+        <div class="container">
+            <div class="section--header">
+                <h2 class="section--title">产品中心</h2>
+                <p class="section--description">
+                    Enterplorer Studio是一套面向企业级移动信息化建设的开发平台。集聚开发、测试、
+                    <br>打包、发布于一体的移动化开发综合平台。
+                </p>
             </div>
 
+            <div class="example-container">
+                <div class="am-tabs" data-am-tabs>
+                    <ul class="am-tabs-nav am-nav am-nav-tabs am-g">
+                        <li class="am-active am-u-md-2"><a href="#tab-4-1"><i class="icon-star-full"></i>主要案例</a></li>
+                        <li class="am-u-md-2"><a href="#tab-4-2"><i class="icon-star-full"></i>客户案例一</a></li>
+                        <li class="am-u-md-2"><a href="#tab-4-3"><i class="icon-star-full"></i>客户案例二</a></li>
+                        <li class="am-u-md-2"><a href="#tab-4-4"><i class="icon-star-full"></i>客户案例三</a></li>
+                        <li class="am-u-md-2"><a href="#tab-4-5"><i class="icon-star-full "></i>客户案例四</a></li>
+                        <li class="am-u-md-2"><a href="#tab-4-6"><i class="icon-star-full"></i>客户案例五</a></li>
+                    </ul>
+                    <div class="am-tabs-bd am-tabs-bd-ofv">
+                        <div class="am-tab-panel am-active" id="tab-4-1">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
 
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="am-tab-panel" id="tab-4-2">
+                             <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>1Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="am-tab-panel" id="tab-4-3">
+                             <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>2Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="am-tab-panel" id="tab-4-4">
+                             <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>3Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="am-tab-panel" id="tab-4-5">
+                             <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>4Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="am-tab-panel" id="tab-4-6">
+                             <div class="row">
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>5Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center text-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Retina Ready</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Fully Responsive</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
+                                    <div class="feature-center">
+                                        <img src="/static/images/web/product/1.jpg" style="width: 100%;height: auto;">
+{#                                        <h3>Web Starter</h3>#}
+                                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                                        <p><a href="#" class="btn btn-primary">Learn More</a></p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="hxco-cover hxco-cover-sm" style="background-image:url(images/img_bg_3.jpg);">
-		<div class="overlay"></div>
-		<div class="hxco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Keep it simple</h1>
-							<h2>Free html5 templates Made by <a href="http://gettemplates.co" target="_blank">gettemplates.co</a></h2>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+    {#    <div id="hxco-features">#}
+    {#        <div class="hxco-container">#}
+    {#            <div class="row feature-title text-center" id="anli">#}
+    {#                <h3>产品中心</h3>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="container">#}
+    {#                <div class="am-tabs">#}
+    {#                    <ul class="am-tabs-nav">#}
+    {#                        <li class="col-xs-2 am-active"><a href="#tab-4-1">主要案例</a></li>#}
+    {#                        <li class="col-xs-2"><a href="#tab-4-2">客户案例一</a></li>#}
+    {#                        <li class="col-xs-2"><a href="#tab-4-3">客户案例二</a></li>#}
+    {#                        <li class="col-xs-2"><a href="#tab-4-4">客户案例三</a></li>#}
+    {#                        <li class="col-xs-2"><a href="#tab-4-5">客户案例四</a></li>#}
+    {#                        <li class="col-xs-2"><a href="#tab-4-6">客户案例五</a></li>#}
+    {#                    </ul>#}
+    {#                </div>#}
+    {#            </div>#}
+    {##}
+    {#            <div class="row">#}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center text-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Retina Ready</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center text-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Fully Responsive</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Web Starter</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Retina Ready</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Fully Responsive</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#                <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">#}
+    {#                    <div class="feature-center">#}
+    {#                        <img src="/static/images/web/product/1.jpg" style="width: 80%;height: auto;">#}
+    {#                        <h3>Web Starter</h3>#}
+    {#                        <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
+    {#                        <p><a href="#" class="btn btn-primary">Learn More</a></p>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {##}
+    {#            </div>#}
+    {##}
+    {#        </div>#}
+    {#    </div>#}
+    {#    <div class="hxco-cover hxco-cover-sm" style="background-image:url(images/img_bg_3.jpg);">#}
+    {#        <div class="overlay"></div>#}
+    {#        <div class="hxco-container">#}
+    {#            <div class="row">#}
+    {#                <div class="col-md-8 col-md-offset-2 text-center">#}
+    {#                    <div class="display-t">#}
+    {#                        <div class="display-tc animate-box" data-animate-effect="fadeIn">#}
+    {#                            <h1>Keep it simple</h1>#}
+    {#                            <h2>Free html5 templates Made by <a href="http://gettemplates.co" target="_blank">gettemplates.co</a></h2>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
 
 
 {% endblock %}
