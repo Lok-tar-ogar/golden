@@ -20,8 +20,16 @@ from core import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
-    url(r'^product/$', views.product, name="about"),
-    url(r'^r/index$|^r/$|^r$', views.backend_index),
+    url(r'^product/$', views.product, name="product"),
+    url(r'^facility/$', views.faclity, name="faclity"),
+    url(r'^jobs/$', views.jobs, name="jobs"),
+    url(r'^admin/', admin.site.urls),
+    url(r'^contact/$', views.contact, name="contact"),
+    url(r'^about_sample/$', views.about_sample, name="contact"),
+    url(r'^success/$', views.success, name="success"),
+
+
+url(r'^r/index$|^r/$|^r$', views.backend_index),
 
     url(r'^r/carousel$', views.edit_carousel),
     url(r'^r/addcarousel$', views.add_carousel),
@@ -48,3 +56,4 @@ url(r'^r/addarticleclass', views.add_articleclass),
     url(r'^r/user$', views.edit_user),
     url(r'^r/getuser$', views.ajax_get_user),
 ]
+

@@ -54,6 +54,45 @@ def product(req):
     return render(req, 'web/product.html', locals())
 
 
+def faclity(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/faclity.html', locals())
+
+
+def jobs(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/jobs.html', locals())
+
+
+def contact(req):
+    '''
+    关于金雷
+    '''
+
+    return render(req, 'web/contact.html', locals())
+
+
+def about_sample(req):
+    '''
+    关于子页面
+    '''
+
+    return render(req, 'web/about_sample.html', locals())
+
+
+def success(req):
+    '''
+
+    '''
+    return render(req, 'web/success.html', locals())
+
+
 
 
 
