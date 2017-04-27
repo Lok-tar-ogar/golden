@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^success/$', views.success, name="success"),
 
 
-url(r'^r/index$|^r/$|^r$', views.backend_index),
+    url(r'^r/index$|^r/$|^r$', views.backend_index),
 
     url(r'^r/carousel$', views.edit_carousel),
     url(r'^r/addcarousel$', views.add_carousel),
@@ -46,7 +46,7 @@ url(r'^r/index$|^r/$|^r$', views.backend_index),
     url(r'^r/articleclass$', views.articleclass_view),
     url(r'^r/getarticleclass$', views.ajax_get_articleclass),
     url(r'^r/delarticleclass$', views.del_articleclass),
-url(r'^r/addarticleclass', views.add_articleclass),
+    url(r'^r/addarticleclass', views.add_articleclass),
 
     url(r'^r/filebrowser$', views.filebrowser),
     url(r'^r/login$', views.login_backend),
