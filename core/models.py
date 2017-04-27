@@ -103,7 +103,7 @@ class facility(models.Model):
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     content = models.TextField('介绍详情')
     viewedTimes = models.IntegerField('浏览次数',default=0)
-    type = models.ForeignKey(productclass)
+    type = models.ForeignKey(facilityclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
 
@@ -230,7 +230,7 @@ class article(models.Model):
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     content = models.TextField('文章详情')
     viewedTimes = models.IntegerField('浏览次数')
-    type = models.ForeignKey(certificateclass)
+    type = models.ForeignKey(articleclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
 
@@ -256,32 +256,6 @@ class user(models.Model):
 
     def __str__(self):
         return self.username
-
-# class flowgroup(models.Model):
-#     name=models.CharField('名字',max_length=20)
-#     user = models.ManyToManyField(user)
-#     dimDate = models.DateTimeField(auto_now_add=True)
-#     class Meta:
-#         verbose_name = "流程组表"
-#         verbose_name_plural = "流程组们"
-#         ordering = ['id']
-#
-#     def __str__(self):
-#         return self.name
-#
-# class flow(models.Model):
-#     name=models.CharField('名字',max_length=20)
-#     groupName=models.ForeignKey(flowgroup)
-#     orderId=models.CharField('下一个流程id号',max_length=20)
-#     user = models.ManyToManyField(user)
-#     dimDate = models.DateTimeField(auto_now_add=True)
-#     class Meta:
-#         verbose_name = "流程表"
-#         verbose_name_plural = "流程们"
-#         ordering = ['id']
-#
-#     def __str__(self):
-#         return self.name
 
 
 

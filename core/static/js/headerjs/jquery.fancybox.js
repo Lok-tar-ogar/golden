@@ -110,7 +110,7 @@
                     '<div class="fancybox-infobar">' +
                         '<button data-fancybox-previous class="fancybox-button fancybox-button--left" title="Previous"></button>' +
                         '<div class="fancybox-infobar__body">' +
-                            '<span class="js-fancybox-web"></span>&nbsp;/&nbsp;<span class="js-fancybox-count"></span>' +
+                            '<span class="js-fancybox-index"></span>&nbsp;/&nbsp;<span class="js-fancybox-count"></span>' +
                         '</div>' +
                         '<button data-fancybox-next class="fancybox-button fancybox-button--right" title="Next"></button>' +
                     '</div>' +
@@ -805,7 +805,7 @@
 
             if ( !self.slides[ pos ] && self.group[ index ] ) {
 
-                // If we are looping and slide with that web already exists, then reuse it
+                // If we are looping and slide with that index already exists, then reuse it
                 if ( self.opts.loop && self.group.length > 2 ) {
                     for (var key in self.slides) {
                         if ( self.slides[ key ].index === index ) {
@@ -2252,7 +2252,7 @@
             // Update infobar values
 
             $('.js-fancybox-count', $container).html( self.group.length );
-            $('.js-fancybox-web', $container).html( index + 1 );
+            $('.js-fancybox-index', $container).html( index + 1 );
 
             // Recalculate content dimensions
             current.$slide.trigger( 'refresh' );
@@ -2620,7 +2620,7 @@
         e.preventDefault();
         e.stopPropagation();
 
-        // Get all related items and find web for clicked one
+        // Get all related items and find index for clicked one
 
         if ( $(target).attr( 'data-fancybox' ) ) {
             value = $(target).data( 'fancybox' );
@@ -3984,7 +3984,7 @@
 				}
 
 				if ( src && src.length ) {
-					list += '<li data-web="' + i + '"  tabindex="0" class="fancybox-thumbs-loading"><img data-src="' + src + '" /></li>';
+					list += '<li data-index="' + i + '"  tabindex="0" class="fancybox-thumbs-loading"><img data-src="' + src + '" /></li>';
 				}
 
 			});
@@ -4046,7 +4046,7 @@
 				this.$list
 					.children()
 					.removeClass('fancybox-thumbs-active')
-					.filter('[data-web="' + this.instance.current.index  + '"]')
+					.filter('[data-index="' + this.instance.current.index  + '"]')
 					.addClass('fancybox-thumbs-active')
 					.focus();
 			}
@@ -4204,7 +4204,7 @@
 	// It will be used to determine if fancyBox needs to close after hash change is detected
     var currentHash = null;
 
-	// Get info about gallery name and current web from url
+	// Get info about gallery name and current index from url
     function parseUrl() {
         var hash    = window.location.hash.substr( 1 );
         var rez     = hash.split( '-' );
@@ -4292,7 +4292,7 @@
 					var url     = parseUrl();
 					var gallery = getGallery( instance );
 
-					// Make sure gallery start web matches web from hash
+					// Make sure gallery start index matches index from hash
 					if ( gallery && url.gallery && gallery == url.gallery ) {
 						instance.currIndex = url.index - 1;
 					}

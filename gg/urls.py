@@ -27,4 +27,33 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
     url(r'^success/$', views.success, name="success"),
+
+
+    url(r'^r/index$|^r/$|^r$', views.backend_index),
+
+    url(r'^r/carousel$', views.edit_carousel),
+    url(r'^r/addcarousel$', views.add_carousel),
+    url(r'^r/delcarousel$', views.del_carousel),
+    url(r'^r/getcarousel$',views.ajax_get_carousel),
+    url(r'^r/gallery$',views.gallery),
+    url(r'^r/getpictures$',views.ajax_get_pictures),
+    url(r'^r/addpicture$',views.add_picture),
+    url(r'^r/delpicture$',views.del_picture),
+    url(r'^r/content$',views.content),
+    url(r'^r/getcontent$', views.ajax_get_content),
+
+    url(r'^r/editcontent$', views.edit_content),
+    url(r'^r/articleclass$', views.articleclass_view),
+    url(r'^r/getarticleclass$', views.ajax_get_articleclass),
+    url(r'^r/delarticleclass$', views.del_articleclass),
+    url(r'^r/addarticleclass', views.add_articleclass),
+
+    url(r'^r/filebrowser$', views.filebrowser),
+    url(r'^r/login$', views.login_backend),
+    url(r'^r/logout$', views.logout),
+    url(r'^r/xxxuser$', views.add_user),
+    url(r'^r/deluser$', views.del_user),
+    url(r'^r/user$', views.edit_user),
+    url(r'^r/getuser$', views.ajax_get_user),
 ]
+
