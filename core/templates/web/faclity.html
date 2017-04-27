@@ -1,0 +1,159 @@
+{% extends "inc/master.html" %}
+{% block title %}首页{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="/static/css/headercss/amazeui.css">
+    <link rel="stylesheet" href="/static/css/headercss/common.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/example.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/solution.min.css">
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#home').prop('class', 'actived');
+        });
+        /*var a,b,c;
+         a=$("#dh").offset().top;//元素相对于窗口的距离
+         b=$(window).scrollTop(); //监控窗口已滚动的距离;
+         c=$(document).height();//整个文档的高度
+         d=$(window).height();//浏览器窗口的高度
+         element  标签
+         cssname  动画
+         offset  相对于窗口的距离
+         */
+        function scrollnumber(element,cssname,offset) {
+            var a, b, c, d;
+            d = $(element).offset().top;
+            a = eval(d + offset);
+            b = $(window).scrollTop();
+            c = $(window).height();
+            if (b + c > a) {
+                $((element)).addClass((cssname));
+            }
+        }
+        function scrollfun(){
+            {#            scrollnumber("#product_title",'animated-ourservice',10);#}
+            {#            scrollnumber("#anli",'animated-ourservice',10);#}
+        }
+
+        $(document).ready(function(e) {
+            scrollfun();
+            $(window).scroll(function(){
+                scrollfun();
+            });
+        });
+
+    </script>
+    <script src="/static/js/headerjs/amazeui.js"></script>
+    <script src="/static/js/headerjs/common.js"></script>
+{% endblock %}
+{% block content %}
+    <div class="course-header">
+        <img  src="/static/images/web/index/2.jpg">
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="section--header">
+                <h2 class="section--title">设备资质</h2>
+                <p class="section--description">
+                    Enterplorer Studio是一套面向企业级移动信息化建设的开发平台。集聚开发、测试、
+                    <br>打包、发布于一体的移动化开发综合平台。
+                </p>
+            </div>
+            <div class="solution-container">
+                <div data-am-widget="tabs" class="am-tabs am-no-layout">
+                    <ul class="am-tabs-nav am-cf">
+                        <li class="am-active"><a href="/">青春</a></li>
+                        <li class=""><a href="/">彩虹</a></li>
+                        <li class=""><a href="/">歌唱</a></li>
+                        <li class=""><a href="/">歌唱</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {#    <div class="container text-center">#}
+    {#        <div class="col-xs-3">#}
+    {#            <a href ="/" class="menu-card">设备资质</a>#}
+    {#        </div>#}
+    {#        <div class="col-xs-3">#}
+    {#            <a href ="/" class="menu-card">设备资质</a>#}
+    {#        </div>#}
+    {#    <div class="col-xs-3">#}
+    {#            <a href ="/" class="menu-card">设备资质</a>#}
+    {#        </div>#}
+    {#        <div class="col-xs-3">#}
+    {#            <a href ="/" class="menu-card">设备资质</a>#}
+    {#        </div>#}
+    {#    </div>#}
+
+    <div class="container" style="margin: -4em auto auto auto;">
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
+                <figure>
+                    <div class="overlay">
+                        <i class="icon-plus"></i>
+                        <h3 class="text-center">你好啊 朋友</h3>
+                    </div>
+                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                </figure>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

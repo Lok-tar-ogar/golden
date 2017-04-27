@@ -72,10 +72,10 @@
         </a>
     </div>
 
-    <div id="hxco-features"  style="">
+    <div id="hxco-features"  style="background: #fff;">
         <div id="hxco-testimonial" style="background: #fff;">
             <div class="hxco-container">
-                <div class="row feature-title text-center" id="anli">
+                <div class="row feature-title text-center">
                     <h3>产品展示</h3>
                 </div>
                 <div class="container">
@@ -137,14 +137,6 @@
 {#        #}
 {#    </div>#}
     <script>
-        $(function(){
-            $('#owl-car').owlCarousel({
-                items: 4,
-                navigation: true,
-{#                lazyLoad: true,#}
-                navigationText: ["",""]
-            });
-        });
 
     </script>
 
@@ -198,7 +190,26 @@
 			</div>
 		</div>
 	</div>
-
+    <script>
+        $(function(){
+{#            $('#owl-car').owlCarousel({#}
+{#                items: 4,#}
+{#                navigation: true,#}
+{#                navigationText: ["上一个","下一个"]#}
+{#            });#}
+            $('#owl-car').owlCarousel({
+{#                loop:true,#}
+                margin:0,
+                nav:true,
+                dots: true,
+                items: 4,
+                navText: [
+                  "<i class='icon-arrow-left2 owl-direction'></i>",
+                  "<i class='icon-arrow-right2 owl-direction'></i>"
+                ]
+		    })
+        });
+    </script>
 
 
 {% endblock %}
