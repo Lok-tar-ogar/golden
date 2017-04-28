@@ -572,6 +572,194 @@ def del_articleclass(req):
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
 
+@has_perm()
+@csrf_exempt
+def productclass_view(req):
+    """
+    GET方法获取文章管理页面
+    POST方法修改文章分类
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/productclass.html',locals())
+    elif req.method=='POST':#POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = productclass.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_productclass(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = productclass.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_articleclass.html', locals())
+
+@has_perm()
+def add_productclass(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = productclass()
+    ac.name = post_args.get('name')
+
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.name)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s failed saving.due to \n %s' % (ac.name, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_productclass(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = productclass.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+@csrf_exempt
+def facilityclass_view(req):
+    """
+    GET方法获取文章管理页面
+    POST方法修改文章分类
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/productclass.html',locals())
+    elif req.method=='POST':#POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = facilityclass.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_facilityclass(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = facilityclass.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_articleclass.html', locals())
+
+@has_perm()
+def add_facilityclass(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = facilityclass()
+    ac.name = post_args.get('name')
+
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.name)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s failed saving.due to \n %s' % (ac.name, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_facilityclass(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = facilityclass.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
 def login_backend(req):
     """
     GET方法获得登录页面
