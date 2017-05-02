@@ -20,9 +20,9 @@ from core import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
-    url(r'^product/$', views.product, name="product"),
-    url(r'^facility/$', views.faclity, name="faclity"),
-    url(r'^jobs/$', views.jobs, name="jobs"),
+    url(r'^product/$', views.product_index, name="product"),
+    url(r'^facility/$', views.faclity_index, name="faclity"),
+    url(r'^jobs/$', views.jobs_index, name="jobs"),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
@@ -49,9 +49,9 @@ urlpatterns = [
     url(r'^r/addarticleclass', views.add_articleclass),
 
 
-    url(r'^r/product$',views.content),
-    url(r'^r/getproduct$', views.ajax_get_content),
-    url(r'^r/editproduct$', views.edit_content),
+    url(r'^r/product$',views.product_view),
+    url(r'^r/getproduct$', views.ajax_get_product),
+    url(r'^r/editproduct$', views.edit_product),
     url(r'^r/productclass$', views.productclass_view),
     url(r'^r/getproductclass$', views.ajax_get_productclass),
     url(r'^r/delproductclass$', views.del_productclass),
