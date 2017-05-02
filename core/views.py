@@ -77,7 +77,7 @@ def about_detail(req, aid):
 
 
 
-def product(req):
+def product_index(req):
     '''
     关于金雷
     '''
@@ -85,7 +85,7 @@ def product(req):
     return render(req, 'web/product.html', locals())
 
 
-def faclity(req):
+def faclity_index(req):
     '''
     关于金雷
     '''
@@ -93,7 +93,7 @@ def faclity(req):
     return render(req, 'web/faclity.html', locals())
 
 
-def jobs(req):
+def jobs_index(req):
     '''
     关于金雷
     '''
@@ -126,6 +126,11 @@ def success(req):
 
     '''
     return render(req, 'web/success.html', locals())
+
+
+
+
+
 
 
 def has_perm():
@@ -215,7 +220,7 @@ def edit_carousel(req):
             c.save()
             return HttpResponse(json.dumps(r,ensure_ascii=False))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (c.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (c.title, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -238,7 +243,7 @@ def _imagehandler(title,caption,img):
         p.save()
         return p
     except Exception as e:
-        r['msg'] = '%s failed saving.due to \n %s' % (p.title, str(e))
+        r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
         r['status'] = '500'
         return r
 
@@ -268,7 +273,7 @@ def add_carousel(req):
 
         return HttpResponse(json.dumps(r,ensure_ascii=False))
     except Exception as e:
-        r['msg']='%s failed saving.due to \n %s' % (c.title,str(e))
+        r['msg']='%s 失败了,因为 \n %s' % (c.title,str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -292,7 +297,7 @@ def del_carousel(req):
         r['status']='200'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
     except Exception as e:
-        r['msg']='failed deleting.due to \n %s' % (str(e))
+        r['msg']='失败了,因为 \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -327,7 +332,7 @@ def gallery(req):
             p.save()
             return HttpResponse(json.dumps(r))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (p.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -352,7 +357,7 @@ def add_picture(req):
         p.save()
         return HttpResponse(json.dumps(r))
     except Exception as e:
-        r['msg'] = '%s failed saving.due to \n %s' % (p.title, str(e))
+        r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -374,7 +379,7 @@ def del_picture(req):
         r['status']='200'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
     except Exception as e:
-        r['msg']='failed deleting.due to \n %s' % (str(e))
+        r['msg']='失败了,因为 \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -413,7 +418,7 @@ def content(req):
             r['status'] = '200'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
         except Exception as e:
-            r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+            r['msg'] = '失败了,因为 \n %s' % (str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -537,7 +542,7 @@ def articleclass_view(req):
             ac.save()
             return HttpResponse(json.dumps(r))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -573,7 +578,7 @@ def add_articleclass(req):
         ac.save()
         return HttpResponse(json.dumps(r))
     except Exception as e:
-        r['msg'] = '%s failed saving.due to \n %s' % (ac.name, str(e))
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -581,8 +586,8 @@ def add_articleclass(req):
 @has_perm()
 def del_articleclass(req):
     """
-    删除图片,并删除本地文件
-    :param req,id:
+    删除
+    :param req
     :return:
     """
     r = {}
@@ -597,10 +602,131 @@ def del_articleclass(req):
         r['status'] = '200'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
     except Exception as e:
-        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
+@has_perm()
+@csrf_exempt
+def product_view(req):
+    """
+    GET方法获取产品管理页面
+    POST方法批量删除产品
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/product.html',locals())
+    elif req.method=='POST':#POST method 做删除操作
+        r = {}
+        try:
+
+            post_args = req.POST
+            c = product.objects.filter(id__in=post_args.getlist('ids[]'))
+            r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+            for x in c:
+                c.delete()
+            r['status'] = '200'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+        except Exception as e:
+            r['msg'] = '失败了,因为 \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_product(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    ats = product.objects.all()
+    return render_to_response('backend/inclusion_tag_product.html', locals())
+
+@has_perm()
+def edit_product(req):
+    """
+    GET方法获得修改文章的页面
+    POST方法修改文章详情
+    :param req:
+    :return:
+    """
+    r = {}
+    if req.method == 'GET':
+
+        try:
+            args=req.GET
+            id=args.get('id')
+            ps = picture.objects.all()
+            if id=='new':
+                title=''
+                content = ''
+                viewedTimes=''
+                languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
+                types=productclass.objects.all()
+                type=''
+                title_img=''
+                return  render(req,'backend/edit_product.html',locals())
+            else:
+                c = product.objects.get(id=id)
+
+                name = c.name
+                title_pic = c.imgs
+                content = c.content
+                viewedTimes = c.viewedTimes
+                language = c.language
+                languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+                type = c.type
+                types=productclass.objects.all()
+                dimDate=c.dimDate
+                return render(req, 'backend/edit_product.html', locals())
+        except Exception as e:
+            r['msg']=str(e)
+            return  HttpResponse(json.dumps(r,ensure_ascii=False))
+    elif req.method=='POST':
+
+        try:
+            args=req.POST
+            id=args.get('id')
+            name = args.get('name')
+            cont=args.get('content')
+            language = args.get('language')
+
+            type=args.get('type')
+            type=productclass.objects.get(id=type)
+            # title_img = args.get('pid')
+            ps = picture.objects.all()
+            if id!='new':
+                c= product.objects.get(id=id)
+
+                c.name = name
+                c.content = cont
+                c.language=language
+                c.type=type
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                r['status']='200'
+                r['msg']='成功修改产品'
+                c.save()
+                return HttpResponseRedirect('/r/product')
+            else:
+                c = product()
+
+                c.name = name
+                c.content = cont
+                c.type = type
+                c.language = language
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                c.viewedTimes=0
+                r['status']='200'
+                r['msg']='成功新加产品'
+                c.save()
+                return HttpResponseRedirect('/r/product')
+        except Exception as e:
+            r['status'] = '500'
+            r['msg'] = '失败 | '+str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
 
 @has_perm()
 @csrf_exempt
@@ -631,7 +757,7 @@ def productclass_view(req):
             ac.save()
             return HttpResponse(json.dumps(r))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -667,7 +793,7 @@ def add_productclass(req):
         ac.save()
         return HttpResponse(json.dumps(r))
     except Exception as e:
-        r['msg'] = '%s failed saving.due to \n %s' % (ac.name, str(e))
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -691,7 +817,7 @@ def del_productclass(req):
         r['status'] = '200'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
     except Exception as e:
-        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -725,7 +851,7 @@ def facilityclass_view(req):
             ac.save()
             return HttpResponse(json.dumps(r))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -761,7 +887,7 @@ def add_facilityclass(req):
         ac.save()
         return HttpResponse(json.dumps(r))
     except Exception as e:
-        r['msg'] = '%s failed saving.due to \n %s' % (ac.name, str(e))
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -785,7 +911,7 @@ def del_facilityclass(req):
         r['status'] = '200'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
     except Exception as e:
-        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -981,7 +1107,7 @@ def edit_user(req):
             u.save()
             return HttpResponse(json.dumps(r, ensure_ascii=False))
         except Exception as e:
-            r['msg'] = '%s failed saving.due to \n %s' % (u.username, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (u.username, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
