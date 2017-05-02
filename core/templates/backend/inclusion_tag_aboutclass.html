@@ -1,0 +1,14 @@
+{% load poll_extras %}
+{% for atc in atcls  %}
+    <tr>
+        <td class="center"><label for="{{ atc.id }}"></label><input id="{{ atc.id }}"  type="checkbox" value="{{ atc.id }}" name="checkbox" class="input-control ace" >
+            <span class="lbl"></span></td>
+
+        <td class="article-title">{{ atc.key }}</td>
+        <td class="article-title">{{ atc.language | translang }}</td>
+        <td >{{ atc.dimDate }}</td>
+        <td>
+            <a class="btn btn-primary btn-xs btn-github block" href="editabout?id={{ atc.id }}" draggable="false" >修改</a>
+        </td>
+    </tr>
+{% endfor %}

@@ -27,6 +27,7 @@ import urllib.parse
 import urllib.request
 import base64
 from core.models import *
+import logging
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -34,7 +35,11 @@ def index(req):
     '''
     首页
     '''
-
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/index.html', locals())
 
 
@@ -44,6 +49,32 @@ def about(req):
     '''
 
     return render(req, 'web/about.html', locals())
+
+
+def about_detail(req, aid):
+    '''
+    关于金雷
+    '''
+    try:
+        language = req.GET.get("language")
+        if language == "en":
+            about = syspara.objects.filter(language="en")
+        else:
+            about = syspara.objects.filter(language="zh")
+
+        detail = syspara.objects.get(id=aid)
+
+        return render(req, 'web/about_sample.html', locals())
+
+    except Exception as e:
+        logging.warning(e)
+        language = req.GET.get("language")
+        if language == "en":
+            about = syspara.objects.filter(language="en")
+        else:
+            about = syspara.objects.filter(language="zh")
+        return render(req, 'web/index.html', locals())
+
 
 
 def product(req):
@@ -82,6 +113,10 @@ def about_sample(req):
     '''
     关于子页面
     '''
+    if req.method == "GET":
+        language = req.GET.get("language")
+        if language == "en":
+            about = syspara.objects.filter(language="en")
 
     return render(req, 'web/about_sample.html', locals())
 
@@ -91,11 +126,6 @@ def success(req):
 
     '''
     return render(req, 'web/success.html', locals())
-
-
-
-
-
 
 
 def has_perm():
@@ -1036,3 +1066,151 @@ def filebrowser(req):
     ps=picture.objects.all()
     return render_to_response('backend/tinymce_file_browser.html',locals())
 
+
+@has_perm()
+@csrf_exempt
+def aboutclass_view(req):
+    '''
+    关于金镭
+    :param req:
+    :return:
+    '''
+
+    if req.method == 'GET':
+        return render(req, 'backend/aboutclass.html', locals())
+    elif req.method == 'POST':  # POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = articleclass.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s failed saving.due to \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_aboutclass(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = syspara.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_aboutclass.html', locals())
+
+
+@has_perm()
+def add_aboutclass(req):
+    """
+    添加新的二级菜单
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = syspara()
+    ac.key = post_args.get('name')
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.key)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s failed saving.due to \n %s' % (ac.key, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def edit_about(req):
+    """
+    GET方法获得二级菜单的页面
+    POST方法修改文章详情
+    :param req:
+    :return:
+    """
+    r = {}
+    if req.method == 'GET':
+
+        try:
+            args=req.GET
+            id=args.get('id')
+            # ps = picture.objects.all()
+            c = syspara.objects.get(id=id)
+            ps = picture.objects.all()
+            en_title = c.en_key
+            title = c.key
+            content = c.value
+            language = c.language
+            languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+            dimDate = c.dimDate
+            return render(req, 'backend/edit_about.html', locals())
+        except Exception as e:
+            r['msg']=str(e)
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+    elif req.method=='POST':
+        try:
+            args = req.POST
+            id = args.get('id')
+            title=args.get('title')
+            cont=args.get('content')
+            language = args.get('language')
+            en_title = args.get('en_title')
+
+            c = syspara.objects.get(id=id)
+            c.key=title
+            c.value=cont
+            c.en_key = en_title
+            c.language=language
+            c.imgs = picture.objects.get(id=args.get('pid'))
+
+            r['status']='200'
+            r['msg']='成功修改文章'
+            c.save()
+            return HttpResponseRedirect('/r/aboutclass')
+
+        except Exception as e:
+            r['status'] = '500'
+            r['msg'] = '失败 | '+str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_aboutclass(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = syspara.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.key for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = 'failed deleting.due to \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))

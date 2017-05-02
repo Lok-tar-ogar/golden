@@ -1,6 +1,40 @@
-{% extends "inc/master.html" %}
-{% block title %}首页{% endblock %}
-{% block head %}
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>四川金镭铸业有限公司{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="四川金镭铸业有限公司"/>
+    <meta name="keywords" content="四川金镭铸业有限公司" />
+    <link rel="shortcut icon" href="/static/images/web/index/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/headercss/animate.css">
+    <link rel="stylesheet" href="/static/css/icomoon/style.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/headercss/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/headercss/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/owl.theme.default.min.css">
+{##}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
+
+    <link rel="stylesheet" href="/static/css/headercss/style.css">
+
+    {#    <link rel="stylesheet" href="/static/css/headercss/newstyle.css">#}
+    <link rel="stylesheet" href="/static/css/headercss/jquery.fancybox.min.css">
+    <script src="/static/js/headerjs/jquery.min.js"></script>
+    <script src="/static/js/headerjs/jquery.fancybox.min.js"></script>
+    <script src="/static/js/headerjs/modernizr-2.6.2.min.js"></script>
+    {#    <script src="/static/js/headerjs/selectivizr.js"></script>#}
+    <!--[if lt IE9]>
+    <script>
+        $(document).ready(function () {
+            $(".animate-box").removeClass("animate-box");
+        });
+    </script>
+    <![endif]-->
     <script type="text/javascript">
         $(document).ready(function () {
             $('#home').prop('class', 'actived');
@@ -37,8 +71,66 @@
         });
 
     </script>
-{% endblock %}
-{% block content %}
+
+</head>
+<body>
+
+
+<div id="page">
+    <nav class="hxco-nav hengxin-header" role="navigation">
+        <div class="hxco-container">
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 35px;width: auto;margin-top:-5px;"></a></div>
+                </div>
+                <div class="col-xs-9 text-center">
+                    <div class="nav-contain1">
+                        <div class="nav-inner1">
+                            <ul class="am-nav1">
+                                <li><a href="/" id="home"><i class="icon-home"></i></a></li>
+
+                                <li>
+                                    {% for i in about %}
+                                        {% if forloop.first %}
+                                            <a href="/about/{{ i.id }}" id="abroad_education" >关于金镭</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <!-- sub-menu start-->
+                                    <ul class="sub-menu">
+                                        {% for i in about %}
+                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>
+                                        {% endfor %}
+{#                                        <li class="menu-item"><a href="/about_sample">公司简介</a></li>#}
+{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                    </ul>
+                                    <!-- sub-menu end-->
+                                </li>
+                                <li><a href="/product" id="certification">产品中心</a></li>
+                                <li><a href="/facility" id="course_guide">设备资质</a></li>
+                                <li><a href="javascript:void(0)" id="abroad_education" >成功案例</a>
+                                    <!-- sub-menu start-->
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="/success">合作企业</a></li>
+{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                    </ul>
+                                </li>
+{#                                <li><a href="/courseguide" id="course_guide">成功案例</a></li>#}
+                                <li><a href="/jobs" id="career_planning">加入金镭</a></li>
+                                <li><a href="/contact" id="assistedliving">联系我们</a></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -136,9 +228,6 @@
 {#    <div class="hxco-features-2">#}
 {#        #}
 {#    </div>#}
-    <script>
-
-    </script>
 
     <div id="hxco-features-2">
 		<div class="hxco-container">
@@ -190,6 +279,59 @@
 			</div>
 		</div>
 	</div>
+
+    <footer id="hxco-footer" role="contentinfo">
+        <div class="hxco-container">
+            <div class="row row-pb-md">
+                <div class="col-xs-3 text-center">
+                    <h3>关注微信公众号</h3>
+                    <img src="/static/images/web/wechat.jpg" style="width: 160px;height:160px;">
+
+                </div>
+                <div class="col-xs-3">
+                    <h3>CONTACT INFO</h3>
+                    <hr />
+                    <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
+                    <p style="margin-top: 1em"><i class="icon-phone"></i>销售电话：0832-8247655</p>
+{#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
+
+                </div>
+                <div class="col-xs-3">
+                    <h3>QUICK LINKS</h3>
+                    <hr />
+                    <div style="margin-top: 1em">
+                        <a class="tagA" href="/certification">
+                            关于金镭
+                        </a>
+                        <a class="tagA" href="/highschool">
+                            产品中心
+                        </a>
+                        <a class="tagA" href="/mxztc">
+                            设备资质
+                        </a>
+                        <a class="tagA" href="/ksbk">
+                            加入金镭
+                        </a>
+                        <a class="tagA" href="/courseguide">
+                            成功案例
+                        </a>
+                        <a class="tagA" href="/zygh">
+                            联系我们
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+
+
     <script>
         $(function(){
 {#            $('#owl-car').owlCarousel({#}
@@ -212,6 +354,19 @@
 		    })
         });
     </script>
+<!-- jQuery Easing -->
+<script src="/static/js/headerjs/jquery.easing.1.3.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/headerjs/jquery.waypoints.min.js"></script>
+<script src="/static/js/headerjs/owl.carousel.min.js"></script>
+{#<script src="/static/css/owl/owl.carousel.js"></script>#}
+<script src="/static/js/headerjs/jquery.countTo.js"></script>
+<script src="/static/js/headerjs/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/headerjs/magnific-popup-options.js"></script>
+<script src="/static/js/headerjs/main.js"></script>
+
+</body>
+</html>
 
 
-{% endblock %}
+

@@ -20,7 +20,9 @@ class syspara(models.Model):
     网站标识 等系统参数;
     """
     key = models.CharField('键', max_length=20)
+    en_key = models.CharField('英文键', max_length=20, null=True)
     value = models.CharField('值', max_length=3400, blank=True, null=True)
+    imgs = models.ForeignKey(picture, to_field='id', null=True)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)
 

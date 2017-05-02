@@ -20,6 +20,7 @@ from core import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
+    url(r'^about/(\d+)/', views.about_detail),
     url(r'^product/$', views.product, name="product"),
     url(r'^facility/$', views.faclity, name="faclity"),
     url(r'^jobs/$', views.jobs, name="jobs"),
@@ -71,5 +72,12 @@ urlpatterns = [
     url(r'^r/deluser$', views.del_user),
     url(r'^r/user$', views.edit_user),
     url(r'^r/getuser$', views.ajax_get_user),
+
+    url(r'^r/aboutclass$', views.aboutclass_view),
+    url(r'^r/getaboutclass$', views.ajax_get_aboutclass),
+    url(r'^r/delarticleclass$', views.del_articleclass),
+    url(r'^r/addaboutclass', views.add_aboutclass),
+    url(r'^r/editabout$', views.edit_about),
+    url(r'^r/delaboutclass$', views.del_aboutclass),
 ]
 
