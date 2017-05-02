@@ -7,7 +7,7 @@
         <div class="breadcrumbs" id="breadcrumbs">
             <ul class="breadcrumb">
                 <li><i class="icon-sitemap"></i><a href="/admin">系统管理</a></li>
-                <li class="active">编辑文章分类</li>
+                <li class="active">编辑设备分类</li>
             </ul><!-- .breadcrumb -->
         </div>
         <!--导航条结束-->
@@ -108,7 +108,7 @@
                                 function  ajax_refresh_table() {
                                     $('#tbody_content').html('');
                                     NProgress.start();
-                                    $.get('/r/getarticleclass',function (data) {
+                                    $.get('/r/getfacilityclass',function (data) {
                                         $('#tbody_content').append(data);
                                         NProgress.done();
                                     });
@@ -122,7 +122,7 @@
                                             s .push ($(item).val());
                                             //}
                                         });
-                                        $.post('/r/delarticleclass',{'ids':s,'csrfmiddlewaretoken':csrftoken},function (data) {
+                                        $.post('/r/delfacilityclass',{'ids':s,'csrfmiddlewaretoken':csrftoken},function (data) {
                                             data=JSON.parse(data);
                                             $.gritter.add({
                                                 // (string | mandatory) the heading of the notification
@@ -140,7 +140,7 @@ function su() {
                                         NProgress.start();
                                         var formData = new FormData($( "#addform" )[0]);
                                         $.ajax({
-                                            url: "/r/addarticleclass",
+                                            url: "/r/addfacilityclass",
                                             type: "POST",
                                             data: formData,
                                             /**
@@ -234,12 +234,6 @@ function su() {
                                         });
 
                                     }
-                                    $(document).ready(function(){
-  $("#addform").submit(function(e){
-    alert("Submitted");
-    su();
-  });
-});
                             </script>
 
                         </div>
