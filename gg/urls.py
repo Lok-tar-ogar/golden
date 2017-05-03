@@ -81,5 +81,9 @@ urlpatterns = [
     url(r'^r/addaboutclass', views.add_aboutclass),
     url(r'^r/editabout$', views.edit_about),
     url(r'^r/delaboutclass$', views.del_aboutclass),
+
+    url(r'^r/contactus$', views.contactus_view),
+    url(r'^r/get_contact$', views.ajax_get_contact),
+    url(r'^r/del_contact$', views.ajax_del_contact),
 ]
 

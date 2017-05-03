@@ -1,0 +1,15 @@
+{% load poll_extras %}
+{% for u in c %}
+
+    <tr>
+        <td class="center">
+            <label for="{{ u.id }}"></label><input id="{{ u.id }}"  type="checkbox" value="{{ u.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
+        <td class="center">{{ u.name  }}</td>
+{#        <td class="center"><img src="{{ u.avt.filepath }}" alt="" style="width: 75px;">  </td>#}
+        <td class="center">{{ u.email }}</td>
+        <td class="center">{{ u.tel }}</td>
+        <td class="center">{{ u.info }}</td>
+    </tr>
+
+{% endfor %}
+

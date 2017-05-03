@@ -111,17 +111,32 @@ def jobs_index(req):
         about = syspara.objects.filter(language="zh")
     return render(req, 'web/jobs.html', locals())
 
-
+@csrf_exempt
 def contact(req):
     '''
     关于金雷
     '''
-    language = req.GET.get("language")
-    if language == "en":
-        about = syspara.objects.filter(language="en")
-    else:
-        about = syspara.objects.filter(language="zh")
-    return render(req, 'web/contact.html', locals())
+    if req.method == "GET":
+        language = req.GET.get("language")
+        if language == "en":
+            about = syspara.objects.filter(language="en")
+        else:
+            about = syspara.objects.filter(language="zh")
+        return render(req, 'web/contact.html', locals())
+    if req.method == "POST":
+        name = req.POST.get("fname",None)
+        email = req.POST.get("email", None)
+        tel = req.POST.get("tel", None)
+        message = req.POST.get("message", None)
+
+        if name or email or tel or message:
+            c = Contact()
+            c.name = name
+            c.email = email
+            c.tel = tel
+            c.info = message
+            c.save()
+        return render(req, 'web/contact.html', locals())
 
 
 def about_sample(req):
@@ -1361,3 +1376,47 @@ def del_aboutclass(req):
         r['msg'] = 'failed deleting.due to \n %s' % (str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def contactus_view(req):
+    """
+    联系我们后台
+    :param req:
+    :return:
+    """
+
+    if req.method == 'GET':
+        ps=picture.objects.all()
+        return render(req, 'backend/contactus.html',locals())
+
+
+@has_perm()
+def ajax_get_contact(req):
+    c=Contact.objects.all()
+    return render_to_response('backend/inclusion_tag_contact.html',locals())
+
+
+@has_perm()
+def ajax_del_contact(req):
+    """
+    删除联系我们
+    :param req:
+    :return:
+    """
+    r = {}
+    try:
+
+        args = req.POST
+        u = Contact.objects.filter(id__in=args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in u]))
+
+        for x in u:
+            x.delete()
+
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['status'] = '500'
+        r['msg'] = str(e)
+    return HttpResponse(json.dumps(r, ensure_ascii=False))

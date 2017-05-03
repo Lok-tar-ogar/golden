@@ -4,9 +4,9 @@
     {% load poll_extras %}
     {% load staticfiles %}
     <meta charset="utf-8" />
-    <title>金雷铸业后台管理系统{% block title %} {%  endblock %}</title>
-    <meta name="keywords" content="金雷铸业-后台管理系统" />
-    <meta name="description" content="金雷铸业-后台管理系统" />
+    <title>金镭铸业后台管理系统{% block title %} {%  endblock %}</title>
+    <meta name="keywords" content="金镭铸业-后台管理系统" />
+    <meta name="description" content="金镭铸业-后台管理系统" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href={% static "css/bootstrap.min.css" %} rel="stylesheet" />
     <link rel="stylesheet" href={% static "css/font-awesome.min.css" %} />
@@ -523,6 +523,15 @@
                         <li id="li_content" class="" ><a href="/r/aboutclass"><i class="menu-icon fa fa-pencil-square-o"></i><span class="menu-text">编辑二级菜单</span></a></li>
                     </ul>
                 </li>
+
+                <li id="li_contact" class="">
+                    <a href="/r/contactus">
+                        <i class="menu-icon fa fa-picture-o"></i>
+                        <span class="menu-text"> 联系我们 </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
             </ul><!-- /.nav-list -->
 
             <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">

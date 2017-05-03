@@ -260,4 +260,16 @@ class user(models.Model):
         return self.username
 
 
+class Contact(models.Model):
+    name = models.CharField('姓名', max_length=50)
+    email = models.CharField('邮箱', max_length=150)
+    tel = models.CharField('电话', max_length=50)
+    info = models.CharField('信息', max_length=5000)
 
+    class Meta:
+        verbose_name = "联系我们表"
+        verbose_name_plural = "联系我们表"
+        ordering = ['id']
+
+    def __str__(self):
+        return self.name
