@@ -28,13 +28,13 @@
     <script src="/static/js/headerjs/jquery.fancybox.min.js"></script>
     <script src="/static/js/headerjs/modernizr-2.6.2.min.js"></script>
     {#    <script src="/static/js/headerjs/selectivizr.js"></script>#}
-    <!--[if lt IE9]>
+    <!–[if lt IE 9]>
     <script>
         $(document).ready(function () {
             $(".animate-box").removeClass("animate-box");
         });
     </script>
-    <![endif]-->
+    <![endif]->
 
     <link rel="stylesheet" href="/static/css/headercss/amazeui.css">
     <link rel="stylesheet" href="/static/css/headercss/common.min.css">
@@ -86,7 +86,7 @@
         <div class="hxco-container">
             <div class="row">
                 <div class="col-xs-3 text-center">
-                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 35px;width: auto;margin-top:-5px;"></a></div>
+                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 45px;width: auto;margin-top:-5px;"></a></div>
                 </div>
                 <div class="col-xs-9 text-center">
                     <div class="nav-contain1">
@@ -95,11 +95,15 @@
                                 <li><a href="/" id="home"><i class="icon-home"></i></a></li>
 
                                 <li>
-                                    <a href="/about" id="abroad_education" >关于金镭</a>
+                                    {% for i in about %}
+                                        {% if forloop.first %}
+                                            <a href="/about/{{ i.id }}" id="abroad_education" >关于金镭</a>
+                                        {% endif %}
+                                    {% endfor %}
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         {% for i in about %}
-                                            <li class="menu-item"><a href="/about_sample">{{ i.key }}</a></li>
+                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>
                                         {% endfor %}
 {#                                        <li class="menu-item"><a href="/about_sample">公司简介</a></li>#}
 {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}

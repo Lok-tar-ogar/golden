@@ -32,13 +32,13 @@
     <script src="/static/js/headerjs/jquery.fancybox.min.js"></script>
     <script src="/static/js/headerjs/modernizr-2.6.2.min.js"></script>
     {#    <script src="/static/js/headerjs/selectivizr.js"></script>#}
-    <!--[if lt IE9]>
+    <!–[if lt IE 9]>
     <script>
         $(document).ready(function () {
             $(".animate-box").removeClass("animate-box");
         });
     </script>
-    <![endif]-->
+    <![endif]->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -64,8 +64,7 @@
             }
         }
         function scrollfun(){
-            {#            scrollnumber("#product_title",'animated-ourservice',10);#}
-            {#            scrollnumber("#anli",'animated-ourservice',10);#}
+            {#            scrollnumber("#product_title",'ance',10);#}
         }
 
         $(document).ready(function(e) {
@@ -87,7 +86,7 @@
         <div class="hxco-container">
             <div class="row">
                 <div class="col-xs-3 text-center">
-                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 35px;width: auto;margin-top:-5px;"></a></div>
+                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 45px;width: auto;margin-top:-5px;"></a></div>
                 </div>
                 <div class="col-xs-9 text-center">
                     <div class="nav-contain1">
@@ -106,9 +105,6 @@
                                         {% for i in about %}
                                             <li class="menu-item"><a href="/about_sample">{{ i.key }}</a></li>
                                         {% endfor %}
-{#                                        <li class="menu-item"><a href="/about_sample">公司简介</a></li>#}
-{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
                                     </ul>
                                     <!-- sub-menu end-->
                                 </li>
@@ -118,11 +114,8 @@
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
                                         <li class="menu-item"><a href="/success">合作企业</a></li>
-{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
                                     </ul>
                                 </li>
-{#                                <li><a href="/courseguide" id="course_guide">成功案例</a></li>#}
                                 <li><a href="/jobs" id="career_planning">加入金镭</a></li>
                                 <li><a href="/contact" id="assistedliving">联系我们</a></li>
                                 <li></li>
@@ -160,49 +153,18 @@
                                 {% for i in about %}
                                     <li><a href="/about/{{ i.id }}"><span>{% if i.en_key %}{{ i.en_key }}{% endif %}</span> <span>{{ i.key }}</span></a><img src="{{ i.imgs.filepath }}" alt="image03"/></li>
                                 {% endfor %}
-{#                                <li><a href="#"><span>Art Director</span> <span>公司简介</span></a><img src="/static/images/web/sample/1.jpg" alt="image01"/></li>#}
-{#                                <li><a href="#"><span>Production Coordinator</span> <span>企业文化</span></a><img src="/static/images/web/sample/2.jpg" alt="image02"/></li>#}
-{#                                <li><a href="#"><span>Sound</span> <span>发展历程</span></a><img src="/static/images/web/sample/3.jpg" alt="image03"/></li>#}
-{#                                <li><a href="#"><span>Casting</span> <span>公司荣誉</span></a><img src="/static/images/web/sample/e.jpg" alt="image04"/></li>#}
-{#                                <li><a href="#"><span>Casting</span> <span>组织架构</span></a><img src="/static/images/web/sample/q.jpg" alt="image04"/></li>#}
-{#                                <li><a href="#"><span>Casting</span> <span>企业规划</span></a><img src="/static/images/web/sample/w.jpg" alt="image04"/></li>#}
-{#                                <li><a href="#"><span>Casting</span> <span>企业形象</span></a><img src="/static/images/web/sample/vc.jpg" alt="image04"/></li>#}
 			                </ul>
                         </div>
                     </div>
 
                     <div class="am-u-md-9">
-{#                        <h3 class="careers--subtitle">We Are Looking For:</h3>#}
                         <div class="son-title">
                             {{ detail.key }}
-{#                            公司简介#}
                         </div>
                         <div class="son-content animate-box"   data-animate-effect="Zoomin">
                             {% if detail.value %}
                                 {{ detail.value | safe }}
                             {% endif %}
-{#                            <p>#}
-{#                                 金镭公司系私营企业，公司总资产5000万元，公司总部位于威远县境内。 公司占地面积近25000ｍ2。 主厂房面积8000ｍ2 。 公司专业生产各种耐蚀、耐热、超低碳不锈钢；高、中、低合金钢铸件。#}
-{#                            </p>#}
-{#                            <p>#}
-{#                                公司拥有1吨、3吨中频快速熔炼炉各一台3.5吨中频快速熔炼炉两台、可生产单件最大重量7吨以下的铸件、另配备有Q3730吊钩式抛丸机,两台 150ＫＷ、400KW电加热高温处理淬火炉各一台、56m3天燃气加热烘模炉一台、20吨天燃气高温热处理炉一台、20m3空压机一台、S114C碾轮式混砂机 、转子式混砂机各 1台、10吨与5吨双梁行车各一台、5吨单梁行车5台10吨单梁行车2台以及与之相匹配的炉前化学分析、斯派克光谱分析、机械性能、磁粉探伤、超声探伤试验、红外测温、超声波测厚、布洛氏台式硬度计、里氏硬度计等各种检测装备。 年总生产能力为5000吨。#}
-{#                            </p>#}
-{#                            <p>#}
-{#                                在产品质量保证体系上， 公司拥有铸造专业的研究生, 高级工程师, 冶金化学分析工程师等工程技术人员十余名。 同时, 公司在铸造工艺技术设计中， 运用ＣＡＤ、 ＣＡＥ计算机辅助设计作技术支持， 保障公司产品质量。 在车间从事铸造作业的员工中, 90%以上的员工都具有五年以上的操作经验。#}
-{#                            </p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p><p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p> 公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p>公司已取得企业出具《产品质量检验合格证明书》、《四川省企业产品执行标准证书》，《ISO9001-2000认证》《中华人民共和国特种设备制造许可证》。</p>#}
-{#                            <p>公司的铸造产品， 特别是阀门铸造件在国际国内市场上具有很强的竞争力。 多年以来, 一直为自贡高压阀门股份有限公司、成都高压阀门厂、成都乘风阀门有限公司、成都天立化工科技公司、青岛电站阀门有限公司、、格利特阀门制造有限公司、乐山长江仪表阀门制造有限公司、泸州邦力重机有限公司、哈尔滨汽轮机厂、东方汽轮机厂有限责任公司、东方锅炉阀门有限公司、武汉锅炉阀门有限公司、哈尔滨锅炉阀门有限公司、杭州华惠,三一重机等数十家大中型企业与成都优机公司等出口企业生产各种承压阀门铸件和机械、化工、电力、石油、铁路、船舶工业方面重要部件所使用的铸件。</p>#}
                         </div>
                     </div>
                 </div>
@@ -223,7 +185,6 @@
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
                     <p style="margin-top: 1em"><i class="icon-phone"></i>销售电话：0832-8247655</p>
-{#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
 
                 </div>
                 <div class="col-xs-3">

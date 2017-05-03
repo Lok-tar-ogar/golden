@@ -76,12 +76,15 @@ def about_detail(req, aid):
         return render(req, 'web/index.html', locals())
 
 
-
 def product_index(req):
     '''
     关于金雷
     '''
-
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/product.html', locals())
 
 
@@ -89,7 +92,11 @@ def faclity_index(req):
     '''
     关于金雷
     '''
-
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/faclity.html', locals())
 
 
@@ -97,7 +104,11 @@ def jobs_index(req):
     '''
     关于金雷
     '''
-
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/jobs.html', locals())
 
 
@@ -105,7 +116,11 @@ def contact(req):
     '''
     关于金雷
     '''
-
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/contact.html', locals())
 
 
@@ -113,10 +128,11 @@ def about_sample(req):
     '''
     关于子页面
     '''
-    if req.method == "GET":
-        language = req.GET.get("language")
-        if language == "en":
-            about = syspara.objects.filter(language="en")
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
 
     return render(req, 'web/about_sample.html', locals())
 
@@ -125,6 +141,11 @@ def success(req):
     '''
 
     '''
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+    else:
+        about = syspara.objects.filter(language="zh")
     return render(req, 'web/success.html', locals())
 
 

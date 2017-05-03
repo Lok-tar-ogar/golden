@@ -2807,8 +2807,10 @@ h1{
     color:#999999;
 }
 .nav-contain1 .nav-inner1 .am-nav1 li a {
-    color:  rgba(255, 255, 255, 0.5);
+    /*color:  rgba(255, 255, 255, 0.5);*/
+    color: #FFF;
     padding: 0;
+    font-size: 16px;
 }
 .nav-contain1 .nav-inner1 .am-nav1 li a:hover {
     /*background: #fff none repeat scroll 0 0;*/
@@ -2816,7 +2818,9 @@ h1{
 }
 
 .menu-item a:hover{
-   color:#4ABBC3  !important;
+    /*font-size: 16px;*/
+    color:#4ABBC3  !important;
+    /*color:#fff;*/
 }
 
 
