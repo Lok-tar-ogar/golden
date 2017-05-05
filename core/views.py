@@ -697,7 +697,7 @@ def edit_product(req):
             id=args.get('id')
             ps = picture.objects.all()
             if id=='new':
-                title=''
+                name =''
                 content = ''
                 viewedTimes=''
                 languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
@@ -736,7 +736,6 @@ def edit_product(req):
             ps = picture.objects.all()
             if id!='new':
                 c= product.objects.get(id=id)
-
                 c.name = name
                 c.content = cont
                 c.language=language
@@ -860,6 +859,128 @@ def del_productclass(req):
 
 @has_perm()
 @csrf_exempt
+def facility_view(req):
+    """
+    GET方法获取产品管理页面
+    POST方法批量删除产品
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/facility.html',locals())
+    elif req.method=='POST':#POST method 做删除操作
+        r = {}
+        try:
+
+            post_args = req.POST
+            c = facility.objects.filter(id__in=post_args.getlist('ids[]'))
+            r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+            for x in c:
+                c.delete()
+            r['status'] = '200'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+        except Exception as e:
+            r['msg'] = '失败了,因为 \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_facility(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    ats = facility.objects.all()
+    return render_to_response('backend/inclusion_tag_facility.html', locals())
+
+@has_perm()
+def edit_facility(req):
+    """
+    GET方法获得修改文章的页面
+    POST方法修改文章详情
+    :param req:
+    :return:
+    """
+    r = {}
+    if req.method == 'GET':
+
+        try:
+            args=req.GET
+            id=args.get('id')
+            ps = picture.objects.all()
+            if id=='new':
+                name =''
+                content = ''
+                viewedTimes=''
+                languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
+                types=facilityclass.objects.all()
+                type=''
+                title_img=''
+                return  render(req,'backend/edit_facility.html',locals())
+            else:
+                c = facility.objects.get(id=id)
+
+                name = c.name
+                title_pic = c.imgs
+                content = c.content
+                viewedTimes = c.viewedTimes
+                language = c.language
+                languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+                type = c.type
+                types=facilityclass.objects.all()
+                dimDate=c.dimDate
+                return render(req, 'backend/edit_facility.html', locals())
+        except Exception as e:
+            r['msg']=str(e)
+            return  HttpResponse(json.dumps(r,ensure_ascii=False))
+    elif req.method=='POST':
+
+        try:
+            args=req.POST
+            id=args.get('id')
+            name = args.get('name')
+            cont=args.get('content')
+            language = args.get('language')
+
+            type=args.get('type')
+            type=facilityclass.objects.get(id=type)
+            # title_img = args.get('pid')
+            ps = picture.objects.all()
+            if id!='new':
+                c= facility.objects.get(id=id)
+                c.name = name
+                c.content = cont
+                c.language=language
+                c.type=type
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                r['status']='200'
+                r['msg']='成功修改设备'
+                c.save()
+                return HttpResponseRedirect('/r/facility')
+            else:
+                c = facility()
+
+                c.name = name
+                c.content = cont
+                c.type = type
+                c.language = language
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                c.viewedTimes=0
+                r['status']='200'
+                r['msg']='成功新加产品'
+                c.save()
+                return HttpResponseRedirect('/r/facility')
+        except Exception as e:
+            r['status'] = '500'
+            r['msg'] = '失败 | '+str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+@csrf_exempt
 def facilityclass_view(req):
     """
     GET方法获取文章管理页面
@@ -868,7 +989,7 @@ def facilityclass_view(req):
     :return:
     """
     if req.method == 'GET':
-        return render(req,'backend/productclass.html',locals())
+        return render(req,'backend/facilityclass.html',locals())
     elif req.method=='POST':#POST method 做修改操作
         r = {}
         post_args = req.POST
