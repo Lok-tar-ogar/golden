@@ -85,5 +85,9 @@ urlpatterns = [
     url(r'^r/contactus$', views.contactus_view),
     url(r'^r/get_contact$', views.ajax_get_contact),
     url(r'^r/del_contact$', views.ajax_del_contact),
+
+    url(r'r/joinus$', views.join_view),
+    url(r'r/getjoin$', views.ajax_get_join),
+    url(r'^r/editjoin$', views.edit_join),
 ]
 

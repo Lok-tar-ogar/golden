@@ -107,8 +107,10 @@ def jobs_index(req):
     language = req.GET.get("language")
     if language == "en":
         about = syspara.objects.filter(language="en")
+        jobs = job.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
+        jobs = job.objects.filter(language="zh")
     return render(req, 'web/jobs.html', locals())
 
 @csrf_exempt
@@ -1541,3 +1543,119 @@ def ajax_del_contact(req):
         r['status'] = '500'
         r['msg'] = str(e)
     return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def join_view(req):
+    '''
+    加入我们
+    :param req:
+    :return:
+    '''
+
+    if req.method == 'GET':
+        return render(req, 'backend/joinus.html',locals())
+
+    elif req.method=='POST':
+        r = {}
+        try:
+            post_args = req.POST
+            c = job.objects.filter(id__in=post_args.getlist('ids[]'))
+            r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
+
+            for x in c:
+                c.delete()
+            r['status'] = '200'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+        except Exception as e:
+            r['msg'] = '失败了,因为 \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+def ajax_get_join(req):
+    """
+    获取招聘职位列表
+    :param req:
+    :return:
+    """
+    join = job.objects.all().order_by("language")
+    return render_to_response('backend/inclusion_tag_join.html',locals())
+
+
+def edit_join(req):
+    """
+    编辑职位信息
+    :param req:
+    :return:
+    """
+    r = {}
+    if req.method == 'GET':
+        try:
+            args = req.GET
+            id = args.get('id')
+            # ps = picture.objects.all()
+            if id == 'new':
+                title = ''
+                content = ''
+                # viewedTimes = ''
+                languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+                # types = job.objects.all()
+                # type = ''
+                # title_img = ''
+                return render(req, 'backend/edit_join.html', locals())
+            else:
+                c = job.objects.get(id=id)
+                title = c.name
+                # title_pic = c.imgs
+                content = c.content
+                # viewedTimes = c.viewedTimes
+                language = c.language
+                languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+                # type = c.type
+                # types = articleclass.objects.all()
+                dimDate = c.dimDate
+                return render(req, 'backend/edit_join.html', locals())
+        except Exception as e:
+            r['msg'] = str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+    elif req.method == 'POST':
+
+        try:
+            args = req.POST
+            id = args.get('id')
+            title = args.get('title')
+            cont = args.get('content')
+            language = args.get('language')
+            # type = args.get('type')
+            # type = articleclass.objects.get(id=type)
+            # title_img = args.get('pid')
+
+            # ps = picture.objects.all()
+            if id != 'new':
+                c = job.objects.get(id=id)
+                c.title = title
+                c.content = cont
+                c.language = language
+                # c.type = type
+                # c.imgs = picture.objects.get(id=args.get('pid'))
+                r['status'] = '200'
+                r['msg'] = '成功修改文章'
+                c.save()
+                return HttpResponseRedirect('/r/joinus')
+            else:
+                c = job()
+                c.name = title
+                c.content = cont
+                # c.type = type
+                c.language = language
+                # c.imgs = picture.objects.get(id=args.get('pid'))
+                # c.viewedTimes = 0
+                r['status'] = '200'
+                r['msg'] = '成功新加文章'
+                c.save()
+                return HttpResponseRedirect('/r/joinus')
+        except Exception as e:
+            r['status'] = '500'
+            r['msg'] = '失败 | ' + str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))

@@ -1,0 +1,174 @@
+{% extends "backend/master_admin.html" %}{% block ti %}{% endblock %}
+{% block linkcss %}{% endblock %}
+{% load staticfiles %}
+{% block body %}
+    <!--主体开始-->
+    <div class="main-content">
+        <!--导航条开始-->
+        <div class="breadcrumbs" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><i class="icon-sitemap"></i><a href="/r">网站管理</a></li>
+                <li><a href="/r/joinus">文章内容发布</a></li>
+                <li class="active">{{ title }}</li>
+            </ul><!-- .breadcrumb -->
+        </div>
+        <!--导航条结束-->
+
+        <!--内容开始-->
+        <div  class="col-sm-11 col-md-12 col-lg-12 lefrgit">
+            <div class="row">
+                <form class="add-article-form" id="editform" method="post" action="" style="">
+                    {% csrf_token %}
+                    <div class="col-md-9" style="">
+                        <h1 class="page-header">职位编辑</h1>
+                        <div class="add-article-box">
+                            <h2 class="add-article-box-title"><span>职位名称</span></h2>
+                            <div class="add-article-box-content">
+                                <input type="text" autocomplete="off" name="title" value="{{ title }}" placeholder="请输入标题" class="form-control">
+                                <input type="hidden" autocomplete="off" name="id" value="{{ id }}" placeholder="请输入标题" class="form-control">
+
+                            </div>
+{#                            <h2 class="add-article-box-title"><span>标题图像</span></h2>#}
+{#                            <div class="add-article-box-content">#}
+{#                                <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">#}
+{#                                    {% for p in ps %}#}
+{#                                        {% if p.id == c.imgs.id %}#}
+{#                                            <option value="{{ p.id }}" selected="true">{{ p.title }}</option>#}
+{#                                        {% endif %}#}
+{#                                        <option value="{{ p.id }}">{{ p.title }}</option>#}
+{#                                    {% endfor %}#}
+{#                                </select>#}
+{#                            </div>#}
+                        </div>
+                        <div class="clearfix" style="margin-bottom: 50px;"></div>
+                        <textarea id="richtext" name="content" style="height: 300px;">
+                            {{ content }}
+                        </textarea>
+                        <div id="dialog" title="TinyMCE dialog" style="display: none">
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <h1 class="page-header">&nbsp;</h1>
+                        <div class="add-article-box">
+{#                            <h2 class="add-article-box-title"><span>类型</span></h2>#}
+{#                            <div class="add-article-box-content">#}
+{#                                <select class="chosen-select form-control" name="type" id="typeselect" data-placeholder="">#}
+{#                                    {% for t in types %}#}
+{#                                        {% if t.name == type.name %}#}
+{#                                            <option value="{{ t.id }}" selected="true">{{ t.name }}</option>#}
+{#                                        {% endif %}#}
+{#                                        <option value="{{ t.id }}">{{ t.name }}</option>#}
+{#                                    {% endfor %}#}
+{#                                </select>#}
+{#                            </div>#}
+                        <div class="clearfix" ></div>
+                        <h2 class="add-article-box-title"><span>语言</span></h2>
+                        <div class="add-article-box-content">
+                                <select class="chosen-select form-control" name="language" id="languageselect" data-placeholder="">
+                                    {% for l in languages %}
+                                        {% if l.key == language %}
+                                            <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
+                                        {% endif %}
+                                        <option value="{{ l.key }}">{{ l.value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="add-article-box">
+                                {#                                    <h2 class="add-article-box-title"><span>插入图片</span></h2>#}
+                                <div class="add-article-box-content">
+                                    {#                                    <input type="text" autocomplete="off" name="imgurl" id="pictureUpload" placeholder="点击按钮选择图片" class="form-control">#}
+                                </div>
+                                <div class="add-article-box-footer">
+                                    <p><label>发布于：</label><span class="article-time-display"><input type="datetime" value="{{ dimDate }}" name="dimDate" style="border: none;"></span></p>
+                                </div>
+                                <div class="add-article-box-footer">
+                                    <button name="submit" type="submit"  class="btn btn-primary">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--内容结束-->
+
+        <script>
+            $('#li_content').attr('class','active');
+            tinymce.init({
+                selector: '#richtext',
+                plugins: ' advlist autolink link image lists charmap print preview code ' ,
+                 toolbar: "undo redo pastetext | styleselect | fontselect | fontsizeselect",
+                fontsize_formats: "8pt 9pt 10pt 11pt 12pt 26pt 36pt",
+
+                file_browser_callback: FileBrowser
+            });
+            function FileBrowser(field_name, url, type, win) {
+                var roxyFileman = '/r/filebrowser';
+                tinyMCE.activeEditor.windowManager.open({
+                    url: roxyFileman,
+                    title: '浏览图片',
+                    width: 850,
+                    height: 650,
+                    resizable: "yes",
+                    plugins: "media",
+                    inline: "yes",
+                    close_previous: "no"
+                }, {     window: win,     input: field_name    });
+                return false;
+            }
+
+
+
+
+            function su() {
+
+
+                NProgress.start();
+                var formData = new FormData($( "#editform" )[0]);
+                $.ajax({
+                    url: "/r/editcontent",
+                    type: "POST",
+                    data: formData,
+                    /**
+                     *必须false才会自动加上正确的Content-Type
+                     */
+                    contentType: false,
+                    /**
+                     * 必须false才会避开jQuery对 formdata 的默认处理
+                     * XMLHttpRequest会对 formdata 进行正确的处理
+                     */
+                    processData: false,
+                    success: function (data) {
+                        data=JSON.parse(data);
+                        if (data.status == "200") {
+                            $.gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: '成功上传',
+                                // (string | mandatory) the text inside the notification
+                                text: data.msg,
+                                class_name: 'gritter-success'
+                            });
+                        }
+                        if (data.status == "500") {
+                            $.gritter.add({
+                                // (string | mandatory) the heading of the notification
+                                title: '失败',
+                                // (string | mandatory) the text inside the notification
+                                text: data.msg,
+                                class_name: 'gritter-warning'
+                            });
+                        }
+                        NProgress.done();
+                    },
+                    error: function () {
+                        alert("上传失败！");
+                        NProgress.done();
+                    }
+                });
+
+            }
+        </script>
+    </div>
+    <!--主体结束-->
+{%  endblock %}

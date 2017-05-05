@@ -1,0 +1,15 @@
+{% load poll_extras %}
+{% for j in join  %}
+    <tr>
+        <td class="center"><label for="{{ j.id }}"></label><input id="{{ j.id }}"  type="checkbox" value="{{ j.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
+
+        <td class="article-title">{{ j.name }}</td>
+{#        <td >{{ j.viewedTimes }}</td>#}
+{#        <td>{{ at.type }}</td>#}
+        <td>{{ j.language | translang }}</td>
+        <td>{{ j.dimDate }}</td>
+        <td>
+            <a class="btn btn-primary btn-xs btn-github block" href="editjoin?id={{ j.id }}" draggable="false" >修改职位信息</a>
+        </td>
+    </tr>
+{% endfor %}
