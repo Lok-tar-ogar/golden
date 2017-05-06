@@ -28,9 +28,9 @@ urlpatterns = [
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
     url(r'^success/$', views.success, name="success"),
-    url(r'facility/(\d+)/$',views.faclity_index),
-
-
+    url(r'^facility/(\d+)/$',views.faclity_index),
+    url(r'information/$', views.information),
+    url(r'^information_detail/(?P<aid>\d+)$', views.information_detail),
     url(r'^r/index$|^r/$|^r$', views.backend_index),
 
     url(r'^r/carousel$', views.edit_carousel),
@@ -94,8 +94,8 @@ urlpatterns = [
     url(r'^r/get_contact$', views.ajax_get_contact),
     url(r'^r/del_contact$', views.ajax_del_contact),
 
-    url(r'r/joinus$', views.join_view),
-    url(r'r/getjoin$', views.ajax_get_join),
+    url(r'^r/joinus$', views.join_view),
+    url(r'^r/getjoin$', views.ajax_get_join),
     url(r'^r/editjoin$', views.edit_join),
 
 

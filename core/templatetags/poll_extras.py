@@ -97,6 +97,19 @@ def Brflen(value,arg):
         return False
 
 
+@register.filter(name="spiltcontent")
+def spiltcontent(value, arg):
+    val = value.split("</style>")
+    val[0] = ""
+    value = ''.join(val)
+    print(value)
+    pattern = re.compile('<.+?>')
+    value = pattern.sub('', value)
+    p = re.compile('&.+?;')
+    l = p.findall(value)
+    for x in l:
+        value = value.replace(x, ' ')
+    return value[:arg] + '...' if len(value) > arg else value[:arg]
 
 #
 # @register.filter(name="UserBanned")

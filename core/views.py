@@ -43,6 +43,7 @@ def index(req):
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
     c = carousel.objects.all()
+    a = article.objects.all()
     return render(req, 'web/index.html', locals())
 
 
@@ -188,6 +189,74 @@ def success(req):
     return render(req, 'web/success.html', locals())
 
 
+def information(req):
+    '''
+
+    '''
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+        fac = facilityclass.objects.filter(language="en").order_by("id")
+    else:
+        about = syspara.objects.filter(language="zh")
+        fac = facilityclass.objects.filter(language="zh").order_by("id")
+    Article = article.objects.all()
+    paginator = Paginator(Article, 6)
+    page = req.GET.get('page')
+    try:
+        paged = paginator.page(page)
+        pagenum = paginator.num_pages
+        page = int(page)
+
+        if 1 <= pagenum <= 5:
+            rangedpages = paginator.page_range
+
+        else:
+            rangedpages = [page - 2 if page - 2 > 1 else 1, page - 1 if page > 2 else 1, page, page + 1, page + 2, page + 3,
+                           page + 4]
+        rangedpages = list(set(rangedpages))
+
+    except Exception as e:
+        page = 1
+        pagenum = paginator.num_pages
+        if pagenum == 0:
+            lastpagenum = []
+
+        elif 1 <= pagenum <= 5:
+            paged = paginator.page(1)
+            rangedpages = paginator.page_range
+        else:
+            paged = paginator.page(1)
+            lastpagenum = paginator.num_pages
+            rangedpages = [1, 2, 3, 4, 5]
+    return render(req, 'web/information.html', locals())
+
+def information_detail(req, aid=0):
+    '''
+    id 新闻ID
+    :param req:
+    :param id:
+    :return:
+    '''
+    try:
+        language = req.GET.get("language")
+        if language == "en":
+            about = syspara.objects.filter(language="en")
+            fac = facilityclass.objects.filter(language="en").order_by("id")
+        else:
+            about = syspara.objects.filter(language="zh")
+            fac = facilityclass.objects.filter(language="zh").order_by("id")
+
+        page = req.GET.get('page')
+        act = article.objects.get(id=aid)
+
+        activity = article.objects.all()
+        activity = activity[0:5]
+
+        return render(req, 'web/information_detail.html', locals())
+
+    except:
+        render(req, 'web/information.html', locals())
 
 def has_perm():
     """
