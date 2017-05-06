@@ -59,13 +59,21 @@ urlpatterns = [
     url(r'^r/addproductclass', views.add_productclass),
 
 
-    url(r'^r/facility$', views.content),
-    url(r'^r/getfacility$', views.ajax_get_content),
-    url(r'^r/editfacility$', views.edit_content),
+    url(r'^r/facility$', views.facility_view),
+    url(r'^r/getfacility$', views.ajax_get_facility),
+    url(r'^r/editfacility$', views.edit_facility),
     url(r'^r/facilityclass$', views.facilityclass_view),
     url(r'^r/getfacilityclass$', views.ajax_get_facilityclass),
     url(r'^r/delfacilityclass$', views.del_facilityclass),
     url(r'^r/addfacilityclass', views.add_facilityclass),
+    
+    url(r'^r/certificate$', views.certificate_view),
+    url(r'^r/getcertificate$', views.ajax_get_certificate),
+    url(r'^r/editcertificate$', views.edit_certificate),
+    url(r'^r/certificateclass$', views.certificateclass_view),
+    url(r'^r/getcertificateclass$', views.ajax_get_certificateclass),
+    url(r'^r/delcertificateclass$', views.del_certificateclass),
+    url(r'^r/addcertificateclass', views.add_certificateclass),
 
     url(r'^r/filebrowser$', views.filebrowser),
     url(r'^r/login$', views.login_backend),

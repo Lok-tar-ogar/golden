@@ -103,7 +103,11 @@ class facility(models.Model):
     '''
     name = models.CharField('设备名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
-    content = models.TextField('介绍详情')
+    para= models.CharField('参数', max_length=100)
+    madefac = models.CharField('制作厂商', max_length=50)
+    unit = models.CharField('单位', max_length=50)
+    num = models.CharField('数量', max_length=50)
+    usage = models.CharField('用途', max_length=50)
     viewedTimes = models.IntegerField('浏览次数',default=0)
     type = models.ForeignKey(facilityclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
@@ -148,7 +152,7 @@ class certificate(models.Model):
 
 class case(models.Model):
     '''
-    设备
+    案例
     '''
     name = models.CharField('案例名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)

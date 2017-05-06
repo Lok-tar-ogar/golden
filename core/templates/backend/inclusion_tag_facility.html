@@ -1,0 +1,20 @@
+ {% load poll_extras %}
+{% for at in ats  %}
+                                <tr>
+                                <td class="center"><label for="{{ at.id }}"></label><input id="{{ at.id }}"  type="checkbox" value="{{ at.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
+
+                                <td class="article-title">{{ at.name }}</td>
+                                <td >{{ at.viewedTimes }}</td>
+                                <td>{{ at.type }}</td>
+                                    <td>{{ at.language | translang }}</td>
+                                <td>{{ at.dimDate }}</td>
+                                <td>
+															 <a class="btn btn-primary btn-xs btn-github block" href="editfacility?id={{ at.id }}" draggable="false" >修改</a>
+
+
+
+
+
+                                   </td>
+                            </tr>
+                                {% endfor %}

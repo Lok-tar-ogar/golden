@@ -915,7 +915,11 @@ def edit_facility(req):
             ps = picture.objects.all()
             if id=='new':
                 name =''
-                content = ''
+                para = ''
+                madefac = ''
+                unit = ''
+                num = ''
+                usage = ''
                 viewedTimes=''
                 languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
                 types=facilityclass.objects.all()
@@ -927,7 +931,11 @@ def edit_facility(req):
 
                 name = c.name
                 title_pic = c.imgs
-                content = c.content
+                para = c.para
+                madefac = c.para
+                unit = c.unit
+                num = c.num
+                usage = c.usage
                 viewedTimes = c.viewedTimes
                 language = c.language
                 languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
@@ -1063,6 +1071,223 @@ def del_facilityclass(req):
 
         post_args = req.POST
         c = facilityclass.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+
+@has_perm()
+@csrf_exempt
+def certificate_view(req):
+    """
+    GET方法获取产品管理页面
+    POST方法批量删除产品
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/certificate.html',locals())
+    elif req.method=='POST':#POST method 做删除操作
+        r = {}
+        try:
+
+            post_args = req.POST
+            c = certificate.objects.filter(id__in=post_args.getlist('ids[]'))
+            r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+            for x in c:
+                c.delete()
+            r['status'] = '200'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+        except Exception as e:
+            r['msg'] = '失败了,因为 \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_certificate(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    ats = certificate.objects.all()
+    return render_to_response('backend/inclusion_tag_certificate.html', locals())
+
+@has_perm()
+def edit_certificate(req):
+    """
+    GET方法获得修改文章的页面
+    POST方法修改文章详情
+    :param req:
+    :return:
+    """
+    r = {}
+    if req.method == 'GET':
+
+        try:
+            args=req.GET
+            id=args.get('id')
+            ps = picture.objects.all()
+            if id=='new':
+                name =''
+                content = ''
+                viewedTimes=''
+                languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
+                types=certificateclass.objects.all()
+                type=''
+                title_img=''
+                return  render(req,'backend/edit_certificate.html',locals())
+            else:
+                c = certificate.objects.get(id=id)
+
+                name = c.name
+                title_pic = c.imgs
+                content = c.content
+                viewedTimes = c.viewedTimes
+                language = c.language
+                languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+                type = c.type
+                types=certificateclass.objects.all()
+                dimDate=c.dimDate
+                return render(req, 'backend/edit_certificate.html', locals())
+        except Exception as e:
+            r['msg']=str(e)
+            return  HttpResponse(json.dumps(r,ensure_ascii=False))
+    elif req.method=='POST':
+
+        try:
+            args=req.POST
+            id=args.get('id')
+            name = args.get('name')
+            cont=args.get('content')
+            language = args.get('language')
+
+            type=args.get('type')
+            type=certificateclass.objects.get(id=type)
+            # title_img = args.get('pid')
+            ps = picture.objects.all()
+            if id!='new':
+                c= certificate.objects.get(id=id)
+                c.name = name
+                c.content = cont
+                c.language=language
+                c.type=type
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                r['status']='200'
+                r['msg']='成功修改设备'
+                c.save()
+                return HttpResponseRedirect('/r/certificate')
+            else:
+                c = certificate()
+
+                c.name = name
+                c.content = cont
+                c.type = type
+                c.language = language
+                c.imgs = picture.objects.get(id=args.get('pid'))
+                c.viewedTimes=0
+                r['status']='200'
+                r['msg']='成功新加产品'
+                c.save()
+                return HttpResponseRedirect('/r/certificate')
+        except Exception as e:
+            r['status'] = '500'
+            r['msg'] = '失败 | '+str(e)
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+@csrf_exempt
+def certificateclass_view(req):
+    """
+    GET方法获取文章管理页面
+    POST方法修改文章分类
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/certificateclass.html',locals())
+    elif req.method=='POST':#POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = certificateclass.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_certificateclass(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = certificateclass.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_articleclass.html', locals())
+
+@has_perm()
+def add_certificateclass(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = certificateclass()
+    ac.name = post_args.get('name')
+
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.name)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_certificateclass(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = certificateclass.objects.filter(id__in=post_args.getlist('ids[]'))
         r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
 
         for x in c:
