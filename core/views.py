@@ -40,6 +40,7 @@ def index(req):
         about = syspara.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
+    c = carousel.objects.all()
     return render(req, 'web/index.html', locals())
 
 

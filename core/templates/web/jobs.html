@@ -101,23 +101,23 @@
                                         {% endif %}
                                     {% endfor %}
                                     <!-- sub-menu start-->
-{#                                    <ul class="sub-menu">#}
-{#                                        {% for i in about %}#}
-{#                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>#}
-{#                                        {% endfor %}#}
+                                    {#                                    <ul class="sub-menu">#}
+                                    {#                                        {% for i in about %}#}
+                                    {#                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>#}
+                                    {#                                        {% endfor %}#}
 
-{#                                    </ul>#}
+                                    {#                                    </ul>#}
                                     <div class="sub-menu">
                                         <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 10px; ">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                                 {% for i in about %}
-                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
                                                 {% endfor %}
                                             </div>
-                                            <div class="col-xs-6" style="border-left: #999999 1px solid;">
-                                                <div class="text-center" style="width: 100%; ">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; margin-top: 20px;">
-                                                    <p class="text-left" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,23 +131,23 @@
                                     <ul class="sub-menu">
 
                                         <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 10px; ">
-{#                                                <li class="menu-item"></li>#}
-{#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6">><a href="/success" class="menu-a">合作企业</a></div>
-{#                                                {% for i in about %}#}
-{#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-{#                                                {% endfor %}#}
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {#                                                <li class="menu-item"></li>#}
+                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
+                                                {#                                                {% for i in about %}#}
+                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
+                                                {#                                                {% endfor %}#}
                                             </div>
-                                            <div class="col-xs-6" style="border-left: #999999 1px solid;">
-                                                <div class="text-center" style="width: 100%">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; margin-top: 20px;">
-                                                    <p class="text-left" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                            <div class="col-xs-6" style="">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
                                         </div>
-{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
                                     </ul>
                                 </li>
 
@@ -222,44 +222,6 @@
                         <h3 class="careers--subtitle">我们在寻找:</h3>
                         <div class="careers--vacancies">
                             <div class="am-panel-group" id="accordion">
-{#                                <div class="am-panel am-panel-default">#}
-{#                                    <div class="am-panel-hd">#}
-{#                                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-1'}">#}
-{#                                            高级产品经理#}
-{#                                        </h4>#}
-{#                                    </div>#}
-{#                                    <div id="do-not-say-1" class="am-panel-collapse am-collapse am-in">#}
-{#                                        <div class="am-panel-bd">#}
-{#                                            <div class="vacancies--item_content js-accordion--pane_content" style="">#}
-{#                                                <h5>职位描述：</h5>#}
-{#                                                <p>#}
-{#                                                    熟练应用各种市场分析工具及产品原型工具，能够撰写和输出规范的产品白皮书；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    有产品策划和产品管理思维，能够撰写市场调研、市场分析、可行性分析报告等；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    具备良好的沟通协调能力、系统性思维和创新意识；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    具有产品需求、归纳能力、市场敏觉洞察能力；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    经历过完整的企业级应用产品生命周期；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    有TOB企业5年以上产品经理工作经验；#}
-{#                                                </p>#}
-{#                                                <p>#}
-{#                                                    有前端相关技术背景，具有产品架构师能力者优先考虑。#}
-{#                                                </p>#}
-{##}
-{#                                                <h5>请将您的简历发送至： <a href="mailto:jobs@yunshipei.com">jobs@yunshipei.com</a></h5>#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                </div>#}
-
                                 {% for i in jobs %}
                                 <div class="am-panel am-panel-default">
                                     <div class="am-panel-hd">
@@ -270,68 +232,11 @@
                                     <div id="do-not-say-2" class="am-panel-collapse am-collapse">
                                         <div class="am-panel-bd">
                                             {{ i.content | safe }}
-{#                                            <h5>职位描述：</h5>#}
-{#                                            <p>#}
-{#                                                本科及以上，3-5年开发经验；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                熟练掌握JS原生代码开发，对原型编程有深入的理解；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                熟练使用过至少一种前端框架（如:Angularjs/reactjs/backbonejs/emberjs/knockoutjs）；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                熟悉模块化开发思路，实际使用过至少一种框架（如：requirejs/seajs）；#}
-{#                                            </p>#}
-{#                                            <h5>有下列经验者优先：</h5>#}
-{#                                            <ul>#}
-{#                                                <li>计算机相关专业统招本科以上学历；</li>#}
-{#                                                <li>具有Reactjs实际开发经验；</li>#}
-{#                                                <li>具有Nodejs后端开发经验；</li>#}
-{#                                                <li>具有Nodejs后端开发经验；</li>#}
-{#                                                <li>具有较好的UI设计能力；</li>#}
-{#                                                <li>有个人作品可以演示；；</li>#}
-{#                                            </ul>#}
-{#                                            <p>#}
-{#                                                面试时请带个人笔记本或硬盘，在面试过程中向产品负责人展示你的产品，或你写的代码。#}
-{#                                            </p>#}
-{#                                            <h5>请将您的简历发送至： <a href="mailto:jobs@yunshipei.com">jobs@yunshipei.com</a></h5>#}
                                         </div>
                                     </div>
                                 </div>
                                 {% endfor %}
-{#                                <div class="am-panel am-panel-default">#}
-{#                                    <div class="am-panel-hd">#}
-{#                                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-3'}">#}
-{#                                            iOS开发工程师#}
-{#                                        </h4>#}
-{#                                    </div>#}
-{#                                    <div id="do-not-say-3" class="am-panel-collapse am-collapse">#}
-{#                                        <div class="am-panel-bd">#}
-{#                                            <h5>职位描述：</h5>#}
-{#                                            <p>#}
-{#                                                有iOS开发项目经验；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                拥有文档能力、有进程/多线程编程经验；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                拥有良好的代码规范，熟悉TCP/IP，HTTP等网络协议；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                能够对iOS手机不同分辨率、不同屏幕大小的界面进行适配；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                有iOS底层开发经验；#}
-{#                                            </p>#}
-{#                                            <p>#}
-{#                                                熟悉html。#}
-{#                                            </p>#}
-{#                                            <h5>请将您的简历发送至： <a href="mailto:jobs@yunshipei.com">jobs@yunshipei.com</a></h5>#}
-{#                                        </div>#}
-{##}
-{#                                    </div>#}
-{#                                </div>#}
+
                             </div>
                         </div>
                     </div>
@@ -339,78 +244,7 @@
             </div>
         </div>
     </div>
-    {#    <div class="row animate-box">#}
-    {#        <div class="col-md-8 col-md-offset-2 text-center hxco-heading hxco-heading-sm">#}
-    {#            <h2>岗位招聘</h2>#}
-    {#        </div>#}
-    {#    </div>#}
-    {#    #}
-    {#    <div class="container">#}
-    {#        <div class="col-xs-12">#}
-    {#            <!-- Nav tabs -->#}
-    {#            <ul class="nav nav-tabs" role="tablist">#}
-    {#                <li role="presentation" class="active"><a href="#home1" aria-controls="home1" role="tab" data-toggle="tab">Home</a></li>#}
-    {#                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>#}
-    {#                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>#}
-    {#                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>#}
-    {#            </ul>#}
-    {##}
-    {#            <!-- Tab panes -->#}
-    {#            <div class="tab-content">#}
-    {#                <div role="tabpanel" class="tab-pane active" id="home1">#}
-    {#                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">#}
-    {#                        <div class="panel panel-default">#}
-    {#                            <div class="panel-heading" role="tab" id="headingOne">#}
-    {#                                <h4 class="panel-title">#}
-    {#                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">#}
-    {#                                        Collapsible Group Item #1#}
-    {#                                    </a>#}
-    {#                                </h4>#}
-    {#                            </div>#}
-    {#                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">#}
-    {#                                <div class="panel-body">#}
-    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                        <div class="panel panel-default">#}
-    {#                            <div class="panel-heading" role="tab" id="headingTwo">#}
-    {#                                <h4 class="panel-title">#}
-    {#                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">#}
-    {#                                        Collapsible Group Item #2#}
-    {#                                    </a>#}
-    {#                                </h4>#}
-    {#                            </div>#}
-    {#                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">#}
-    {#                                <div class="panel-body">#}
-    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                        <div class="panel panel-default">#}
-    {#                            <div class="panel-heading" role="tab" id="headingThree">#}
-    {#                                <h4 class="panel-title">#}
-    {#                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">#}
-    {#                                        Collapsible Group Item #3#}
-    {#                                    </a>#}
-    {#                                </h4>#}
-    {#                            </div>#}
-    {#                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">#}
-    {#                                <div class="panel-body">#}
-    {#                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.#}
-    {#                                </div>#}
-    {#                            </div>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {#                </div>#}
-    {##}
-    {#                <div role="tabpanel" class="tab-pane" id="profile">2</div>#}
-    {#                <div role="tabpanel" class="tab-pane" id="messages">3</div>#}
-    {#                <div role="tabpanel" class="tab-pane" id="settings">4</div>#}
-    {#            </div>#}
-    {##}
-    {#        </div>#}
-    {#    </div>#}
+
 
     <footer id="hxco-footer" role="contentinfo">
         <div class="hxco-container">
@@ -421,15 +255,15 @@
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>CONTACT INFO</h3>
+                    <h3>联系信息</h3>
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
-                    <p style="margin-top: 1em"><i class="icon-phone"></i>销售电话：0832-8247655</p>
+                    <p style="margin-top: 1em"><i class="icon-phone"></i>咨询电话：0832-8247655</p>
 {#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>QUICK LINKS</h3>
+                    <h3>快速链接</h3>
                     <hr />
                     <div style="margin-top: 1em">
                         <a class="tagA" href="/certification">

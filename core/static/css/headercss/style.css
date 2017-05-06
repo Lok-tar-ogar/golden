@@ -13,8 +13,8 @@
 body {
   /*font-family: "Work Sans", Arial, sans-serif;*/
   font-weight: 400;
-  font-family: arial,"Microsoft YaHei";
-  -ms-font-family:arial,"Microsoft YaHei";
+  font-family:"Microsoft YaHei" ,arial !important;
+  -ms-font-family:"Microsoft YaHei" ,arial !important;
   line-height: 1.7;
   color: #828282;
   background: #fff;
@@ -921,18 +921,35 @@ form label {
 .feature-left .feature-copy {
   float: left;
   width: 80%;
+  border-bottom: 1px solid #e6e6e6;
 }
 @media screen and (max-width: 768px) {
   .feature-left .feature-copy {
     width: 70%;
     float: left;
+    border-bottom: 1px solid #e6e6e6;
   }
 }
 .feature-left .feature-copy h3 {
-  font-size: 18px;
-  color: #333;
-  font-weight: 300;
-  margin-bottom: 10px;
+  /*font-size: 18px;*/
+  /*color: #333;*/
+  /*font-weight: 300;*/
+  /*margin-bottom: 10px;*/
+    color: #282828;
+	font-size: 18px;
+	/*font-weight: 300;*/
+  font-weight: bold;
+	font-family: 'Microsoft YaHei';
+	display: block;
+	line-height: 1.25em;
+}
+
+.feature-left .feature-copy h3 a{
+  color: #404040;
+}
+
+.feature-left .feature-copy h3 a:hover{
+  color: rgba(63, 209, 234, 1);
 }
 
 .feature-copy h4 {
@@ -960,6 +977,13 @@ form label {
   margin-top: 10px;
   line-height: 1.8;
   /*margin-bottom: 10px;*/
+}
+
+.feature-copy label{
+    color: #cbcbcb;
+	font-size: 1.1em;
+	font-weight: 400;
+	font-style:italic;
 }
 .hxco-heading {
   margin-bottom: 4em;
@@ -1843,6 +1867,15 @@ form label {
 
 .feature-copy p{
     font-size:14px;
+}
+
+.feature-copy span{
+	display:block;
+	width:70px;
+	height:2px;
+	background:#e6e6e6;
+    margin: 0 auto;
+	margin-top:1.2em;
 }
 /*.hxco-heading:hover{*/
     /*font-stretch: normal;*/
@@ -2831,11 +2864,11 @@ h1{
 }
 
 .menu-a {
-  /*padding:20px auto;*/
+  padding:25px 5px !important;
   display: inline-block;
-  height:20px;
-  padding: 0 0 0 0;
-
+  height:18px;
+  /*padding: 0 0 0 0;*/
+  width: auto;
   line-height: 0.8;
   color:#999999 !important;
 }
@@ -3487,6 +3520,15 @@ li.col-md-4.active a {
   -o-transform: scale(1.2);
   transform: scale(1.2);
 }
+.gtco-card-item:hover .hexoco-text, .gtco-card-item:focus .hexoco-text{
+  /*-webkot-transform: scale(1.2);*/
+  /*-moz-transform: scale(1.2);*/
+  /*-ms-transform: scale(1.2);*/
+  /*-o-transform: scale(1.2);*/
+  /*transform: scale(1.2);*/
+  /*margin-top: 3px;*/
+}
+
 .gtco-card-item:hover span.btn, .gtco-card-item:focus span.btn {
   opacity: 1;
   visibility: visible;
@@ -3504,4 +3546,56 @@ li.col-md-4.active a {
 }
 .gtco-card-item:hover h2, .gtco-card-item:hover span, .gtco-card-item:focus h2, .gtco-card-item:focus span {
   text-decoration: none !important;
+}
+
+.editor {
+	border-bottom:1px solid #e6e6e6;
+	padding: 2.3em 1.5em 0 1.5em;
+}
+.editor h3 {
+	color: #282828;
+	font-size: 22px;
+	font-weight: 400;
+	font-family: 'Microsoft YaHei';
+	display: block;
+	line-height: 1.25em;
+}
+.editor p {
+	color: #798184;
+	font-size: 1.25em;
+	font-weight: 400;
+	margin:1em 0;
+}
+.editor label {
+	color: #cbcbcb;
+	font-size: 1.1em;
+	font-weight: 400;
+	font-style:italic;
+}
+.editor span{
+	display:block;
+	width:70px;
+	height:2px;
+	background:#e6e6e6;
+    margin: 0 auto;
+	margin-top:1.2em;
+}
+.content-right-top a.active {
+	background: #f4f4f4;
+}
+.content-right-top a:hover {
+	background: #f4f4f4;
+}
+.content-right-top a {
+	display: block;
+	text-decoration: none;
+}
+
+
+.menup{
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #383838;
+  text-indent: 29px;
+  padding:0 5px;
 }

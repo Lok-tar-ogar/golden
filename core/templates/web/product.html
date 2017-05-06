@@ -104,23 +104,23 @@
                                         {% endif %}
                                     {% endfor %}
                                     <!-- sub-menu start-->
-{#                                    <ul class="sub-menu">#}
-{#                                        {% for i in about %}#}
-{#                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>#}
-{#                                        {% endfor %}#}
+                                    {#                                    <ul class="sub-menu">#}
+                                    {#                                        {% for i in about %}#}
+                                    {#                                            <li class="menu-item"><a href="/about/{{ i.id }}">{{ i.key }}</a></li>#}
+                                    {#                                        {% endfor %}#}
 
-{#                                    </ul>#}
+                                    {#                                    </ul>#}
                                     <div class="sub-menu">
                                         <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 10px; ">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                                 {% for i in about %}
-                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
                                                 {% endfor %}
                                             </div>
-                                            <div class="col-xs-6" style="border-left: #999999 1px solid;">
-                                                <div class="text-center" style="width: 100%; ">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; margin-top: 20px;">
-                                                    <p class="text-left" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -134,23 +134,23 @@
                                     <ul class="sub-menu">
 
                                         <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 10px; ">
-{#                                                <li class="menu-item"></li>#}
-{#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6">><a href="/success" class="menu-a">合作企业</a></div>
-{#                                                {% for i in about %}#}
-{#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-{#                                                {% endfor %}#}
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {#                                                <li class="menu-item"></li>#}
+                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
+                                                {#                                                {% for i in about %}#}
+                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
+                                                {#                                                {% endfor %}#}
                                             </div>
-                                            <div class="col-xs-6" style="border-left: #999999 1px solid;">
-                                                <div class="text-center" style="width: 100%">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; margin-top: 20px;">
-                                                    <p class="text-left" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                            <div class="col-xs-6" style="">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
                                         </div>
-{#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-{#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
                                     </ul>
                                 </li>
 
@@ -627,15 +627,15 @@
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>CONTACT INFO</h3>
+                    <h3>联系信息</h3>
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省威远县</p>
-                    <p style="margin-top: 1em"><i class="icon-phone"></i>销售电话：(86)028-8263-9653</p>
-                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>
+                    <p style="margin-top: 1em"><i class="icon-phone"></i>咨询电话：(86)028-8263-9653</p>
+{#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>QUICK LINKS</h3>
+                    <h3>快速链接</h3>
                     <hr />
                     <div style="margin-top: 1em">
                         <a class="tagA" href="/certification">

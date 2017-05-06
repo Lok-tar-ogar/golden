@@ -118,7 +118,7 @@ class facility(models.Model):
     class Meta:
         verbose_name = '设备'
         ordering = ['-dimDate'] # sorted news by dimdate
-
+        
 class certificateclass(models.Model):
     '''
     产品
@@ -152,7 +152,7 @@ class certificate(models.Model):
 
 class case(models.Model):
     '''
-    案例
+    设备
     '''
     name = models.CharField('案例名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)

@@ -47,6 +47,16 @@ def Brflen(value):
     except:
         return '暂无'
 
+
+@register.filter(name="carousel_imgs_index")
+def Brflen(value):
+    try:
+        temp=value.all()[0]
+        return temp.filepath#+"|"+temp.title
+    except:
+        return '暂无'
+
+
 @register.filter(name="user_avt")
 def Brflen(value):
     try:
