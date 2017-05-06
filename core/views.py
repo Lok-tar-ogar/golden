@@ -933,7 +933,7 @@ def edit_facility(req):
                 name = c.name
                 title_pic = c.imgs
                 para = c.para
-                madefac = c.para
+                madefac = c.madefac
                 unit = c.unit
                 num = c.num
                 usage = c.usage
@@ -953,7 +953,12 @@ def edit_facility(req):
             args=req.POST
             id=args.get('id')
             name = args.get('name')
-            cont=args.get('content')
+            para = args.get('para')
+            madefac = args.get('madefac')
+            unit = args.get('unit')
+            num = args.get('num')
+            usage = args.get('usage')
+
             language = args.get('language')
 
             type=args.get('type')
@@ -963,7 +968,11 @@ def edit_facility(req):
             if id!='new':
                 c= facility.objects.get(id=id)
                 c.name = name
-                c.content = cont
+                c.para = para
+                c.madefac = madefac
+                c.unit = unit
+                c.num = num
+                c.usage = usage
                 c.language=language
                 c.type=type
                 c.imgs = picture.objects.get(id=args.get('pid'))
@@ -975,7 +984,11 @@ def edit_facility(req):
                 c = facility()
 
                 c.name = name
-                c.content = cont
+                c.para = para
+                c.madefac = madefac
+                c.unit = unit
+                c.num = num
+                c.usage = usage
                 c.type = type
                 c.language = language
                 c.imgs = picture.objects.get(id=args.get('pid'))
