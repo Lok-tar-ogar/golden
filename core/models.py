@@ -103,11 +103,11 @@ class facility(models.Model):
     '''
     name = models.CharField('设备名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
-    para= models.CharField('参数', max_length=100, null=True)
-    madefac = models.CharField('制作厂商', max_length=50, null=True)
+    para= models.CharField('参数', max_length=500, null=True)
+    madefac = models.CharField('制作厂商', max_length=80, null=True)
     unit = models.CharField('单位', max_length=50, null=True)
     num = models.CharField('数量', max_length=50, null=True)
-    usage = models.CharField('用途', max_length=50, null=True)
+    usage = models.CharField('用途', max_length=500, null=True)
     viewedTimes = models.IntegerField('浏览次数',default=0)
     type = models.ForeignKey(facilityclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
@@ -150,13 +150,27 @@ class certificate(models.Model):
         verbose_name = '设备'
         ordering = ['-dimDate'] # sorted news by dimdate
 
+class caseclass(models.Model):
+    '''
+    案例类
+    '''
+    name = models.CharField('证书分类名称', max_length=50)
+    language = models.CharField('语言 zh | en', max_length=34, default='zh')
+    dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = '证书分类'
+        ordering = ['-dimDate'] # sorted news by dimdate
+
 class case(models.Model):
     '''
     设备
     '''
     name = models.CharField('案例名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
-    content = models.TextField('介绍详情')
+    content = models.CharField('介绍详情',max_length=50 )
     viewedTimes = models.IntegerField('浏览次数',default=0)
     href = models.CharField('友情链接', max_length=50)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
