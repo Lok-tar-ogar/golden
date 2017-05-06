@@ -3599,3 +3599,46 @@ li.col-md-4.active a {
   text-indent: 29px;
   padding:0 5px;
 }
+
+.amamam{
+    display: block;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.am-active1{
+  display: block;
+  /*background: #fff;*/
+  /*padding-left: 10px;*/
+  /*padding-right: 10px;*/
+  /*color:#fff !important;*/
+  margin-right: 10px;
+  margin-left: 10px;
+  background: #34c1e4;
+  padding: 9px 0;
+  border-radius: 4px;
+}
+.am-cf li a{
+  /*display: block;*/
+  /*background: #fff;*/
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.am-tabs-nav {
+    list-style: none;
+    text-align: center;
+}
+
+.am-tabs-nav li {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  float: left;
+
+}

@@ -122,8 +122,31 @@
                                     </div>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="/product" id="certification" >产品中心</a></li>
-                                <li><a href="/facility" id="course_guide">设备资质</a></li>
+                                <li>
+                                    <a href="/product" id="certification" >产品中心</a>
+                                </li>
+                                <li>
+                                    {% for i in fac %}
+                                        {% if forloop.first %}
+                                            <a href="/facility/{{ i.id }}" class="menu-main">设备资质</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="sub-menu">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {% for i in fac %}
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/facility/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">

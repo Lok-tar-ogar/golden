@@ -20,14 +20,15 @@ from core import views
 urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
-    url(r'^about/(\d+)/', views.about_detail),
+    url(r'^about/(\d+)/$', views.about_detail),
     url(r'^product/$', views.product_index, name="product"),
-    url(r'^facility/$', views.faclity_index, name="faclity"),
+    # url(r'^facility/$', views.faclity_index, name="faclity"),
     url(r'^jobs/$', views.jobs_index, name="jobs"),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
     url(r'^success/$', views.success, name="success"),
+    url(r'facility/(\d+)/$',views.faclity_index),
 
 
     url(r'^r/index$|^r/$|^r$', views.backend_index),

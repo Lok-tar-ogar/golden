@@ -129,8 +129,31 @@
                                     </div>
                                     <!-- sub-menu end-->
                                 </li>
-                                <li><a href="/product" id="certification" >产品中心</a></li>
-                                <li><a href="/facility" id="course_guide">设备资质</a></li>
+                                <li>
+                                    <a href="/product" id="certification" >产品中心</a>
+                                </li>
+                                <li>
+                                    {% for i in fac %}
+                                        {% if forloop.first %}
+                                            <a href="/facility/{{ i.id }}" class="menu-main">设备资质</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="sub-menu">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {% for i in fac %}
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/facility/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
                                     <!-- sub-menu start-->
                                     <ul class="sub-menu">
@@ -182,12 +205,19 @@
                 </p>
             </div>
             <div class="solution-container">
-                <div data-am-widget="tabs" class="am-tabs am-no-layout">
+                <div  class="am-tabs am-no-layout amamam">
                     <ul class="am-tabs-nav am-cf">
-                        <li class="am-active"><a href="/">青春</a></li>
-                        <li class=""><a href="/">彩虹</a></li>
-                        <li class=""><a href="/">歌唱</a></li>
-                        <li class=""><a href="/">歌唱</a></li>
+{#                        <li class="am-active"><a href="/">青春</a></li>#}
+{#                        <li class=""><a href="/">彩虹</a></li>#}
+{#                        <li class=""><a href="/">歌唱</a></li>#}
+{#                        <li class=""><a href="/">歌唱</a></li>#}
+                        {% for i in fac %}
+                            {% if i.id == fa_id %}
+                            <li class="am-active1" id="fac_{{ i.id }}"><a href="/facility/{{ i.id }}">{{ i.name }}</a></li>
+                            {% else %}
+                                <li class="" id="fac_{{ i.id }}"><a href="/facility/{{ i.id }}">{{ i.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -195,107 +225,24 @@
 
     </div>
 
-    {#    <div class="container text-center">#}
-    {#        <div class="col-xs-3">#}
-    {#            <a href ="/" class="menu-card">设备资质</a>#}
-    {#        </div>#}
-    {#        <div class="col-xs-3">#}
-    {#            <a href ="/" class="menu-card">设备资质</a>#}
-    {#        </div>#}
-    {#    <div class="col-xs-3">#}
-    {#            <a href ="/" class="menu-card">设备资质</a>#}
-    {#        </div>#}
-    {#        <div class="col-xs-3">#}
-    {#            <a href ="/" class="menu-card">设备资质</a>#}
-    {#        </div>#}
-    {#    </div>#}
 
     <div class="container" style="margin: -4em auto auto auto;">
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="">
+        {% for f in fa %}
+            <div class="col-md-4">
+            <a href="{{ f.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ f.para }}">
                 <figure>
                     <div class="overlay">
                         <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
+                        <h3 class="text-center">{{ f.name }}</h3>
                     </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
+                    <img src="{{ f.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
                     <div class="hexoco-text">
-                        <h2>梅西百货</h2>
-                    </div>
-                </figure>
-
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
-                <figure>
-                    <div class="overlay">
-                        <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
-                    </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
-                    <div class="hexoco-text">
-                        <h2>梅西百货</h2>
+                        <h2>{{ f.name }}</h2>
                     </div>
                 </figure>
             </a>
         </div>
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
-                <figure>
-                    <div class="overlay">
-                        <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
-                    </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
-                    <div class="hexoco-text">
-                        <h2>梅西百货</h2>
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
-                <figure>
-                    <div class="overlay">
-                        <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
-                    </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
-                    <div class="hexoco-text">
-                        <h2>梅西百货</h2>
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
-                <figure>
-                    <div class="overlay">
-                        <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
-                    </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
-                    <div class="hexoco-text">
-                        <h2>梅西百货</h2>
-                    </div>
-                </figure>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="/static/images/web/product/img_2.jpg" class="gtco-card-item image-popup" title="Project name here.">
-                <figure>
-                    <div class="overlay">
-                        <i class="icon-plus"></i>
-                        <h3 class="text-center">你好啊 朋友</h3>
-                    </div>
-                    <img src="/static/images/web/product/img_2.jpg" alt="Image" class="img-responsive">
-                    <div class="hexoco-text">
-                        <h2>梅西百货</h2>
-                    </div>
-                </figure>
-            </a>
-        </div>
+        {% endfor %}
     </div>
 
  <footer id="hxco-footer" role="contentinfo">
