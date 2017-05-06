@@ -102,7 +102,7 @@
                 plugins: ' advlist autolink link image lists charmap print preview code ' ,
                  toolbar: "undo redo pastetext | styleselect | fontselect | fontsizeselect",
                 fontsize_formats: "8pt 9pt 10pt 11pt 12pt 26pt 36pt",
-
+                convert_urls :false,
                 file_browser_callback: FileBrowser
             });
             function FileBrowser(field_name, url, type, win) {
@@ -119,9 +119,6 @@
                 }, {     window: win,     input: field_name    });
                 return false;
             }
-
-
-
 
             function su() {
 

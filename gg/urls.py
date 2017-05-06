@@ -97,5 +97,8 @@ urlpatterns = [
     url(r'r/joinus$', views.join_view),
     url(r'r/getjoin$', views.ajax_get_join),
     url(r'^r/editjoin$', views.edit_join),
+
+
+
 ]
 
