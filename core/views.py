@@ -353,6 +353,7 @@ def ajax_get_carousel(req):
     """
     cs = carousel.objects.all()
     ps = picture.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
     return render_to_response('backend/inclusion_tag_carousel.html',locals())
 
 @csrf_exempt
@@ -376,7 +377,7 @@ def edit_carousel(req):
         try:
             c = carousel.objects.get(id=post_args.get('id'))
             c.title = post_args.get('title')
-
+            c.language = post_args.get('language')
             c.link = post_args.get('link')
             c.caption = post_args.get('caption')
             if img:
@@ -442,6 +443,7 @@ def add_carousel(req):
         p=picture.objects.get(id=post_args.get('pid'))
     c.link = post_args.get('link')
     c.caption = post_args.get('caption')
+    c.language = post_args.get('language')
     try:
         r['msg']='%s saved.' % (c.title)
         r['status']='200'
@@ -845,6 +847,7 @@ def edit_product(req):
                 types=productclass.objects.all()
                 type=''
                 title_img=''
+                brief = ''
                 return  render(req,'backend/edit_product.html',locals())
             else:
                 c = product.objects.get(id=id)
@@ -854,6 +857,7 @@ def edit_product(req):
                 content = c.content
                 viewedTimes = c.viewedTimes
                 language = c.language
+                brief = c.brief
                 languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
                 type = c.type
                 types=productclass.objects.all()
@@ -870,7 +874,7 @@ def edit_product(req):
             name = args.get('name')
             cont=args.get('content')
             language = args.get('language')
-
+            brief = args.get('brief')
             type=args.get('type')
             type=productclass.objects.get(id=type)
             # title_img = args.get('pid')
@@ -881,6 +885,7 @@ def edit_product(req):
                 c.content = cont
                 c.language=language
                 c.type=type
+                c.brief = brief
                 c.imgs = picture.objects.get(id=args.get('pid'))
                 r['status']='200'
                 r['msg']='成功修改产品'
@@ -893,6 +898,7 @@ def edit_product(req):
                 c.content = cont
                 c.type = type
                 c.language = language
+                c.brief = brief
                 c.imgs = picture.objects.get(id=args.get('pid'))
                 c.viewedTimes=0
                 r['status']='200'
@@ -1244,6 +1250,8 @@ def ajax_get_case(req):
     """
     cs = case.objects.all()
     ps = picture.objects.all()
+    types = caseclass.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
     return render_to_response('backend/inclusion_tag_case.html',locals())
 
 @csrf_exempt
@@ -1259,6 +1267,7 @@ def edit_case(req):
     if req.method=='GET':
         cs=case.objects.all()
         ps=picture.objects.all()
+        types = caseclass.objects.all()
         return render(req, 'backend/case.html',locals())
     elif req.method=='POST':
         r = {}
@@ -1272,6 +1281,7 @@ def edit_case(req):
             c.language = post_args.get('language')
             c.content = post_args.get('content')
             c.href = post_args.get('href')
+            c.type = caseclass.objects.get(id=post_args.get('type'))
             if img:
                 p = _imagehandler(c.name, c.name, img)
             else:
@@ -1282,13 +1292,13 @@ def edit_case(req):
             return HttpResponse(json.dumps(r,ensure_ascii=False))
 
         try:
-            r['msg'] = '%s saved.' % (c.title)
+            r['msg'] = '%s saved.' % (c.name)
             r['status'] = '200'
             c.imgs = p
             c.save()
             return HttpResponse(json.dumps(r,ensure_ascii=False))
         except Exception as e:
-            r['msg'] = '%s 失败了,因为 \n %s' % (c.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (c.name, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r,ensure_ascii=False))
 
@@ -1302,10 +1312,10 @@ def add_case(req):
     r = {}
     post_args=req.POST
     c=case()
-    c.title=post_args.get('title')
+    c.name = post_args.get('name')
     img=req.FILES
     if img:
-        p=_imagehandler(c.title,c.title,img)
+        p=_imagehandler(c.name,c.name,img)
     else:
         p=picture.objects.get(id=post_args.get('pid'))
     c.name = post_args.get('name')
@@ -1313,15 +1323,16 @@ def add_case(req):
     c.language = post_args.get('language')
     c.content = post_args.get('content')
     c.href = post_args.get('href')
+    c.type = caseclass.objects.get(id=post_args.get('type'))
     try:
-        r['msg']='%s saved.' % (c.title)
+        r['msg']='%s saved.' % (c.name)
         r['status']='200'
-        c.save()
-        c.imgs = p
 
+        c.imgs = p
+        c.save()
         return HttpResponse(json.dumps(r,ensure_ascii=False))
     except Exception as e:
-        r['msg']='%s 失败了,因为 \n %s' % (c.title,str(e))
+        r['msg']='%s 失败了,因为 \n %s' % (c.name,str(e))
         r['status'] = '500'
         return HttpResponse(json.dumps(r,ensure_ascii=False))
 

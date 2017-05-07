@@ -73,6 +73,7 @@ class product(models.Model):
     '''
     name = models.CharField('产品名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
+    brief = models.CharField('简介',max_length=500 , default='')
     content = models.TextField('介绍详情')
     viewedTimes = models.IntegerField('浏览次数',default=0)
     type = models.ForeignKey(productclass)
@@ -154,7 +155,7 @@ class caseclass(models.Model):
     '''
     案例类
     '''
-    name = models.CharField('证书分类名称', max_length=50)
+    name = models.CharField('成功案例分类名称', max_length=50)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
 
@@ -173,6 +174,7 @@ class case(models.Model):
     content = models.CharField('介绍详情',max_length=50 )
     viewedTimes = models.IntegerField('浏览次数',default=0)
     href = models.CharField('友情链接', max_length=50)
+    type = models.ForeignKey(caseclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
 

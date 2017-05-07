@@ -47,7 +47,6 @@ def Brflen(value):
     except:
         return '暂无'
 
-
 @register.filter(name="carousel_imgs_index")
 def Brflen(value):
     try:
