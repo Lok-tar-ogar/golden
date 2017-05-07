@@ -84,19 +84,46 @@ def about_detail(req, aid):
         return render(req, 'web/index.html', locals())
 
 
-def product_index(req):
+def product_index(req, aid):
     '''
     关于金雷
     '''
+    pro_id = int(aid)
     language = req.GET.get("language")
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
+        if pro_id == 0:
+            prod = product.objects.filter(language="en")
+        else:
+            prod = product.objects.filter(type_id=pro_id, language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
+        if pro_id == 0:
+            prod = product.objects.filter(language="zh")
+        else:
+            prod = product.objects.filter(type_id=pro_id, language="zh")
+
     return render(req, 'web/product.html', locals())
 
+
+def product_detail(req, aid):
+    language = req.GET.get("language")
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+        fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
+
+    else:
+        about = syspara.objects.filter(language="zh")
+        fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
+
+    prod = product.objects.get(id=aid)
+    return render(req, 'web/product_detail.html', locals())
 
 def faclity_index(req, fid):
     '''
