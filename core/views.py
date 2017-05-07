@@ -39,9 +39,11 @@ def index(req):
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
     c = carousel.objects.all()
     a = article.objects.all()
     return render(req, 'web/index.html', locals())
@@ -64,9 +66,11 @@ def about_detail(req, aid):
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
+            pro = productclass.objects.filter(language="en").order_by("id")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
+            pro = productclass.objects.filter(language="zh").order_by("id")
 
         detail = syspara.objects.get(id=aid)
 
@@ -78,9 +82,11 @@ def about_detail(req, aid):
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
+            pro = productclass.objects.filter(language="en").order_by("id")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
+            pro = productclass.objects.filter(language="zh").order_by("id")
         return render(req, 'web/index.html', locals())
 
 
@@ -134,9 +140,11 @@ def faclity_index(req, fid):
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
     fa = facility.objects.filter(type_id=fid).order_by("-id")
 
     return render(req, 'web/faclity.html', locals())
@@ -151,10 +159,12 @@ def jobs_index(req):
         about = syspara.objects.filter(language="en")
         jobs = job.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         jobs = job.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
     return render(req, 'web/jobs.html', locals())
 
 @csrf_exempt
@@ -167,9 +177,11 @@ def contact(req):
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
+            pro = productclass.objects.filter(language="en").order_by("id")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
+            pro = productclass.objects.filter(language="zh").order_by("id")
         return render(req, 'web/contact.html', locals())
     if req.method == "POST":
         name = req.POST.get("fname",None)
@@ -195,9 +207,11 @@ def about_sample(req):
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
 
     return render(req, 'web/about_sample.html', locals())
 
@@ -210,9 +224,11 @@ def success(req):
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
     return render(req, 'web/success.html', locals())
 
 
@@ -224,9 +240,11 @@ def information(req):
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
     Article = article.objects.all()
     paginator = Paginator(Article, 6)
     page = req.GET.get('page')
@@ -270,9 +288,11 @@ def information_detail(req, aid=0):
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
+            pro = productclass.objects.filter(language="en").order_by("id")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
+            pro = productclass.objects.filter(language="zh").order_by("id")
 
         page = req.GET.get('page')
         act = article.objects.get(id=aid)
