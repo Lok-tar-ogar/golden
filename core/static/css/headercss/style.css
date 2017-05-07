@@ -3640,5 +3640,27 @@ li.col-md-4.active a {
   -ms-flex: 1;
   flex: 1;
   float: left;
+}
 
+.producta{
+  display: block;
+  height:45px;
+  width:100%;
+  /*color:#e9e9e9;*/
+  color:#333;
+}
+
+.producta:hover{
+  border-bottom: 3px #34c1e4 solid;
+  color: #34c1e4;
+}
+
+.productac{
+  display: block;
+  height:45px;
+  width:100%;
+  /*color:#e9e9e9;*/
+  /*color:#333;*/
+  border-bottom: 3px #34c1e4 solid;
+  color: #34c1e4;
 }
