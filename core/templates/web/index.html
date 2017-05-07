@@ -155,29 +155,30 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
-                                    <!-- sub-menu start-->
-                                    <ul class="sub-menu">
+                                {% for i in su %}
+                                    {% if forloop.first %}
+                                        <li><a href="/success/{{ i.id }}" >成功案例</a>
+                                    {% endif  %}
+                                {% endfor %}
+                                <!-- sub-menu start-->
+                                <ul class="sub-menu">
 
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
-                                                {#                                                <li class="menu-item"></li>#}
-                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
-                                                {#                                                {% for i in about %}#}
-                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-                                                {#                                                {% endfor %}#}
-                                            </div>
-                                            <div class="col-xs-6" style="">
-                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
-                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                            {% for i in su %}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-xs-6" style="">
+                                            <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                             </div>
                                         </div>
-                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
-                                    </ul>
+                                    </div>
+                                    {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                    {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                </ul>
                                 </li>
 
                                 <li><a href="/jobs" id="career_planning">加入金镭</a></li>
@@ -259,50 +260,70 @@
                 </div>
                 <div class="container">
                     <div id="owl-car" class="owl-carousel owl-carousel-fullwidth ">
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_1.jpg"  >
-                                    <img src="/static/images/web/img_1.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_2.jpg" >
-                                    <img src="/static/images/web/img_2.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_3.jpg">
-                                    <img src="/static/images/web/img_3.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_4.jpg">
-                                    <img src="/static/images/web/img_4.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
 
-
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_5.jpg">
-                                    <img src="/static/images/web/img_5.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
-                        <div class="item testimony-slide active text-center">
-                            <figure class="text-center">
-                                <a  data-fancybox="gallery" href="/static/images/web/img_6.jpg">
-                                    <img src="/static/images/web/img_6.jpg" alt="user">
-                                </a>
-                            </figure>
-                        </div>
+                        {% for i in prod  %}
+                            <div class="item testimony-slide active text-center">
+                                <figure class="text-center">
+                                    <a href="/product_detail/{{ i.id }}"  >
+                                        <img src="{{ i.imgs.filepath }}" alt="user">
+                                    </a>
+                                </figure>
+                            </div>
+                        {% endfor %}
+                        {% for i in fa %}
+                            <div class="item testimony-slide active text-center">
+                                <figure class="text-center">
+                                    <a href="{{ i.imgs.filepath }}"  class="image-popup" title="{{ i.name }}">
+                                        <img src="{{ i.imgs.filepath }}" alt="user">
+                                    </a>
+                                </figure>
+                            </div>
+                        {% endfor %}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            #}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_1.jpg"  >#}
+{#                                    <img src="/static/images/web/img_1.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_2.jpg" >#}
+{#                                    <img src="/static/images/web/img_2.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_3.jpg">#}
+{#                                    <img src="/static/images/web/img_3.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_4.jpg">#}
+{#                                    <img src="/static/images/web/img_4.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{##}
+{##}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_5.jpg">#}
+{#                                    <img src="/static/images/web/img_5.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
+{#                        <div class="item testimony-slide active text-center">#}
+{#                            <figure class="text-center">#}
+{#                                <a  data-fancybox="gallery" href="/static/images/web/img_6.jpg">#}
+{#                                    <img src="/static/images/web/img_6.jpg" alt="user">#}
+{#                                </a>#}
+{#                            </figure>#}
+{#                        </div>#}
 
                     </div>
 
@@ -427,7 +448,22 @@
                     </div>
 
                 </div>
+                <div class="col-xs-3">
+                    <h3>友情链接</h3>
+                    <hr/>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
+                            友情链接
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
+                            <li ><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li ><a href="#">Something else here</a></li>
 
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

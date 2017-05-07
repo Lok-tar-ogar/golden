@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="/static/css/headercss/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/headercss/owl.theme.default.min.css">
 
-{#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
 
     <link rel="stylesheet" href="/static/css/headercss/style.css">
 
@@ -158,29 +158,30 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
-                                    <!-- sub-menu start-->
-                                    <ul class="sub-menu">
+                                {% for i in su %}
+                                    {% if forloop.first %}
+                                        <li><a href="/success/{{ i.id }}" >成功案例</a>
+                                    {% endif  %}
+                                {% endfor %}
+                                <!-- sub-menu start-->
+                                <ul class="sub-menu">
 
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
-                                                {#                                                <li class="menu-item"></li>#}
-                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
-                                                {#                                                {% for i in about %}#}
-                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-                                                {#                                                {% endfor %}#}
-                                            </div>
-                                            <div class="col-xs-6" style="">
-                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
-                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                            {% for i in su %}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-xs-6" style="">
+                                            <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                             </div>
                                         </div>
-                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
-                                    </ul>
+                                    </div>
+                                    {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                    {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                </ul>
                                 </li>
 
                                 <li><a href="/jobs" id="career_planning">加入金镭</a></li>
@@ -212,68 +213,27 @@
         </div>
     </div>
     <div class="container" style="padding-bottom: 3em;">
-        <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
+
+        {% for i in cas %}
+            <div class="col-xs-3">
+            <a href="{{ i.href }}" target="_blank">
                 <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
+                    <img src="{{ i.imgs.filepath }}" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
+                    {% if i.content %}
+                        <div class="hexoco-text">
+                            <h2>{{ i.content }}</h2>
+                        </div>
+                    {% endif %}
+                    {#                    <div class="hexoco-text">#}
+                    {#                        <h2>梅西百货</h2>#}
+                    {#                    </div>#}
                 </div>
             </a>
         </div>
-    <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
-                <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
-                </div>
-            </a>
-        </div>
-    <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
-                <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
-                </div>
-            </a>
-        </div>
-    <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
-                <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
-                </div>
-            </a>
-        </div>
-    <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
-                <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
-                </div>
-            </a>
-        </div>
-    <div class="col-xs-3">
-            <a href="https://www.macysinc.com/" target="_blank">
-                <div class="hexoco-project-item text-center" style="margin:10px auto; text-align:center">
-                    <img src="/static/images/web/index/1.jpg" style="width:100%;height:auto;" alt="四川金镭" class="img-responsive">
-{#                    <div class="hexoco-text">#}
-{#                        <h2>梅西百货</h2>#}
-{#                    </div>#}
-                </div>
-            </a>
-        </div>
+        {% endfor %}
+
     </div>
-<footer id="hxco-footer" role="contentinfo">
+    <footer id="hxco-footer" role="contentinfo">
         <div class="hxco-container">
             <div class="row row-pb-md">
                 <div class="col-xs-3 text-center">
@@ -286,7 +246,7 @@
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省威远县</p>
                     <p style="margin-top: 1em"><i class="icon-phone"></i>销售电话：(86)028-8263-9653</p>
-{#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
+                    {#                    <p style="margin-top: 1em"><i class="icon-phone"></i>服务电话：(86)028-8263-9653</p>#}
 
                 </div>
                 <div class="col-xs-3">

@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
-    url(r'^success/$', views.success, name="success"),
+    url(r'^success/(?P<aid>\d+)$', views.success, name="success"),
     url(r'^facility/(\d+)/$',views.faclity_index),
     url(r'information/$', views.information),
     url(r'^information_detail/(?P<aid>\d+)$', views.information_detail),

@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="/static/css/headercss/magnific-popup.css">
     <link rel="stylesheet" href="/static/css/headercss/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/headercss/owl.theme.default.min.css">
-{##}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
+    {##}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
 
     <link rel="stylesheet" href="/static/css/headercss/style.css">
     <link rel="stylesheet" href="/static/css/headercss/amazeui.css">
@@ -158,29 +158,30 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
-                                    <!-- sub-menu start-->
-                                    <ul class="sub-menu">
+                                {% for i in su %}
+                                    {% if forloop.first %}
+                                        <li><a href="/success/{{ i.id }}" >成功案例</a>
+                                    {% endif  %}
+                                {% endfor %}
+                                <!-- sub-menu start-->
+                                <ul class="sub-menu">
 
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
-                                                {#                                                <li class="menu-item"></li>#}
-                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
-                                                {#                                                {% for i in about %}#}
-                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-                                                {#                                                {% endfor %}#}
-                                            </div>
-                                            <div class="col-xs-6" style="">
-                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
-                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                            {% for i in su %}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-xs-6" style="">
+                                            <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                             </div>
                                         </div>
-                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
-                                    </ul>
+                                    </div>
+                                    {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                    {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                </ul>
                                 </li>
 
                                 <li><a href="/jobs" id="career_planning">加入金镭</a></li>
@@ -219,7 +220,7 @@
                                 {% for i in about %}
                                     <li><a href="/about/{{ i.id }}"><span>{% if i.en_key %}{{ i.en_key }}{% endif %}</span> <span>{{ i.key }}</span></a><img src="{{ i.imgs.filepath }}" alt="image03"/></li>
                                 {% endfor %}
-			                </ul>
+                            </ul>
                         </div>
                     </div>
 
@@ -279,6 +280,22 @@
 
                 </div>
 
+                <div class="col-xs-3">
+                    <h3>友情链接</h3>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            友情链接
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>

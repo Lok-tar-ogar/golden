@@ -160,29 +160,30 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="javascript:void(0)" id="abroad_education">成功案例</a>
-                                    <!-- sub-menu start-->
-                                    <ul class="sub-menu">
+                                {% for i in su %}
+                                    {% if forloop.first %}
+                                        <li><a href="/success/{{ i.id }}" >成功案例</a>
+                                    {% endif  %}
+                                {% endfor %}
+                                <!-- sub-menu start-->
+                                <ul class="sub-menu">
 
-                                        <div class="row">
-                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
-                                                {#                                                <li class="menu-item"></li>#}
-                                                {#                                                <div class="text-center col-xs-6" class="menu-a">><a href="/success">合作企业</a></div>#}
-                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"><a href="/success" class="menu-a">合作企业</a></div>
-                                                {#                                                {% for i in about %}#}
-                                                {#                                                <div class="text-center col-xs-6">><a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>#}
-                                                {#                                                {% endfor %}#}
-                                            </div>
-                                            <div class="col-xs-6" style="">
-                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
-                                                    <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                            {% for i in su %}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-xs-6" style="">
+                                            <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                             </div>
                                         </div>
-                                        {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
-                                        {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
-                                    </ul>
+                                    </div>
+                                    {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                    {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                </ul>
                                 </li>
 
                                 <li><a href="/jobs" id="career_planning">加入金镭</a></li>
@@ -247,7 +248,8 @@
                         <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn">
                         <div class="feature-center text-center">
                             <img src="{{ i.imgs.filepath }}" style="width: 100%;height: auto;">
-                            <h3><a href="/product_detail/{{ i.id }}">{{ i.name }}</a></h3>
+                            <h3 style="margin-top: 10px;"><a href="/product_detail/{{ i.id }}">{{ i.name }}</a></h3>
+                            <p style="text-align: left;">{{ i.brief }}</p>
 {#                            <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
                             <p><a href="/product_detail/{{ i.id }}" class="btn btn-primary">了解更多</a></p>
                         </div>

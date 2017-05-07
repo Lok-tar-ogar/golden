@@ -3664,3 +3664,13 @@ li.col-md-4.active a {
   border-bottom: 3px #34c1e4 solid;
   color: #34c1e4;
 }
+
+.pdtitle {
+    padding: 7px 19px;
+    border-bottom: 1px solid #E4E4E4;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #333;
+    width: 100%;
+}
