@@ -44,7 +44,7 @@ urlpatterns = [
     url(r'^r/addpicture$',views.add_picture),
     url(r'^r/delpicture$',views.del_picture),
 
-url(r'^r/video',views.video_view),
+    url(r'^r/video',views.video_view),
     url(r'^r/getvideos$',views.ajax_get_videos),
     url(r'^r/addvideo$',views.add_video),
     url(r'^r/delvideo$',views.del_video),

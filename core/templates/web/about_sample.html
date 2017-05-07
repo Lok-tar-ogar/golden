@@ -258,41 +258,49 @@
                     <h3>快速链接</h3>
                     <hr />
                     <div style="margin-top: 1em">
-                        <a class="tagA" href="/certification">
-                            关于金镭
-                        </a>
-                        <a class="tagA" href="/highschool">
+                        {% for i in about %}
+                            {% if forloop.first %}
+                            <a class="tagA" href="/about/{{ i.id }}">
+                                关于金镭
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                        <a class="tagA" href="/product_index/0">
                             产品中心
                         </a>
-                        <a class="tagA" href="/mxztc">
-                            设备资质
-                        </a>
-                        <a class="tagA" href="/ksbk">
+                        {% for i in fac %}
+                            {% if forloop.first %}
+                                <a href="/facility/{{ i.id }}" class="tagA">设备资质</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/jobs">
                             加入金镭
                         </a>
-                        <a class="tagA" href="/courseguide">
-                            成功案例
-                        </a>
-                        <a class="tagA" href="/zygh">
+                        {% for i in su %}
+                            {% if forloop.first %}
+                                <a href="/success/{{ i.id }}" class="tagA">成功案例</a>
+                            {% endif  %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/contact">
                             联系我们
                         </a>
                     </div>
 
                 </div>
-
                 <div class="col-xs-3">
                     <h3>友情链接</h3>
+                    <hr/>
                     <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
                             友情链接
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
+                            {% for i in fl %}
+                                <li ><a href="{{ i.href }}">{{ i.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -304,6 +312,9 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 </div>
+
+</div>
+
 <!-- jQuery Easing -->
 <script src="/static/js/headerjs/jquery.easing.1.3.js"></script>
 <script src="/static/js/bootstrap.js"></script>
@@ -317,6 +328,5 @@
 
 </body>
 </html>
-
 
 

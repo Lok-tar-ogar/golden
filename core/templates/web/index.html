@@ -399,10 +399,17 @@
                 </div>
 
                 <div class="col-xs-6">
-                    <div class="hxco-video hxco-bg" style="background-image: url(../../static/images/web/index/img_1.jpg); ">
-                        <a href="/static/images/web/test.MOV" class="popup-vimeo"><i class="icon-play" style="color:rgba(63, 209, 234, 1)"></i></a>
+                    {% if vide %}
+                        {% for i in vide %}
+                        {% if forloop.first %}
+                        <div class="hxco-video hxco-bg" style="background-image: url(../..{{ i.img.filepath }}); ">
+                        <a href="{{ i.filepath }}" class="popup-vimeo"><i class="icon-play" style="color:rgba(63, 209, 234, 1)"></i></a>
                         <div class="overlay"></div>
                     </div>
+                        {% endif %}
+                        {% endfor %}
+                    {% endif %}
+
                 </div>
             </div>
         </div>
@@ -467,10 +474,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
-                            <li ><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li ><a href="#">Something else here</a></li>
-
+                            {% for i in fl %}
+                                <li ><a href="{{ i.href }}">{{ i.name }}</a></li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

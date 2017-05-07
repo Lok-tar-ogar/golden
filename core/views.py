@@ -43,7 +43,8 @@ def index(req):
         su = caseclass.objects.filter(language="en").order_by("id")
         prod = product.objects.filter(language="en")
         fa = facility.objects.filter(language="en")
-
+        vide = video.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -51,6 +52,8 @@ def index(req):
         su = caseclass.objects.filter(language="zh").order_by("id")
         prod = product.objects.filter(language="zh")
         fa = facility.objects.filter(language="zh")
+        vide = video.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
     c = carousel.objects.all()
     a = article.objects.all()
     return render(req, 'web/index.html', locals())
@@ -75,11 +78,13 @@ def about_detail(req, aid):
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
+            fl = friendlink.objects.filter(language="en")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
             pro = productclass.objects.filter(language="zh").order_by("id")
             su = caseclass.objects.filter(language="zh").order_by("id")
+            fl = friendlink.objects.filter(language="zh")
 
         detail = syspara.objects.get(id=aid)
 
@@ -93,11 +98,13 @@ def about_detail(req, aid):
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
+            fl = friendlink.objects.filter(language="en")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
             pro = productclass.objects.filter(language="zh").order_by("id")
             su = caseclass.objects.filter(language="zh").order_by("id")
+            fl = friendlink.objects.filter(language="zh")
         return render(req, 'web/index.html', locals())
 
 
@@ -112,6 +119,7 @@ def product_index(req, aid):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
         if pro_id == 0:
             prod = product.objects.filter(language="en")
         else:
@@ -121,6 +129,7 @@ def product_index(req, aid):
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
         if pro_id == 0:
             prod = product.objects.filter(language="zh")
         else:
@@ -136,12 +145,14 @@ def product_detail(req, aid):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
 
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
 
     prod = product.objects.get(id=aid)
     return render(req, 'web/product_detail.html', locals())
@@ -157,11 +168,13 @@ def faclity_index(req, fid):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
     fa = facility.objects.filter(type_id=fid).order_by("-id")
 
     return render(req, 'web/faclity.html', locals())
@@ -178,12 +191,14 @@ def jobs_index(req):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         jobs = job.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
     return render(req, 'web/jobs.html', locals())
 
 @csrf_exempt
@@ -198,11 +213,13 @@ def contact(req):
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
+            fl = friendlink.objects.filter(language="en")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
             pro = productclass.objects.filter(language="zh").order_by("id")
             su = caseclass.objects.filter(language="zh").order_by("id")
+            fl = friendlink.objects.filter(language="zh")
         return render(req, 'web/contact.html', locals())
     if req.method == "POST":
         name = req.POST.get("fname",None)
@@ -230,11 +247,13 @@ def about_sample(req):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
 
     return render(req, 'web/about_sample.html', locals())
 
@@ -250,11 +269,13 @@ def success(req,aid):
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
 
     cas = case.objects.filter(type_id=aid)
     return render(req, 'web/success.html', locals())
@@ -269,10 +290,14 @@ def information(req):
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
+        su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
+        su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
     Article = article.objects.all()
     paginator = Paginator(Article, 6)
     page = req.GET.get('page')
@@ -318,10 +343,14 @@ def information_detail(req, aid=0):
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
+            su = caseclass.objects.filter(language="en").order_by("id")
+            fl = friendlink.objects.filter(language="en")
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
             pro = productclass.objects.filter(language="zh").order_by("id")
+            su = caseclass.objects.filter(language="zh").order_by("id")
+            fl = friendlink.objects.filter(language="zh")
 
         page = req.GET.get('page')
         act = article.objects.get(id=aid)
