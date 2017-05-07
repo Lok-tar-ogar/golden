@@ -6,7 +6,7 @@
         <!--导航条开始-->
         <div class="breadcrumbs" id="breadcrumbs">
             <ul class="breadcrumb">
-                <li><i class="icon-sitemap"></i><a href="/admin">系统管理</a></li>
+                <li><i class="icon-sitemap"></i><a href="/r">系统管理</a></li>
                 <li class="active">编辑案例分类</li>
             </ul><!-- .breadcrumb -->
         </div>
@@ -108,7 +108,7 @@
                                 function  ajax_refresh_table() {
                                     $('#tbody_content').html('');
                                     NProgress.start();
-                                    $.get('/r/getcertificateclass',function (data) {
+                                    $.get('/r/getcaseclass',function (data) {
                                         $('#tbody_content').append(data);
                                         NProgress.done();
                                     });
@@ -122,7 +122,7 @@
                                             s .push ($(item).val());
                                             //}
                                         });
-                                        $.post('/r/delcertificateclass',{'ids':s,'csrfmiddlewaretoken':csrftoken},function (data) {
+                                        $.post('/r/delcaseclass',{'ids':s,'csrfmiddlewaretoken':csrftoken},function (data) {
                                             data=JSON.parse(data);
                                             $.gritter.add({
                                                 // (string | mandatory) the heading of the notification
@@ -140,7 +140,7 @@ function su() {
                                         NProgress.start();
                                         var formData = new FormData($( "#addform" )[0]);
                                         $.ajax({
-                                            url: "/r/addcertificateclass",
+                                            url: "/r/addcaseclass",
                                             type: "POST",
                                             data: formData,
                                             /**

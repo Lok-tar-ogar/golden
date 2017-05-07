@@ -2,12 +2,14 @@
 {% for c in cs %}
 
 <tr>
-                                <td class="center"><label for="{{ c.id }}"></label><input id="{{ c.id }}"  type="checkbox" value="{{ c.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
-                                <td>{{ c.title }}</td>
-                                <td>{{ c.imgs | carousel_imgs }}</td>
-                                <td>{{ c.caption }}</td>
+                                <td class="center">
+                                    <label for="{{ c.id }}"></label><input id="{{ c.id }}"  type="checkbox" value="{{ c.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
+                                <td>{{ c.name }}</td>
+                                <td>{{ c.imgs.filepath }} | {{ c.imgs.title }}</td>
+                                <td>{{ c.content }}</td>
 
-                                <td>{{ c.link }}</td>
+                                <td>{{ c.href }}</td>
+<td>{{ c.type }}</td>
 
                                 <td>{{ c.dimDate }}</td>
 <td>{{ c.language | translang }}</td>
@@ -17,25 +19,25 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
-                            <h4 id="myModalLabel" class="modal-title">新增轮播项</h4>
+                            <h4 id="myModalLabel" class="modal-title">新增案例项</h4>
                         </div>
                         <div class="modal-body">
-                            <form class="form-horizontal" method="post" id="editform_{{ c.id }}" action="/r/carousel" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="post" id="editform_{{ c.id }}" action="/r/case" enctype="multipart/form-data">
                                 {% csrf_token %}
                             <input name="id" type="hidden" value="{{ c.id }}">
                                 <div class="form-group">
-                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播标题:</label>
+                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">案例标题:</label>
                                     <div class="col-xs-9 col-sm-9">
-                                        <div class="clearfix"><input type="text" name="title" class="col-xs-12 col-sm-12" value="{{ c.title }}"></div>
+                                        <div class="clearfix"><input type="text" name="name" class="col-xs-12 col-sm-12" value="{{ c.name }}"></div>
                                     </div>
 
                                 </div>
 
                                 <div class="space-2"></div>
                                 <div class="form-group">
-                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播文字:</label>
+                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">案例简介:</label>
                                     <div class="col-xs-9 col-sm-9">
-                                        <div class="clearfix"><input type="text" name="caption" class="col-xs-12 col-sm-12" value="{{ c.caption }}"></div>
+                                        <div class="clearfix"><input type="text" name="content" class="col-xs-12 col-sm-12" value="{{ c.content }}"></div>
                                     </div>
 
 
@@ -44,9 +46,23 @@
                                 <div class="form-group">
                                     <label class="control-label col-xs-2 col-sm-2 no-padding-right">链接地址:</label>
                                     <div class="col-xs-9 col-sm-9">
-                                        <div class="clearfix"><input type="text" name="link" placeholder="(http://www.xxx.com/xxx)" value="{{ c.link }}" class="col-xs-12 col-sm-12"></div>
+                                        <div class="clearfix"><input type="text" name="href" placeholder="(http://www.xxx.com/xxx)" value="{{ c.href }}" class="col-xs-12 col-sm-12"></div>
                                     </div>
                                 </div>
+                            <div class="form-group">
+                                        <label class="control-label col-xs-2 col-sm-2 no-padding-right">类型:</label>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <select class="chosen-select form-control" name="type" id="typeselect" data-placeholder="">
+                                            {% for t in types %}
+                                                {% if t.name == type.name %}
+                                                    <option value="{{ t.id }}" selected="true">{{ t.name }}</option>
+                                                {% endif %}
+                                                <option value="{{ t.id }}">{{ t.name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    </div>
+
                              <div class="form-group">
                                     <label class="control-label col-xs-2 col-sm-2 no-padding-right">语言:</label>
                                     <div class="col-xs-9 col-sm-9">

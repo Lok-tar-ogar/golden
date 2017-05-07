@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^r/addcarousel$', views.add_carousel),
     url(r'^r/delcarousel$', views.del_carousel),
     url(r'^r/getcarousel$',views.ajax_get_carousel),
+    
     url(r'^r/gallery$',views.gallery),
     url(r'^r/getpictures$',views.ajax_get_pictures),
     url(r'^r/addpicture$',views.add_picture),
@@ -74,6 +75,15 @@ urlpatterns = [
     url(r'^r/getcertificateclass$', views.ajax_get_certificateclass),
     url(r'^r/delcertificateclass$', views.del_certificateclass),
     url(r'^r/addcertificateclass', views.add_certificateclass),
+    
+    url(r'^r/case$', views.edit_case),
+    url(r'^r/addcase$', views.add_case),
+    url(r'^r/delcase$', views.del_case),
+    url(r'^r/getcase$',views.ajax_get_case),
+    url(r'^r/caseclass$', views.caseclass_view),
+    url(r'^r/getcaseclass$', views.ajax_get_caseclass),
+    url(r'^r/delcaseclass$', views.del_caseclass),
+    url(r'^r/addcaseclass', views.add_caseclass),
 
     url(r'^r/filebrowser$', views.filebrowser),
     url(r'^r/login$', views.login_backend),
