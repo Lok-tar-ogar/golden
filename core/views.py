@@ -296,6 +296,7 @@ def backend_index(req):
     carouselSum=carousel.objects.all().count()
     pictureSum=picture.objects.all().count()
     return render(req,'backend/index.html',locals())
+
 @has_perm()
 def ajax_get_carousel(req):
     """
@@ -324,12 +325,17 @@ def edit_carousel(req):
     elif req.method=='POST':
         r = {}
         post_args = req.POST
+        img = req.FILES
         try:
             c = carousel.objects.get(id=post_args.get('id'))
             c.title = post_args.get('title')
 
             c.link = post_args.get('link')
             c.caption = post_args.get('caption')
+            if img:
+                p = _imagehandler(c.title, c.title, img)
+            else:
+                p = picture.objects.get(id=post_args.get('pid'))
         except Exception as e:
             r['msg'] = 'object not exist.due to \n %s' % ( str(e))
             r['status'] = '500'
@@ -340,7 +346,6 @@ def edit_carousel(req):
             r['status'] = '200'
             pr=c.imgs.all()
             pr.delete()
-            p=picture.objects.get(id=post_args.get('pid'))
             c.imgs.add(p)
             c.save()
             return HttpResponse(json.dumps(r,ensure_ascii=False))
@@ -1171,6 +1176,215 @@ def del_facilityclass(req):
 
         post_args = req.POST
         c = facilityclass.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_case(req):
+    """
+    异步获取轮播, 数据格式是table的tr
+    :param req:
+    :return:
+    """
+    cs = case.objects.all()
+    ps = picture.objects.all()
+    return render_to_response('backend/inclusion_tag_case.html',locals())
+
+@csrf_exempt
+@has_perm()
+def edit_case(req):
+    '''
+    获取轮播管理页面。
+    -----
+    如果是post就是修改
+    :param req:
+    :return:
+    '''
+    if req.method=='GET':
+        cs=case.objects.all()
+        ps=picture.objects.all()
+        return render(req, 'backend/case.html',locals())
+    elif req.method=='POST':
+        r = {}
+        post_args = req.POST
+        img = req.FILES
+
+        try:
+            c = case.objects.get(id=post_args.get('id'))
+            c.name = post_args.get('name')
+
+            c.language = post_args.get('language')
+            c.content = post_args.get('content')
+            c.href = post_args.get('href')
+            if img:
+                p = _imagehandler(c.name, c.name, img)
+            else:
+                p = picture.objects.get(id=post_args.get('pid'))
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % ( str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (c.title)
+            r['status'] = '200'
+            c.imgs = p
+            c.save()
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+        except Exception as e:
+            r['msg'] = '%s 失败了,因为 \n %s' % (c.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+@has_perm()
+def add_case(req):
+    """
+    添加新的轮播.
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args=req.POST
+    c=case()
+    c.title=post_args.get('title')
+    img=req.FILES
+    if img:
+        p=_imagehandler(c.title,c.title,img)
+    else:
+        p=picture.objects.get(id=post_args.get('pid'))
+    c.name = post_args.get('name')
+
+    c.language = post_args.get('language')
+    c.content = post_args.get('content')
+    c.href = post_args.get('href')
+    try:
+        r['msg']='%s saved.' % (c.title)
+        r['status']='200'
+        c.save()
+        c.imgs = p
+
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+    except Exception as e:
+        r['msg']='%s 失败了,因为 \n %s' % (c.title,str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+@has_perm()
+def del_case(req):
+    """
+    批量删除轮播,
+    :param post参数,接收名字为ids的数组:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c=case.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+
+            c.delete()
+        r['status']='200'
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+    except Exception as e:
+        r['msg']='失败了,因为 \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+
+@has_perm()
+@csrf_exempt
+def caseclass_view(req):
+    """
+    GET方法获取文章管理页面
+    POST方法修改文章分类
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/caseclass.html',locals())
+    elif req.method=='POST':#POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = caseclass.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_caseclass(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = caseclass.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_articleclass.html', locals())
+
+@has_perm()
+def add_caseclass(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = caseclass()
+    ac.name = post_args.get('name')
+
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.name)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_caseclass(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = caseclass.objects.filter(id__in=post_args.getlist('ids[]'))
         r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
 
         for x in c:
