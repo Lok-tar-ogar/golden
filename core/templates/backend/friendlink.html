@@ -21,7 +21,7 @@
                         <a onclick="postdel()" class="btn btn-danger" draggable="false">删除</a>
                     </div>
                     <div role="group" class="btn-group pull-right">
-                       <a onclick="" class="btn btn-primary" draggable="false" data-target="#add" data-toggle="modal">新增分类</a>
+                       <a onclick="" class="btn btn-primary" draggable="false" data-target="#add" data-toggle="modal">新增友情链接</a>
                     </div>
 
                 </h1>
@@ -31,7 +31,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
-                            <h4 id="myModalLabel" class="modal-title">新增分类</h4>
+                            <h4 id="myModalLabel" class="modal-title">新增友情链接</h4>
                         </div>
                         <div class="modal-body">
                             <form class="form-horizontal" method="post" id="addform" action="/r/addfriendlink" >
@@ -40,6 +40,13 @@
                                     <label class="control-label col-xs-2 col-sm-2 no-padding-right">名称:</label>
                                     <div class="col-xs-9 col-sm-9">
                                         <div class="clearfix"><input  type="text" name="name" class="col-xs-12 col-sm-12"></div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">链接:</label>
+                                    <div class="col-xs-9 col-sm-9">
+                                        <div class="clearfix"><input  type="text" name="href" class="col-xs-12 col-sm-12"></div>
                                     </div>
 
                                 </div>
@@ -73,7 +80,9 @@
                         <tr>
                             <th><span class="visible-lg">选择</span></th>
                             <th><span class="visible-lg">名称</span></th>
+                            <th><span class="visible-lg">链接</span></th>
                             <th><span class="visible-lg">语言</span></th>
+
                             <th><span class="visible-lg">日期</span></th>
                             <th> <span class="visible-lg">操作</span></th>
                         </tr>

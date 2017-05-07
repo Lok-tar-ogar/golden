@@ -964,7 +964,7 @@ def del_articleclass(req):
 
         post_args = req.POST
         c = articleclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1182,7 +1182,7 @@ def del_productclass(req):
 
         post_args = req.POST
         c = productclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1419,7 +1419,7 @@ def del_facilityclass(req):
 
         post_args = req.POST
         c = facilityclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1633,7 +1633,7 @@ def del_caseclass(req):
 
         post_args = req.POST
         c = caseclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1850,7 +1850,7 @@ def del_certificateclass(req):
 
         post_args = req.POST
         c = certificateclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1945,7 +1945,7 @@ def del_friendlink(req):
 
         post_args = req.POST
         c = friendlink.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()

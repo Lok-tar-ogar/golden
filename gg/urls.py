@@ -57,6 +57,10 @@ urlpatterns = [
     url(r'^r/delarticleclass$', views.del_articleclass),
     url(r'^r/addarticleclass', views.add_articleclass),
 
+url(r'^r/friendlink$', views.friendlink_view),
+    url(r'^r/getfriendlink$', views.ajax_get_friendlink),
+    url(r'^r/delfriendlink$', views.del_friendlink),
+    url(r'^r/addfriendlink', views.add_friendlink),
 
     url(r'^r/product$',views.product_view),
     url(r'^r/getproduct$', views.ajax_get_product),
