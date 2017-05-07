@@ -427,22 +427,32 @@
                     <h3>快速链接</h3>
                     <hr />
                     <div style="margin-top: 1em">
-                        <a class="tagA" href="/certification">
-                            关于金镭
-                        </a>
-                        <a class="tagA" href="/highschool">
+                        {% for i in about %}
+                            {% if forloop.first %}
+                            <a class="tagA" href="/about/{{ i.id }}">
+                                关于金镭
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                        <a class="tagA" href="/product_index/0">
                             产品中心
                         </a>
-                        <a class="tagA" href="/mxztc">
-                            设备资质
-                        </a>
-                        <a class="tagA" href="/ksbk">
+                        {% for i in fac %}
+                            {% if forloop.first %}
+                                <a href="/facility/{{ i.id }}" class="tagA">设备资质</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/jobs">
                             加入金镭
                         </a>
-                        <a class="tagA" href="/courseguide">
-                            成功案例
-                        </a>
-                        <a class="tagA" href="/zygh">
+                        {% for i in su %}
+                            {% if forloop.first %}
+                                <a href="/success/{{ i.id }}" class="tagA">成功案例</a>
+                            {% endif  %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/contact">
                             联系我们
                         </a>
                     </div>
