@@ -425,6 +425,30 @@ def _imagehandler(title,caption,img):
         r['status'] = '500'
         return r
 
+def _videohandler(title,caption,v,lang):
+    """
+    私有方法.添加视频,处理上传的图片
+    并返回- 视频对象
+    :param title:
+    :param caption:
+    :param video:
+    :return:
+    """
+    r={}
+    p = video()
+    p.title =title
+
+    p.caption = caption
+    p.language = lang
+    try:
+        p.filepath = default_storage.save('core/static/uploads/' + str(p.title) + '.mp4', v['video'])[4:]
+        p.save()
+        return p
+    except Exception as e:
+        r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
+        r['status'] = '500'
+        return r
+
 @has_perm()
 def add_carousel(req):
     """
@@ -571,6 +595,114 @@ def ajax_get_pictures(req):
     """
     ps=picture.objects.all()
     return render_to_response('backend/inclusion_tag_gallery.html',locals())
+
+
+@csrf_exempt
+@has_perm()
+def video_view(req):
+    """
+    GET方法获取图片库页面
+    POST方法修改图片
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        gs = picture.objects.all()
+        languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+        return render(req,'backend/video.html',locals())
+    elif req.method=='POST':
+        r = {}
+        post_args = req.POST
+        v = req.FILES
+        try:
+            p = video.objects.get(id=post_args.get('id'))
+            p.title = post_args.get('title')
+            p.caption = post_args.get('caption')
+            p.language = post_args.get('language')
+            if v['img']:
+                i = _imagehandler(p.title, p.title, v)
+            else:
+                i = picture.objects.get(id=post_args.get('pid'))
+            p.img = i
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % ( str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (p.title)
+            r['status'] = '200'
+            p.filepath = default_storage.save('core/static/uploads/' + str(p.title)+'.mp4', v['video'])[4:]
+            p.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+@has_perm()
+def add_video(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    v = req.FILES
+    p = video()
+    p.title = post_args.get('title')
+    p.caption = post_args.get('caption')
+    p.language = post_args.get('language')
+    if v['img']:
+        i = _imagehandler(p.title, p.title, v)
+    else:
+        i = picture.objects.get(id=post_args.get('pid'))
+    p.img = i
+    try:
+        r['msg'] = '%s saved.' % (p.title)
+        r['status'] = '200'
+        p.filepath = default_storage.save('core/static/uploads/' + str(p.title) + '.mp4', v['video'])[4:]
+        p.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s 失败了,因为 \n %s' % (p.title, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+@has_perm()
+def del_video(req):
+    """
+    删除图片,并删除本地文件
+    :param req,id:
+    :return:
+    """
+    r = {}
+    try:
+        post_args = req.POST
+        p = video.objects.get(id=post_args.get('id'))
+        r['msg'] = '%s deleted.' % (p.title)
+
+        os.remove(str(os.path.dirname(__file__))+ str(p.filepath))
+        p.delete()
+        r['status']='200'
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+    except Exception as e:
+        r['msg']='失败了,因为 \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r,ensure_ascii=False))
+
+@has_perm()
+def ajax_get_videos(req):
+    """
+    异步获取图片库的tbody对象
+    :param req:
+    :return:
+    """
+    ps=video.objects.all()
+    gs = picture.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+    return render_to_response('backend/inclusion_tag_video.html',locals())
 
 
 @has_perm()

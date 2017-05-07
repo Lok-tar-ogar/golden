@@ -1,18 +1,18 @@
 {% load poll_extras %}
 {% for c in cs %}
 
-<tr>
-                                <td class="center"><label for="{{ c.id }}"></label><input id="{{ c.id }}"  type="checkbox" value="{{ c.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
-                                <td>{{ c.title }}</td>
-                                <td>{{ c.imgs | carousel_imgs }}</td>
-                                <td>{{ c.caption }}</td>
+    <tr>
+        <td class="center"><label for="{{ c.id }}"></label><input id="{{ c.id }}"  type="checkbox" value="{{ c.id }}" name="checkbox" class="input-control ace" ><span class="lbl"></span></td>
+        <td>{{ c.title }}</td>
+        <td>{{ c.imgs | carousel_imgs }}</td>
+        <td>{{ c.caption }}</td>
 
-                                <td>{{ c.link }}</td>
+        <td>{{ c.link }}</td>
 
-                                <td>{{ c.dimDate }}</td>
-<td>{{ c.language | translang }}</td>
-                                <td><a class="btn btn-primary btn-xs btn-github block" data-target="#edit_{{ c.id }}" data-toggle="modal" href="">修改</a>
-                                <div aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit_{{ c.id }}" class="modal fade">
+        <td>{{ c.dimDate }}</td>
+        <td>{{ c.language | translang }}</td>
+        <td><a class="btn btn-primary btn-xs btn-github block" data-target="#edit_{{ c.id }}" data-toggle="modal" href="">修改</a>
+            <div aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="edit_{{ c.id }}" class="modal fade">
                 <div role="document" class="modal-dialog" >
                     <div class="modal-content">
                         <div class="modal-header">
@@ -22,7 +22,7 @@
                         <div class="modal-body">
                             <form class="form-horizontal" method="post" id="editform_{{ c.id }}" action="/r/carousel" enctype="multipart/form-data">
                                 {% csrf_token %}
-                            <input name="id" type="hidden" value="{{ c.id }}">
+                                <input name="id" type="hidden" value="{{ c.id }}">
                                 <div class="form-group">
                                     <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播标题:</label>
                                     <div class="col-xs-9 col-sm-9">
@@ -47,31 +47,34 @@
                                         <div class="clearfix"><input type="text" name="link" placeholder="(http://www.xxx.com/xxx)" value="{{ c.link }}" class="col-xs-12 col-sm-12"></div>
                                     </div>
                                 </div>
-                             <div class="form-group">
+                                <div class="form-group">
                                     <label class="control-label col-xs-2 col-sm-2 no-padding-right">语言:</label>
                                     <div class="col-xs-9 col-sm-9">
-                                       <select class="chosen-select form-control" name="language" id="languageselect" data-placeholder="">
-                                    {% for l in languages %}
-                                        {% if l.key == c.language %}
-                                            <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
-                                        {% endif %}
-                                        <option value="{{ l.key }}">{{ l.value }}</option>
-                                    {% endfor %}
-                                </select>
-                                </select>
+                                        <select class="chosen-select form-control" name="language" id="languageselect" data-placeholder="">
+                                            {% for l in languages %}
+                                                {% if l.key == c.language %}
+                                                    <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
+                                                {% endif %}
+                                                <option value="{{ l.key }}">{{ l.value }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        </select>
                                     </div>
 
                                 </div>
                                 <div class="form-group">
-                                <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播主图片:</label>
-                                    <div class="col-xs-9 col-sm-9">
-                                    <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">
+                                    <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播主图片:</label>
+                                    <div class="col-xs-6 col-sm-6">
+                                        <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">
 
 
-                                        {% for p in ps %}
-<option value="{{ p.id }}">{{ p.title }}</option>
-                                        {% endfor %}
-	</select>
+                                            {% for p in ps %}
+                                                <option value="{{ p.id }}">{{ p.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <input type="file" name="img" id="id-input-file-main" />
                                     </div>
                                 </div>
 
@@ -87,7 +90,21 @@
 
             </div></td>
 
-                            </tr>
+    </tr>
 
 {% endfor %}
+<script >
+    $('input[type=file]').ace_file_input({
+            no_file:'无文件 ...',
+            btn_choose:'选择',
+            btn_change:'重选',
+            droppable:false,
+            onchange:null,
+            thumbnail:false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+</script>
 

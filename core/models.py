@@ -219,6 +219,7 @@ class job(models.Model):
 class video(models.Model):
     title = models.CharField('标题', max_length=20)
     caption = models.CharField('内容', max_length=34, blank=True, null=True)
+    img  = models.ForeignKey(picture)
     filepath = models.CharField('文件地址', max_length=200, blank=True, null=True)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)
