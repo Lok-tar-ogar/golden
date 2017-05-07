@@ -1833,6 +1833,101 @@ def del_certificateclass(req):
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
 
+@has_perm()
+@csrf_exempt
+def friendlink_view(req):
+    """
+    GET方法获取文章管理页面
+    POST方法修改文章分类
+    :param req:
+    :return:
+    """
+    if req.method == 'GET':
+        return render(req,'backend/friendlink.html',locals())
+    elif req.method=='POST':#POST method 做修改操作
+        r = {}
+        post_args = req.POST
+        try:
+            ac = friendlink.objects.get(id=post_args.get('id'))
+            ac.name = post_args.get('name')
+            ac.href = post_args.get('href')
+            ac.language = post_args.get('language')
+        except Exception as e:
+            r['msg'] = 'object not exist.due to \n %s' % (str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+        try:
+            r['msg'] = '%s saved.' % (ac.name)
+            r['status'] = '200'
+            ac.save()
+            return HttpResponse(json.dumps(r))
+        except Exception as e:
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
+            r['status'] = '500'
+            return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def ajax_get_friendlink(req):
+    """
+    异步获取文章tbody内容
+    :param req:
+    :return:
+    """
+    atcls = friendlink.objects.all()
+    languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
+
+    return render_to_response('backend/inclusion_tag_friendlink.html', locals())
+
+@has_perm()
+def add_friendlink(req):
+    """
+    添加新的图片
+    :param req:
+    :return:
+    """
+    r = {}
+    post_args = req.POST
+    ac = friendlink()
+    ac.name = post_args.get('name')
+    ac.href = post_args.get('href')
+    ac.language = post_args.get('language')
+    try:
+        r['msg'] = '%s saved.' % (ac.name)
+        r['status'] = '200'
+        ac.save()
+        return HttpResponse(json.dumps(r))
+    except Exception as e:
+        r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
+@has_perm()
+def del_friendlink(req):
+    """
+    删除
+    :param req
+    :return:
+    """
+    r = {}
+    try:
+
+        post_args = req.POST
+        c = friendlink.objects.filter(id__in=post_args.getlist('ids[]'))
+        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+
+        for x in c:
+            c.delete()
+        r['status'] = '200'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+    except Exception as e:
+        r['msg'] = '失败了,因为 \n %s' % (str(e))
+        r['status'] = '500'
+        return HttpResponse(json.dumps(r, ensure_ascii=False))
+
+
 def login_backend(req):
     """
     GET方法获得登录页面
