@@ -29,7 +29,7 @@ import base64
 from core.models import *
 import logging
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.http import HttpResponseRedirect
 
 def index(req):
     '''
@@ -234,7 +234,8 @@ def contact(req):
             c.tel = tel
             c.info = message
             c.save()
-        return render(req, 'web/contact.html', locals())
+        return HttpResponseRedirect('/contact/')
+        # return render(req, 'web/contact.html', locals())
 
 
 def about_sample(req):
