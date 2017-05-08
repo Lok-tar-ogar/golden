@@ -57,6 +57,10 @@ urlpatterns = [
     url(r'^r/delarticleclass$', views.del_articleclass),
     url(r'^r/addarticleclass', views.add_articleclass),
 
+url(r'^r/friendlink$', views.friendlink_view),
+    url(r'^r/getfriendlink$', views.ajax_get_friendlink),
+    url(r'^r/delfriendlink$', views.del_friendlink),
+    url(r'^r/addfriendlink', views.add_friendlink),
 
     url(r'^r/product$',views.product_view),
     url(r'^r/getproduct$', views.ajax_get_product),
@@ -98,6 +102,8 @@ urlpatterns = [
     url(r'^r/deluser$', views.del_user),
     url(r'^r/user$', views.edit_user),
     url(r'^r/getuser$', views.ajax_get_user),
+
+    url(r'^misc/code$', views.refreshcode),
 
     url(r'^r/aboutclass$', views.aboutclass_view),
     url(r'^r/getaboutclass$', views.ajax_get_aboutclass),

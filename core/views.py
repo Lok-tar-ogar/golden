@@ -378,13 +378,13 @@ def has_perm():
         def inner(req, *args, **kwargs):
             userid=''
             try:
-                # userid = req.session.get('userid', '0')
-                # u=user.objects.filter(id=userid)
-                # if u and u[0].type=='admin':
-                #     return func(req,*args, **kwargs)
-                # else:
-                #     return HttpResponseRedirect('/r/login')
-                return func(req, *args, **kwargs)
+                userid = req.session.get('userid', '0')
+                u=user.objects.filter(id=userid)
+                if u and u[0].type=='admin':
+                    return func(req,*args, **kwargs)
+                else:
+                    return HttpResponseRedirect('/r/login')
+                # return func(req, *args, **kwargs)
             except Exception as e:
                 return HttpResponse(str(e)+' <a href="/r/login">返回登录</a>')
         return inner
@@ -965,7 +965,7 @@ def del_articleclass(req):
 
         post_args = req.POST
         c = articleclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1183,7 +1183,7 @@ def del_productclass(req):
 
         post_args = req.POST
         c = productclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1420,7 +1420,7 @@ def del_facilityclass(req):
 
         post_args = req.POST
         c = facilityclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1634,7 +1634,7 @@ def del_caseclass(req):
 
         post_args = req.POST
         c = caseclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1851,7 +1851,7 @@ def del_certificateclass(req):
 
         post_args = req.POST
         c = certificateclass.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -1946,7 +1946,7 @@ def del_friendlink(req):
 
         post_args = req.POST
         c = friendlink.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
             c.delete()
@@ -2037,7 +2037,7 @@ def logout(req):
         r['msg'] = '不知道为什么,居然注销失败了'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
-@has_perm()
+# @has_perm()
 @csrf_exempt
 def add_user(req):
     """
