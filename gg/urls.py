@@ -103,6 +103,8 @@ url(r'^r/friendlink$', views.friendlink_view),
     url(r'^r/user$', views.edit_user),
     url(r'^r/getuser$', views.ajax_get_user),
 
+    url(r'^misc/code$', views.refreshcode),
+
     url(r'^r/aboutclass$', views.aboutclass_view),
     url(r'^r/getaboutclass$', views.ajax_get_aboutclass),
     url(r'^r/delarticleclass$', views.del_articleclass),

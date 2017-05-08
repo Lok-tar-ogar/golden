@@ -377,13 +377,13 @@ def has_perm():
         def inner(req, *args, **kwargs):
             userid=''
             try:
-                # userid = req.session.get('userid', '0')
-                # u=user.objects.filter(id=userid)
-                # if u and u[0].type=='admin':
-                #     return func(req,*args, **kwargs)
-                # else:
-                #     return HttpResponseRedirect('/r/login')
-                return func(req, *args, **kwargs)
+                userid = req.session.get('userid', '0')
+                u=user.objects.filter(id=userid)
+                if u and u[0].type=='admin':
+                    return func(req,*args, **kwargs)
+                else:
+                    return HttpResponseRedirect('/r/login')
+                # return func(req, *args, **kwargs)
             except Exception as e:
                 return HttpResponse(str(e)+' <a href="/r/login">返回登录</a>')
         return inner
@@ -2036,7 +2036,7 @@ def logout(req):
         r['msg'] = '不知道为什么,居然注销失败了'
         return HttpResponse(json.dumps(r, ensure_ascii=False))
 
-@has_perm()
+# @has_perm()
 @csrf_exempt
 def add_user(req):
     """
