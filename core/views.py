@@ -993,7 +993,7 @@ def product_view(req):
 
             post_args = req.POST
             c = product.objects.filter(id__in=post_args.getlist('ids[]'))
-            r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+            r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
             for x in c:
                 c.delete()
@@ -1212,7 +1212,7 @@ def facility_view(req):
 
             post_args = req.POST
             c = facility.objects.filter(id__in=post_args.getlist('ids[]'))
-            r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+            r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
             for x in c:
                 c.delete()
@@ -1367,7 +1367,7 @@ def facilityclass_view(req):
             ac.save()
             return HttpResponse(json.dumps(r))
         except Exception as e:
-            r['msg'] = '%s 失败了,因为 \n %s' % (ac.title, str(e))
+            r['msg'] = '%s 失败了,因为 \n %s' % (ac.name, str(e))
             r['status'] = '500'
             return HttpResponse(json.dumps(r, ensure_ascii=False))
 
@@ -1539,7 +1539,7 @@ def del_case(req):
 
         post_args = req.POST
         c=case.objects.filter(id__in=post_args.getlist('ids[]'))
-        r['msg'] = '%s deleted.' % (",".join([x.title for x in c]))
+        r['msg'] = '%s deleted.' % (",".join([x.name for x in c]))
 
         for x in c:
 
