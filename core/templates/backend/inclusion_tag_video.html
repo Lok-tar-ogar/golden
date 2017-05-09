@@ -75,10 +75,12 @@
                                 <div class="col-xs-6 col-sm-6">
                                     <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">
 
-
-                                        {% for p in gs %}
-                                            <option value="{{ p.id }}">{{ p.title }}</option>
-                                        {% endfor %}
+ {% for g in gs %}
+                                        {% if g.id == p.img.id %}
+                                            <option value="{{ g.id }}" selected="true">{{ g.title }}</option>
+                                        {% endif %}
+                                        <option value="{{ g.id }}">{{ g.title }}</option>
+                                    {% endfor %}
                                     </select>
                                 </div><div class="col-xs-3">
                                 <input type="file" name="img" id="id-input-file-main" />
