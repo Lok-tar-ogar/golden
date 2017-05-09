@@ -175,7 +175,7 @@ def faclity_index(req, fid):
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
-    fa = facility.objects.filter(type_id=fid).order_by("-id")
+    fa = facility.objects.filter(type_id=fid).order_by("id")
 
     return render(req, 'web/faclity.html', locals())
 

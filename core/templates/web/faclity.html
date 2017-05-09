@@ -236,11 +236,11 @@
 
     <div class="container" style="margin: -4em auto auto auto;">
         {% for f in fa %}
-            <div class="col-md-3">
+            <div class="col-md-3" style="height:430px;">
             <a href="{{ f.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ f.para }}">
                 <figure>
                     <div class="overlay">
-                        <i class="icon-plus"></i>
+{#                        <i class="icon-plus"></i>#}
                         <h3 class="text-center">{{ f.name }}</h3>
                     </div>
                     <img src="{{ f.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
