@@ -205,8 +205,9 @@
             <div class="section--header">
                 <h2 class="section--title">我们的优势</h2>
                 <p class="section--description">
-                    我们开创了中国首个开源HTML5跨屏前端框架、可见即可得的IDE、无障碍网页我们是全球独一无二的
-                    <br>云适配技术，我们的目标是打造极致的网页体验。
+                    公司始终坚持“科技领先、优质高效、顾客至上、遵信守约”的经营理念服务于中国
+特种设备和装备制造行业，一切以客户需要为中心，希望凭借专业水平和不懈努力，
+成就客户，成就品牌，成就员工。
                 </p>
             </div>
 
@@ -217,34 +218,31 @@
                             <h3 class="careers--subtitle">为什么选择我们？</h3>
                             <div class="careers_articles">
                                 <div class="careers_article">
-                                    <i class="careers_article--icon am-icon-diamond"></i>
+                                    <i class="careers_article--icon icon-users"></i>
                                     <h3 class="careers_article--title">我们的团队</h3>
                                     <div class="careers_article--text">
                                         <p>
-                                            成员既有超级学霸（来自Harvard、Google、香港科技大学、中国科技大学），也有来自行业的技术大拿。
+                                            公司技术研发实力雄厚，90％以上技术人员，10年以上的铸造研发及质量管理经验，拥有铸造专业的工程师, 高级工程师, 冶金化学分析工程师等。
                                         </p>
                                     </div>
-                                    <div class="careers_article--footer"><a href="#" class="link">Learn More</a></div>
                                 </div>
                                 <div class="careers_article">
-                                    <i class="careers_article--icon am-icon-key"></i>
-                                    <h3 class="careers_article--title">我们的装备和趴体</h3>
+                                    <i class="careers_article--icon icon-office"></i>
+                                    <h3 class="careers_article--title">我们的环境</h3>
                                     <div class="careers_article--text">
                                         <p>
-                                            顶配iMac、MacBook Pro、MacBook Air 3台瑞士Air空气净化器，PM2.5常年低于50,大趴每月一次，周三享用不尽的免费零食、饮料、水果
+                                            公司开放式办公空间优雅舒心、清香怡人、温馨惬意；配备现代化的办公设备设施；每年奖励学习名额，免费提供国外专业学习机会等。
                                         </p>
                                     </div>
-                                    <div class="careers_article--footer"><a href="#" class="link">Learn More</a></div>
                                 </div>
                                 <div class="careers_article">
-                                    <i class="careers_article--icon am-icon-paper-plane-o"></i>
-                                    <h3 class="careers_article--title">我们的队友</h3>
+                                    <i class="careers_article--icon  icon-star-full"></i>
+                                    <h3 class="careers_article--title">我们的伙伴</h3>
                                     <div class="careers_article--text">
                                         <p>
-                                            充满热情的队友，也是一起撸串、篮球、足球、动感单车、甚至桌上足球组队互虐的好基友
+                                            公司定期举办素质拓展活动，大家齐聚一堂，认识彼此，交换心得。每月一次的员工聚餐、每周一次的下午茶、体会惬意舒适，愉悦你我他，拉近彼此距离。
                                         </p>
                                     </div>
-                                    <div class="careers_article--footer"><a href="#" class="link">Learn More</a></div>
                                 </div>
                             </div>
                         </div>
@@ -253,23 +251,24 @@
                     <div class="am-u-md-9">
                         <h3 class="careers--subtitle">我们在寻找:</h3>
                         <div class="careers--vacancies">
-                            <div class="am-panel-group" id="accordion">
-                                {% for i in jobs %}
+                            {% for i in jobs %}
+                            <div class="am-panel-group" id="job_{{ i.id }}">
+
                                 <div class="am-panel am-panel-default">
                                     <div class="am-panel-hd">
-                                        <h4 class="am-panel-title" data-am-collapse="{parent: '#accordion', target: '#do-not-say-2'}">
+                                        <h4 class="am-panel-title" data-am-collapse="{parent: 'job_{{ i.id }}', target: '#do-not-say-{{ forloop.counter }}'}">
                                             {{ i.name }}
                                         </h4>
                                     </div>
-                                    <div id="do-not-say-2" class="am-panel-collapse am-collapse">
+                                    <div id="do-not-say-{{ forloop.counter }}" class="am-panel-collapse am-collapse">
                                         <div class="am-panel-bd">
                                             {{ i.content | safe }}
                                         </div>
                                     </div>
                                 </div>
-                                {% endfor %}
 
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

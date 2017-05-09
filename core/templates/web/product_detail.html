@@ -216,12 +216,14 @@
             <div class="col-xs-6 text-center">
                 <img src="{{ prod.imgs.filepath }}" style="max-width: 100%">
             </div>
+            {% if prod.brief %}
             <div class="col-xs-6 text-center">
                 <div class ="pdtitle">
                     产品简介
                 </div>
                 <p class="text-left" style="text-indent: 32px;letter-spacing: 1px; color:#333;">{{ prod.brief }}</p>
             </div>
+            {% endif %}
         </div>
         <div class="row text-center"  style=" margin-top:2em;margin-bottom: 2em;">
             <div class="col-xs-12 article-title text-left animate-box fadeInUp animated">

@@ -278,6 +278,7 @@ def success(req,aid):
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
 
+    s = caseclass.objects.get(id=aid)
     cas = case.objects.filter(type_id=aid)
     return render(req, 'web/success.html', locals())
 

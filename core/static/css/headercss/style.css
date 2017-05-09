@@ -3527,6 +3527,7 @@ li.col-md-4.active a {
   /*-o-transform: scale(1.2);*/
   /*transform: scale(1.2);*/
   /*margin-top: 3px;*/
+  display: none;
 }
 
 .gtco-card-item:hover span.btn, .gtco-card-item:focus span.btn {

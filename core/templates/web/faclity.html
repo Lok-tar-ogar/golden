@@ -209,8 +209,7 @@
             <div class="section--header">
                 <h2 class="section--title">设备资质</h2>
                 <p class="section--description">
-                    Enterplorer Studio是一套面向企业级移动信息化建设的开发平台。集聚开发、测试、
-                    <br>打包、发布于一体的移动化开发综合平台。
+                    公司设备完善，包含主体设备多达26种、检验设备多达30种以及环保除尘设备系统多达10种；<br/>其中精炼炉系统、树脂砂水玻璃生产线、无损检测探伤、材料生产中心系统等更是优秀，多方位满足客户需求。
                 </p>
             </div>
             <div class="solution-container">
@@ -237,7 +236,7 @@
 
     <div class="container" style="margin: -4em auto auto auto;">
         {% for f in fa %}
-            <div class="col-md-4">
+            <div class="col-md-3">
             <a href="{{ f.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ f.para }}">
                 <figure>
                     <div class="overlay">
@@ -245,6 +244,7 @@
                         <h3 class="text-center">{{ f.name }}</h3>
                     </div>
                     <img src="{{ f.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
+
                     <div class="hexoco-text">
                         <h2>{{ f.name }}</h2>
                     </div>
