@@ -87,10 +87,12 @@
                             <div class="add-article-box-content">
                                 <select class="chosen-select form-control" name="language" id="languageselect" data-placeholder="">
                                     {% for l in languages %}
-                                        {% if l.key == language %}
+                                          {% if l.key == language %}
                                             <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
-                                        {% endif %}
+                                            {% else %}
+
                                         <option value="{{ l.key }}">{{ l.value }}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select>
                             </div>
