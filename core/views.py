@@ -679,7 +679,7 @@ def video_view(req):
             p.title = post_args.get('title')
             p.caption = post_args.get('caption')
             p.language = post_args.get('language')
-            if v['img']:
+            if 'img' in v:
                 i = _imagehandler(p.title, p.title, v)
             else:
                 i = picture.objects.get(id=post_args.get('pid'))
