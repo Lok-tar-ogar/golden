@@ -19,8 +19,8 @@ class syspara(models.Model):
     """
     网站标识 等系统参数;
     """
-    key = models.CharField('键', max_length=20)
-    en_key = models.CharField('英文键', max_length=20, null=True)
+    key = models.CharField('键', max_length=50)
+    en_key = models.CharField('英文键', max_length=50, null=True)
     value = models.CharField('值', max_length=3400, blank=True, null=True)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
@@ -173,7 +173,7 @@ class case(models.Model):
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     content = models.CharField('介绍详情',max_length=50 )
     viewedTimes = models.IntegerField('浏览次数',default=0)
-    href = models.CharField('友情链接', max_length=50)
+    href = models.CharField('友情链接', max_length=200)
     type = models.ForeignKey(caseclass)
     language = models.CharField('语言 zh | en', max_length=34, default='zh')
     dimDate = models.DateTimeField(auto_now_add=True)  # timezone.now()
