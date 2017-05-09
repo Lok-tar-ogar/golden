@@ -112,7 +112,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <img src="/static/images/web/关于金镭-01.jpg" style="width:80%;height: auto; ">
                                                     <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
@@ -131,7 +131,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <img src="/static/images/web/产品中心-01.jpg" style="width:80%;height: auto; ">
                                                     <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="col-xs-6">
                                                 <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                    <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                    <img src="/static/images/web/设备资质-01.jpg" style="width:80%;height: auto; ">
                                                     <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                                 </div>
                                             </div>
@@ -176,7 +176,7 @@
                                         </div>
                                         <div class="col-xs-6" style="">
                                             <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
-                                                <img src="/static/images/web/img_1.jpg" style="width:80%;height: auto; ">
+                                                <img src="/static/images/web/成功案例-01.jpg" style="width:80%;height: auto; ">
                                                 <p class="text-left menup" style="margin-top:10px;">我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥我是卡哥</p>
                                             </div>
                                         </div>
@@ -202,7 +202,7 @@
 
 
     <div class="course-header">
-        <img  src="/static/images/web/index/2.jpg">
+        <img  src="/static/images/web/index/2.jpg" style="width: 100%; height:auto;">
     </div>
     <div class="section">
         <div class="container">
@@ -248,7 +248,7 @@
                         <div class="feature-center text-center">
                             <img src="{{ i.imgs.filepath }}" style="width: 100%;height: auto;">
                             <h3 style="margin-top: 10px;"><a href="/product_detail/{{ i.id }}">{{ i.name }}</a></h3>
-                            <p style="text-align: left;">{{ i.brief }}</p>
+                            <p style="text-align: left;">{{ i.brief | safe }}</p>
 {#                            <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
                             <p><a href="/product_detail/{{ i.id }}" class="btn btn-primary">了解更多</a></p>
                         </div>

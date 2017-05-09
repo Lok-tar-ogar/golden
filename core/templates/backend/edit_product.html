@@ -34,8 +34,10 @@
                                     {% for p in ps %}
                                         {% if p.id == c.imgs.id %}
                                             <option value="{{ p.id }}" selected="true">{{ p.title }}</option>
+                                        {% else %}
+                                            <option value="{{ p.id }}">{{ p.title }}</option>
                                         {% endif %}
-                                        <option value="{{ p.id }}">{{ p.title }}</option>
+
                                     {% endfor %}
                                 </select>
                             </div>

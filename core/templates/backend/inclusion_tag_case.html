@@ -54,10 +54,11 @@
                                     <div class="col-xs-9 col-sm-9">
                                         <select class="chosen-select form-control" name="type" id="typeselect" data-placeholder="">
                                             {% for t in types %}
-                                                {% if t.name == type.name %}
+                                                {% if t.type.name == type.name %}
                                                     <option value="{{ t.id }}" selected="true">{{ t.name }}</option>
+                                                {% else %}
+                                                    <option value="{{ t.id }}">{{ t.name }}</option>
                                                 {% endif %}
-                                                <option value="{{ t.id }}">{{ t.name }}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -70,8 +71,10 @@
                                     {% for l in languages %}
                                         {% if l.key == c.language %}
                                             <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
+                                        {% else %}
+                                            <option value="{{ l.key }}">{{ l.value }}</option>
                                         {% endif %}
-                                        <option value="{{ l.key }}">{{ l.value }}</option>
+
                                     {% endfor %}
                                 </select>
                                 </select>
@@ -79,13 +82,17 @@
 
                                 </div>
                                 <div class="form-group">
-                                <label class="control-label col-xs-2 col-sm-2 no-padding-right">轮播主图片:</label>
+                                <label class="control-label col-xs-2 col-sm-2 no-padding-right">主图片:</label>
                                     <div class="col-xs-9 col-sm-9">
                                     <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">
 
 
                                         {% for p in ps %}
+                                            {% if c.imgs.id == p.id  %}
+                                                <option value="{{ p.id }}" selected="true">{{ p.title }}</option>
+                                            {% else %}
 <option value="{{ p.id }}">{{ p.title }}</option>
+                                            {% endif %}
                                         {% endfor %}
 	</select>
                                     </div>

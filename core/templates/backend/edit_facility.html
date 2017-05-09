@@ -75,8 +75,10 @@
                                     {% for t in types %}
                                         {% if t.name == type.name %}
                                             <option value="{{ t.id }}" selected="true">{{ t.name }}</option>
+                                        {% else %}
+                                            <option value="{{ t.id }}">{{ t.name }}</option>
                                         {% endif %}
-                                        <option value="{{ t.id }}">{{ t.name }}</option>
+
                                     {% endfor %}
                                 </select>
                             </div>
