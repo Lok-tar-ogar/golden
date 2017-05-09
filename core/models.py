@@ -73,7 +73,7 @@ class product(models.Model):
     '''
     name = models.CharField('产品名称', max_length=50)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
-    brief = models.CharField('简介',max_length=500 , default='')
+    brief = models.TextField('简介', default='')
     content = models.TextField('介绍详情')
     viewedTimes = models.IntegerField('浏览次数',default=0)
     type = models.ForeignKey(productclass)

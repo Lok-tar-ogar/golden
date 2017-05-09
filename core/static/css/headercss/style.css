@@ -3303,6 +3303,7 @@ li.col-md-4.active a {
 
 .son-content img{
   max-width: 100%;
+  height:auto !important;
 }
 
 .menu-son1{
