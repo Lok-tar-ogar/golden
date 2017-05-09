@@ -205,8 +205,8 @@
                     <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"></li>
                 {% endif %}
             {% endfor %}
-{#            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>#}
-{#            <li data-target="#carousel-example-generic" data-slide-to="1"></li>#}
+            {#            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>#}
+            {#            <li data-target="#carousel-example-generic" data-slide-to="1"></li>#}
         </ol>
 
         <!-- Wrapper for slides -->
@@ -258,72 +258,100 @@
                 <div class="row feature-title text-center">
                     <h3>产品展示</h3>
                 </div>
-                <div class="container">
+                <div class="container" style="margin-top: -7em;">
                     <div id="owl-car" class="owl-carousel owl-carousel-fullwidth ">
 
                         {% for i in prod  %}
                             <div class="item testimony-slide active text-center">
-                                <figure class="text-center">
-                                    <a href="/product_detail/{{ i.id }}"  >
-                                        <img src="{{ i.imgs.filepath }}" alt="user">
-                                    </a>
-                                </figure>
+                                <a href="/product_detail/{{ i.id }}" class="gtco-card-item" style="margin-top: 12em" >
+                                    <figure>
+                                        <div class="overlay">
+                                            {#                        <i class="icon-plus"></i>#}
+                                            <h3 class="text-center">{{ i.name }}</h3>
+                                        </div>
+                                        <img src="{{ i.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
+                                        {##}
+                                        {#                                        <div class="hexoco-text">#}
+                                        {#                                            <h2>{{ i.name }}</h2>#}
+                                        {#                                        </div>#}
+                                    </figure>
+                                </a>
+                                {#                                <figure class="text-center">#}
+                                {#                                    <a href="/product_detail/{{ i.id }}"  >#}
+                                {#                                        <img src="{{ i.imgs.filepath }}" alt="user">#}
+                                {#                                    </a>#}
+                                {#                                </figure>#}
                             </div>
                         {% endfor %}
                         {% for i in fa %}
                             <div class="item testimony-slide active text-center">
-                                <figure class="text-center">
-                                    <a href="{{ i.imgs.filepath }}"  class="image-popup" title="{{ i.name }}">
-                                        <img src="{{ i.imgs.filepath }}" alt="user">
-                                    </a>
+                            <a href="{{ i.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ i.para }}" style="margin-top: 12em" >
+                                <figure>
+                                    <div class="overlay">
+                                        {#                        <i class="icon-plus"></i>#}
+                                        <h3 class="text-center">{{ i.name }}</h3>
+                                    </div>
+                                    <img src="{{ i.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
+                                    {##}
+                                    {#                                        <div class="hexoco-text">#}
+                                    {#                                            <h2>{{ i.name }}</h2>#}
+                                    {#                                        </div>#}
                                 </figure>
+                            </a>
                             </div>
+{#                            <div class="item testimony-slide active text-center">#}
+{#                                <figure class="text-center">#}
+{#                                    <a href="{{ i.imgs.filepath }}"  class="image-popup" title="{{ i.name }}">#}
+{#                                        <img src="{{ i.imgs.filepath }}" alt="user">#}
+{#                                    </a>#}
+{#                                </figure>#}
+{#                            </div>#}
                         {% endfor %}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            #}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_1.jpg"  >#}
-{#                                    <img src="/static/images/web/img_1.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_2.jpg" >#}
-{#                                    <img src="/static/images/web/img_2.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_3.jpg">#}
-{#                                    <img src="/static/images/web/img_3.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_4.jpg">#}
-{#                                    <img src="/static/images/web/img_4.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{##}
-{##}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_5.jpg">#}
-{#                                    <img src="/static/images/web/img_5.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
-{#                        <div class="item testimony-slide active text-center">#}
-{#                            <figure class="text-center">#}
-{#                                <a  data-fancybox="gallery" href="/static/images/web/img_6.jpg">#}
-{#                                    <img src="/static/images/web/img_6.jpg" alt="user">#}
-{#                                </a>#}
-{#                            </figure>#}
-{#                        </div>#}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            #}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_1.jpg"  >#}
+                        {#                                    <img src="/static/images/web/img_1.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_2.jpg" >#}
+                        {#                                    <img src="/static/images/web/img_2.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_3.jpg">#}
+                        {#                                    <img src="/static/images/web/img_3.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_4.jpg">#}
+                        {#                                    <img src="/static/images/web/img_4.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
+                        {##}
+                        {##}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_5.jpg">#}
+                        {#                                    <img src="/static/images/web/img_5.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
+                        {#                        <div class="item testimony-slide active text-center">#}
+                        {#                            <figure class="text-center">#}
+                        {#                                <a  data-fancybox="gallery" href="/static/images/web/img_6.jpg">#}
+                        {#                                    <img src="/static/images/web/img_6.jpg" alt="user">#}
+                        {#                                </a>#}
+                        {#                            </figure>#}
+                        {#                        </div>#}
 
                     </div>
 
@@ -334,7 +362,7 @@
     </div>
 
 
-    <div id="hxco-features-2">
+    <div id="hxco-features-2" style="margin-top: -4em">
         <div class="container">
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 text-center hxco-heading">
@@ -346,7 +374,7 @@
 
                     <div style="margin-bottom: 20px;">
                         <span style="font-size: 25px;color:#383838;">资讯中心<a href="/information" style="font-size: 16px;margin-left: 10px;">MORE+</a></span>
-{#                        <span style=""></span>#}
+                        {#                        <span style=""></span>#}
                     </div>
 
                     {% for i in a %}
@@ -358,55 +386,55 @@
                                 <h3><a href="/information_detail/{{ i.id }}">{{ i.title }}</a> </h3>
                                 <label>{{ i.dimDate | date:"Y-m-d"  }}</label>
                                 <span></span>
-    {#                            <p>2017-4-45</p>#}
+                                {#                            <p>2017-4-45</p>#}
                             </div>
                         </div>
                     {% endfor %}
-{##}
-{#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
-{#						<span class="icon">#}
-{#							<i class="icon-file-text"></i>#}
-{#						</span>#}
-{#                        <div class="feature-copy">#}
-{#                            <h3><a href="/">这是第一条新闻 这是第一条新闻</a></h3>#}
-{#                            <label>2017-4-45</label>#}
-{#                            <span></span>#}
-{#                            <p>2017-4-45</p>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
-{#						<span class="icon">#}
-{#							<i class="icon-file-text"></i>#}
-{#						</span>#}
-{#                        <div class="feature-copy">#}
-{#                            <h3><a href="/">这是第一条新闻 这是第一条新闻</a> </h3>#}
-{#                            <label>2017-4-45</label>#}
-{#                            <span></span>#}
-{#                            <p>2017-4-45</p>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
-{#						<span class="icon">#}
-{#							<i class="icon-file-text"></i>#}
-{#						</span>#}
-{#                        <div class="feature-copy">#}
-{#                            <h3><a href="/">这是第一条新闻 这是第一条新闻 </a></h3>#}
-{#                            <label>2017-4-45</label>#}
-{#                            <span></span>#}
-{#                       </div>#}
-{#                    </div>#}
+                    {##}
+                    {#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
+                    {#						<span class="icon">#}
+                    {#							<i class="icon-file-text"></i>#}
+                    {#						</span>#}
+                    {#                        <div class="feature-copy">#}
+                    {#                            <h3><a href="/">这是第一条新闻 这是第一条新闻</a></h3>#}
+                    {#                            <label>2017-4-45</label>#}
+                    {#                            <span></span>#}
+                    {#                            <p>2017-4-45</p>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
+                    {#						<span class="icon">#}
+                    {#							<i class="icon-file-text"></i>#}
+                    {#						</span>#}
+                    {#                        <div class="feature-copy">#}
+                    {#                            <h3><a href="/">这是第一条新闻 这是第一条新闻</a> </h3>#}
+                    {#                            <label>2017-4-45</label>#}
+                    {#                            <span></span>#}
+                    {#                            <p>2017-4-45</p>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                    <div class="feature-left animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">#}
+                    {#						<span class="icon">#}
+                    {#							<i class="icon-file-text"></i>#}
+                    {#						</span>#}
+                    {#                        <div class="feature-copy">#}
+                    {#                            <h3><a href="/">这是第一条新闻 这是第一条新闻 </a></h3>#}
+                    {#                            <label>2017-4-45</label>#}
+                    {#                            <span></span>#}
+                    {#                       </div>#}
+                    {#                    </div>#}
 
                 </div>
 
                 <div class="col-xs-6">
                     {% if vide %}
                         {% for i in vide %}
-                        {% if forloop.first %}
-                        <div class="hxco-video hxco-bg" style="background-image: url(../..{{ i.img.filepath }}); ">
-                        <a href="{{ i.filepath }}" class="popup-vimeo"><i class="icon-play" style="color:rgba(63, 209, 234, 1)"></i></a>
-                        <div class="overlay"></div>
-                    </div>
-                        {% endif %}
+                            {% if forloop.first %}
+                                <div class="hxco-video hxco-bg" style="background-image: url(../..{{ i.img.filepath }}); ">
+                                    <a href="{{ i.filepath }}" class="popup-vimeo"><i class="icon-play" style="color:rgba(63, 209, 234, 1)"></i></a>
+                                    <div class="overlay"></div>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     {% endif %}
 
@@ -428,7 +456,8 @@
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
                     <p style="margin-top: 1em"><i class="icon-phone"></i>咨询电话：0832-8247655</p>
-
+                    <p style="margin-top: 1em"><i class="icon-mail"></i> fan@scjlzg.com</p>
+                    <p style="margin-top: 1em"><i class="icon-url"></i> 官网：金镭重工.中国</p>
                 </div>
                 <div class="col-xs-3">
                     <h3>快速链接</h3>
@@ -436,9 +465,9 @@
                     <div style="margin-top: 1em">
                         {% for i in about %}
                             {% if forloop.first %}
-                            <a class="tagA" href="/about/{{ i.id }}">
-                                关于金镭
-                            </a>
+                                <a class="tagA" href="/about/{{ i.id }}">
+                                    关于金镭
+                                </a>
                             {% endif %}
                         {% endfor %}
                         <a class="tagA" href="/product_index/0">

@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="/static/css/headercss/magnific-popup.css">
     <link rel="stylesheet" href="/static/css/headercss/owl.carousel.min.css">
     <link rel="stylesheet" href="/static/css/headercss/owl.theme.default.min.css">
-{##}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
-{#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
+    {##}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
+    {#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
 
     <link rel="stylesheet" href="/static/css/headercss/style.css">
 
@@ -215,13 +215,13 @@
             <div class="solution-container">
                 <div  class="am-tabs am-no-layout amamam">
                     <ul class="am-tabs-nav am-cf">
-{#                        <li class="am-active"><a href="/">青春</a></li>#}
-{#                        <li class=""><a href="/">彩虹</a></li>#}
-{#                        <li class=""><a href="/">歌唱</a></li>#}
-{#                        <li class=""><a href="/">歌唱</a></li>#}
+                        {#                        <li class="am-active"><a href="/">青春</a></li>#}
+                        {#                        <li class=""><a href="/">彩虹</a></li>#}
+                        {#                        <li class=""><a href="/">歌唱</a></li>#}
+                        {#                        <li class=""><a href="/">歌唱</a></li>#}
                         {% for i in fac %}
                             {% if i.id == fa_id %}
-                            <li class="am-active1" id="fac_{{ i.id }}"><a href="/facility/{{ i.id }}">{{ i.name }}</a></li>
+                                <li class="am-active1" id="fac_{{ i.id }}"><a href="/facility/{{ i.id }}">{{ i.name }}</a></li>
                             {% else %}
                                 <li class="" id="fac_{{ i.id }}"><a href="/facility/{{ i.id }}">{{ i.name }}</a></li>
                             {% endif %}
@@ -237,20 +237,20 @@
     <div class="container" style="margin: -4em auto auto auto;">
         {% for f in fa %}
             <div class="col-md-3" style="height:430px;">
-            <a href="{{ f.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ f.para }}">
-                <figure>
-                    <div class="overlay">
-{#                        <i class="icon-plus"></i>#}
-                        <h3 class="text-center">{{ f.name }}</h3>
-                    </div>
-                    <img src="{{ f.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
+                <a href="{{ f.imgs.filepath }}" class="gtco-card-item image-popup" title="{{ f.para }}">
+                    <figure>
+                        <div class="overlay">
+                            {#                        <i class="icon-plus"></i>#}
+                            <h3 class="text-center">{{ f.name }}</h3>
+                        </div>
+                        <img src="{{ f.imgs.filepath }}" alt="Image" class="img-responsive" width="100%">
 
-                    <div class="hexoco-text">
-                        <h2>{{ f.name }}</h2>
-                    </div>
-                </figure>
-            </a>
-        </div>
+                        <div class="hexoco-text">
+                            <h2>{{ f.name }}</h2>
+                        </div>
+                    </figure>
+                </a>
+            </div>
         {% endfor %}
     </div>
 
@@ -267,7 +267,8 @@
                     <hr />
                     <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
                     <p style="margin-top: 1em"><i class="icon-phone"></i>咨询电话：0832-8247655</p>
-
+                    <p style="margin-top: 1em"><i class="icon-mail"></i> fan@scjlzg.com</p>
+                    <p style="margin-top: 1em"><i class="icon-url"></i> 官网：金镭重工.中国</p>
                 </div>
                 <div class="col-xs-3">
                     <h3>快速链接</h3>
@@ -275,9 +276,9 @@
                     <div style="margin-top: 1em">
                         {% for i in about %}
                             {% if forloop.first %}
-                            <a class="tagA" href="/about/{{ i.id }}">
-                                关于金镭
-                            </a>
+                                <a class="tagA" href="/about/{{ i.id }}">
+                                    关于金镭
+                                </a>
                             {% endif %}
                         {% endfor %}
                         <a class="tagA" href="/product_index/0">

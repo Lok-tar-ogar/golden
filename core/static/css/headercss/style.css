@@ -1023,23 +1023,23 @@ form label {
   font-weight: 700;
   display: block;
 }
-#hxco-testimonial .testimony-slide figure {
-  margin-bottom: 10px;
-  display: -moz-inline-stack;
-  display: inline-block;
-  zoom: 1;
-  height: auto;
-  *display: inline;
-}
-#hxco-testimonial .testimony-slide figure img {
-  width: 100%;
-  padding-top: 15%;
-  height:auto;
-  /*-webkit-border-radius: 50%;*/
-  /*-moz-border-radius: 50%;*/
-  /*-ms-border-radius: 50%;*/
-  /*border-radius: 50%;*/
-}
+/*#hxco-testimonial .testimony-slide figure {*/
+  /*margin-bottom: 10px;*/
+  /*display: -moz-inline-stack;*/
+  /*display: inline-block;*/
+  /*zoom: 1;*/
+  /*height: auto;*/
+  /**display: inline;*/
+/*}*/
+/*#hxco-testimonial .testimony-slide figure img {*/
+  /*width: 100%;*/
+  /*padding-top: 15%;*/
+  /*height:auto;*/
+  /*!*-webkit-border-radius: 50%;*!*/
+  /*!*-moz-border-radius: 50%;*!*/
+  /*!*-ms-border-radius: 50%;*!*/
+  /*!*border-radius: 50%;*!*/
+/*}*/
 #hxco-testimonial .testimony-slide blockquote {
   border: none;
   margin: 30px auto;
