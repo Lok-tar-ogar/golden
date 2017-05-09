@@ -41,12 +41,14 @@
                             </div>
                         </div>
                     <h2 class="add-article-box-title"><span>简介</span></h2>
-                            <div class="add-article-box-content">
-                                <input type="text" autocomplete="off" name="brief" value="{{ brief }}" placeholder="请输入简介" class="form-control">
+                     <textarea  class="richtext" name="brief" style="height: 300px;">
 
-                            </div>
+{{ brief }}
+
+                            </textarea>
                         <div class="clearfix" style="margin-bottom: 50px;"></div>
-                        <textarea id="richtext" name="content" style="height: 300px;">
+                    <h2 class="add-article-box-title"><span>产品介绍</span></h2>
+                        <textarea  class="richtext" id="richtext" name="content" style="height: 300px;">
 
 {{ content }}
 
@@ -103,7 +105,7 @@
         <script>
             $('#li_product').attr('class','active');
             tinymce.init({
-                selector: '#richtext',
+                selector: '.richtext',
                 plugins: ' advlist autolink link image lists charmap print preview code ' ,
                  toolbar: "undo redo pastetext | styleselect | fontselect | fontsizeselect",
                 fontsize_formats: "8pt 9pt 10pt 11pt 12pt 26pt 36pt",
