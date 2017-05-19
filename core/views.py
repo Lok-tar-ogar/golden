@@ -362,13 +362,20 @@ def information_detail(req, aid=0):
     :return:
     '''
     try:
-        language = req.GET.get("language")
+        language = req.session.get("language", 'zh')
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
             fl = friendlink.objects.filter(language="en")
+            page = req.GET.get('page')
+            act = article.objects.get(id=aid)
+
+            activity = article.objects.all()
+            activity = activity[0:5]
+
+            return render(req, 'web/information_detail.html', locals())
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -376,13 +383,13 @@ def information_detail(req, aid=0):
             su = caseclass.objects.filter(language="zh").order_by("id")
             fl = friendlink.objects.filter(language="zh")
 
-        page = req.GET.get('page')
-        act = article.objects.get(id=aid)
+            page = req.GET.get('page')
+            act = article.objects.get(id=aid)
 
-        activity = article.objects.all()
-        activity = activity[0:5]
+            activity = article.objects.all()
+            activity = activity[0:5]
 
-        return render(req, 'web/information_detail.html', locals())
+            return render(req, 'web/information_detail.html', locals())
 
     except:
         render(req, 'web/information.html', locals())
