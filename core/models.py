@@ -71,7 +71,7 @@ class product(models.Model):
     '''
     产品
     '''
-    name = models.CharField('产品名称', max_length=50)
+    name = models.CharField('产品名称', max_length=5000)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     brief = models.TextField('简介', default='')
     content = models.TextField('介绍详情')
@@ -102,7 +102,7 @@ class facility(models.Model):
     '''
     设备
     '''
-    name = models.CharField('设备名称', max_length=50)
+    name = models.CharField('设备名称', max_length=2000)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     para= models.CharField('参数', max_length=500, null=True)
     madefac = models.CharField('制作厂商', max_length=80, null=True)
