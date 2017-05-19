@@ -18,6 +18,7 @@ from django.contrib import admin
 from core import views
 
 urlpatterns = [
+    url(r'^setlanguage$', views.set_language),
     url(r'^$', views.index, name="index"),
     url(r'^about/$', views.about, name="about"),
     url(r'^about/(\d+)/$', views.about_detail),

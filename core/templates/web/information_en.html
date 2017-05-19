@@ -1,0 +1,353 @@
+
+{% load poll_extras %}
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>四川金镭铸业有限公司</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="四川金镭铸业有限公司"/>
+    <meta name="keywords" content="四川金镭铸业有限公司" />
+    <link rel="shortcut icon" href="/static/images/web/index/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/headercss/animate.css">
+    <link rel="stylesheet" href="/static/css/icomoon/style.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/headercss/magnific-popup.css">
+    <link rel="stylesheet" href="/static/css/headercss/owl.carousel.min.css">
+    <link rel="stylesheet" href="/static/css/headercss/owl.theme.default.min.css">
+{##}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.carousel.css">#}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.theme.css">#}
+{#    <link rel="stylesheet" href="/static/css/owl/owl.transitions.css">#}
+
+    <link rel="stylesheet" href="/static/css/headercss/style.css">
+
+    {#    <link rel="stylesheet" href="/static/css/headercss/newstyle.css">#}
+    <link rel="stylesheet" href="/static/css/headercss/jquery.fancybox.min.css">
+    <script src="/static/js/headerjs/jquery.min.js"></script>
+    <script src="/static/js/headerjs/jquery.fancybox.min.js"></script>
+    <script src="/static/js/headerjs/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Py9unXdCiUYT8FKDu1Uy6NGkyGRTS61C"></script>
+    {#    <script src="/static/js/headerjs/selectivizr.js"></script>#}
+    <!–[if lt IE 9]>
+    <script>
+        $(document).ready(function () {
+            $(".animate-box").removeClass("animate-box");
+        });
+    </script>
+    <![endif]->
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $('#home').prop('class', 'actived');
+        });
+        /*var a,b,c;
+         a=$("#dh").offset().top;//元素相对于窗口的距离
+         b=$(window).scrollTop(); //监控窗口已滚动的距离;
+         c=$(document).height();//整个文档的高度
+         d=$(window).height();//浏览器窗口的高度
+         element  标签
+         cssname  动画
+         offset  相对于窗口的距离
+         */
+        function scrollnumber(element,cssname,offset) {
+            var a, b, c, d;
+            d = $(element).offset().top;
+            a = eval(d + offset);
+            b = $(window).scrollTop();
+            c = $(window).height();
+            if (b + c > a) {
+                $((element)).addClass((cssname));
+            }
+        }
+        function scrollfun(){
+            {#            scrollnumber("#product_title",'animated-ourservice',10);#}
+            {#            scrollnumber("#anli",'animated-ourservice',10);#}
+        }
+
+        $(document).ready(function(e) {
+            scrollfun();
+            $(window).scroll(function(){
+                scrollfun();
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+
+<div id="page">
+   <nav class="hxco-nav hengxin-header" role="navigation">
+        <div class="hxco-container">
+            <div class="row">
+                <div class="col-xs-3 text-center">
+                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 45px;width: auto;margin-top:-5px;"></a></div>
+                </div>
+                <div class="col-xs-9 text-left">
+                    <div class="nav-contain1">
+                        <div class="nav-inner1">
+                            <ul class="am-nav1">
+
+                                <li><a href="/" id="" ><i class="icon-home"></i></a></li>
+
+                                <li>
+                                    {% for i in about %}
+                                        {% if forloop.first %}
+                                            <a href="/about/{{ i.id }}"  class="menu-main">About Jinlei</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="sub-menu">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {% for i in about %}
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/关于金镭-01.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">敏于观察，勤于思考，善于综合，勇于创新。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- sub-menu end-->
+                                </li>
+                                <li>
+                                    <a href="/product_index/0">Product center</a>
+                                    <div class="sub-menu">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {% for i in pro %}
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/product_index/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/产品中心-01.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">对新的对象务必创出全新的概念</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    {% for i in fac %}
+                                        {% if forloop.first %}
+                                            <a href="/facility/{{ i.id }}" class="menu-main">Equipment qualification</a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="sub-menu">
+                                        <div class="row">
+                                            <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                                {% for i in fac %}
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/facility/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                    <img src="/static/images/web/设备资质-01.jpg" style="width:80%;height: auto; ">
+                                                    <p class="text-left menup" style="margin-top:10px;">“工欲善其事，必先利其器”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% for i in su %}
+                                    {% if forloop.first %}
+                                        <li><a href="/success/{{ i.id }}" >Successful case</a>
+                                    {% endif  %}
+                                {% endfor %}
+                                <!-- sub-menu start-->
+                                <ul class="sub-menu">
+
+                                    <div class="row">
+                                        <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
+                                            {% for i in su %}
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow.png" style="width:8px;height: auto;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-xs-6" style="">
+                                            <div class="text-center" style="width: 100%; margin: 20px auto;padding: 0 0;border-left: #999999 1px solid;">
+                                                <img src="/static/images/web/成功案例-01.jpg" style="width:80%;height: auto; ">
+                                                <p class="text-left menup" style="margin-top:10px;">你有我，我有你，合作共赢创未来。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {#                                        <li class="menu-item"><a href="/mxztc">本研直通</a></li>#}
+                                    {#                                        <li class="menu-item"><a href="/ksbk">快速本科</a></li>#}
+                                </ul>
+                                </li>
+
+                                <li><a href="/jobs" id="career_planning">Join us</a></li>
+                                <li><a href="/contact" id="assistedliving">Contact us</a></li>
+                                <li><a href="/setlanguage?language=zh">中文</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row" style="margin-top: 3em;">
+            <div class="col-xs-8 col-xs-offset-2 text-center heading-section animate-box fadeInUp animated">
+                <h4>资讯中心</h4>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 4em;">
+            {% if paged %}
+                {% for p in paged %}
+                    <div class="col-xs-4 text-left">
+                        <div class="article">
+                            {% if p.imgs %}
+                                <div class="article-img">
+                                    <img src="{{ p.imgs.filepath }}" alt="" style="width: 100%;">
+                                </div>
+
+                            {% endif %}
+                            <div class="article-header">
+                                <h2><a href="/information_detail/{{ p.id }}?page={{ page }}" rel="">{{ p.title }}</a></h2>
+                                <ul class="article--meta">
+                                    <li class="article--meta_item -date">{{ p.dimDate | date:"Y-m-d" }}</li>
+                                </ul>
+                            </div>
+                            <div class="article--content">
+                                <p>{{ p.content | spiltcontent:200 }}</p>
+                            </div>
+                            <div class="article--footer">
+                                <a href="/information_detail/{{ p.id }}?page={{ page }}" class="link">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+
+        <div class="row text-center">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    {% if paged.has_previous %}
+                        <li>
+                            <a href="?page={{ paged.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% for p in rangedpages %}
+                        {% if p == page %}
+                            <li class="active"><a href="?page={{ p }}">{{ p }}<span class="sr-only">(current)</span></a></li>
+                        {% else %}
+                            <li><a href="?page={{ p }}">{{ p }}</a></li>
+                        {% endif %}
+
+                    {% endfor %}
+                    {% if paged.has_next %}
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+     <footer id="hxco-footer" role="contentinfo">
+        <div class="hxco-container">
+            <div class="row row-pb-md">
+                <div class="col-xs-3 text-center">
+                    <h3>Public Wechat</h3>
+                    <img src="/static/images/erweima.png" style="width: 160px;height:160px;">
+
+                </div>
+                <div class="col-xs-3">
+                    <h3>Contacts</h3>
+                    <hr />
+                    <p style="margin-top: 1em"><i class="icon-location"></i>address：四川省内江市威远县建业大道777号</p>
+                    <p style="margin-top: 1em"><i class="icon-phone"></i>Tel：0832-8247655</p>
+                    <p style="margin-top: 1em"><i class="icon-mail"></i>emial:fan@scjlzg.com</p>
+                    <p style="margin-top: 1em"><i class="icon-url"></i>site：金镭重工.中国</p>
+                </div>
+                <div class="col-xs-3">
+                    <h3>Quick Links</h3>
+                    <hr />
+                    <div style="margin-top: 1em">
+                        {% for i in about %}
+                            {% if forloop.first %}
+                                <a class="tagA" href="/about/{{ i.id }}">
+                                    About Jinlei
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                        <a class="tagA" href="/product_index/0">
+                            Product Center
+                        </a>
+                        {% for i in fac %}
+                            {% if forloop.first %}
+                                <a href="/facility/{{ i.id }}" class="tagA">Equipment qualification</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/jobs">
+                            Join us
+                        </a>
+                        {% for i in su %}
+                            {% if forloop.first %}
+                                <a href="/success/{{ i.id }}" class="tagA">Successful case</a>
+                            {% endif  %}
+                        {% endfor %}
+
+                        <a class="tagA" href="/contact">
+                            Contact us
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-xs-3">
+                    <h3>friendly link</h3>
+                    <hr/>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
+                            friendly link
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
+                            {% for i in fl %}
+                                <li ><a href="{{ i.href }}">{{ i.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<div class="gototop js-top">
+    <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+</div>
+
+</div>
+
+<!-- jQuery Easing -->
+<script src="/static/js/headerjs/jquery.easing.1.3.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/headerjs/jquery.waypoints.min.js"></script>
+<script src="/static/js/headerjs/owl.carousel.min.js"></script>
+{#<script src="/static/css/owl/owl.carousel.js"></script>#}
+<script src="/static/js/headerjs/jquery.countTo.js"></script>
+<script src="/static/js/headerjs/jquery.magnific-popup.min.js"></script>
+<script src="/static/js/headerjs/magnific-popup-options.js"></script>
+<script src="/static/js/headerjs/main.js"></script>
+
+</body>
+</html>

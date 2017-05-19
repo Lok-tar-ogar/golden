@@ -31,11 +31,14 @@ import logging
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
 
+def set_language(req):
+    req.session['language']=req.GET.get('language')
+    return HttpResponseRedirect('/')
 def index(req):
     '''
     首页
     '''
-    language = req.GET.get("language")
+    language = req.session.get("language",'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
@@ -47,7 +50,7 @@ def index(req):
         fl = friendlink.objects.filter(language="en")
         c = carousel.objects.all()
         a = article.objects.all()
-        return render(req, 'web/index.html', locals())
+        return render(req, 'web/index_en.html', locals())
 
     else:
         about = syspara.objects.filter(language="zh")
@@ -76,13 +79,16 @@ def about_detail(req, aid):
     关于金雷
     '''
     try:
-        language = req.GET.get("language")
+        language = req.session.get("language", 'zh')
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
             fl = friendlink.objects.filter(language="en")
+            detail = syspara.objects.get(id=aid)
+
+            return render(req, 'web/about_sample_en.html', locals())
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -90,9 +96,9 @@ def about_detail(req, aid):
             su = caseclass.objects.filter(language="zh").order_by("id")
             fl = friendlink.objects.filter(language="zh")
 
-        detail = syspara.objects.get(id=aid)
+            detail = syspara.objects.get(id=aid)
 
-        return render(req, 'web/about_sample.html', locals())
+            return render(req, 'web/about_sample.html', locals())
 
     except Exception as e:
         logging.warning(e)
@@ -109,7 +115,7 @@ def about_detail(req, aid):
             pro = productclass.objects.filter(language="zh").order_by("id")
             su = caseclass.objects.filter(language="zh").order_by("id")
             fl = friendlink.objects.filter(language="zh")
-        return render(req, 'web/index.html', locals())
+        return HttpResponseRedirect('/')
 
 
 def product_index(req, aid):
@@ -117,7 +123,7 @@ def product_index(req, aid):
     关于金雷
     '''
     pro_id = int(aid)
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
@@ -128,6 +134,7 @@ def product_index(req, aid):
             prod = product.objects.filter(language="en")
         else:
             prod = product.objects.filter(type_id=pro_id, language="en")
+        return render(req, 'web/product_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -139,18 +146,19 @@ def product_index(req, aid):
         else:
             prod = product.objects.filter(type_id=pro_id, language="zh")
 
-    return render(req, 'web/product.html', locals())
+        return render(req, 'web/product.html', locals())
 
 
 def product_detail(req, aid):
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
-
+        prod = product.objects.get(id=aid)
+        return render(req, 'web/product_detail_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -158,37 +166,38 @@ def product_detail(req, aid):
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
 
-    prod = product.objects.get(id=aid)
-    return render(req, 'web/product_detail.html', locals())
+        prod = product.objects.get(id=aid)
+        return render(req, 'web/product_detail.html', locals())
 
 def faclity_index(req, fid):
     '''
     关于金雷
     '''
     fa_id = int(fid)
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
+        return render(req, 'web/faclity_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
-    fa = facility.objects.filter(type_id=fid).order_by("id")
+        fa = facility.objects.filter(type_id=fid).order_by("id")
 
-    return render(req, 'web/faclity.html', locals())
+        return render(req, 'web/faclity.html', locals())
 
 
 def jobs_index(req):
     '''
     关于金雷
     '''
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         jobs = job.objects.filter(language="en")
@@ -196,6 +205,7 @@ def jobs_index(req):
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
+        return render(req, 'web/jobs_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         jobs = job.objects.filter(language="zh")
@@ -203,7 +213,7 @@ def jobs_index(req):
         pro = productclass.objects.filter(language="zh").order_by("id")
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
-    return render(req, 'web/jobs.html', locals())
+        return render(req, 'web/jobs.html', locals())
 
 @csrf_exempt
 def contact(req):
@@ -211,20 +221,21 @@ def contact(req):
     关于金雷
     '''
     if req.method == "GET":
-        language = req.GET.get("language")
+        language = req.session.get("language", 'zh')
         if language == "en":
             about = syspara.objects.filter(language="en")
             fac = facilityclass.objects.filter(language="en").order_by("id")
             pro = productclass.objects.filter(language="en").order_by("id")
             su = caseclass.objects.filter(language="en").order_by("id")
             fl = friendlink.objects.filter(language="en")
+            return render(req, 'web/contact_en.html', locals())
         else:
             about = syspara.objects.filter(language="zh")
             fac = facilityclass.objects.filter(language="zh").order_by("id")
             pro = productclass.objects.filter(language="zh").order_by("id")
             su = caseclass.objects.filter(language="zh").order_by("id")
             fl = friendlink.objects.filter(language="zh")
-        return render(req, 'web/contact.html', locals())
+            return render(req, 'web/contact.html', locals())
     if req.method == "POST":
         name = req.POST.get("fname",None)
         email = req.POST.get("email", None)
@@ -246,13 +257,14 @@ def about_sample(req):
     '''
     关于子页面
     '''
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
+        return render(req, 'web/about_sample_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -260,7 +272,7 @@ def about_sample(req):
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
 
-    return render(req, 'web/about_sample.html', locals())
+        return render(req, 'web/about_sample.html', locals())
 
 
 def success(req,aid):
@@ -268,13 +280,16 @@ def success(req,aid):
 
     '''
     su_id = int(aid)
-    language = req.GET.get("language")
+    language = req.session.get("language", 'zh')
     if language == "en":
         about = syspara.objects.filter(language="en")
         fac = facilityclass.objects.filter(language="en").order_by("id")
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
+        s = caseclass.objects.get(id=aid)
+        cas = case.objects.filter(type_id=aid)
+        return render(req, 'web/success_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
         fac = facilityclass.objects.filter(language="zh").order_by("id")
@@ -282,28 +297,15 @@ def success(req,aid):
         su = caseclass.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
 
-    s = caseclass.objects.get(id=aid)
-    cas = case.objects.filter(type_id=aid)
-    return render(req, 'web/success.html', locals())
+        s = caseclass.objects.get(id=aid)
+        cas = case.objects.filter(type_id=aid)
+        return render(req, 'web/success.html', locals())
 
 
 def information(req):
     '''
 
     '''
-    language = req.GET.get("language")
-    if language == "en":
-        about = syspara.objects.filter(language="en")
-        fac = facilityclass.objects.filter(language="en").order_by("id")
-        pro = productclass.objects.filter(language="en").order_by("id")
-        su = caseclass.objects.filter(language="en").order_by("id")
-        fl = friendlink.objects.filter(language="en")
-    else:
-        about = syspara.objects.filter(language="zh")
-        fac = facilityclass.objects.filter(language="zh").order_by("id")
-        pro = productclass.objects.filter(language="zh").order_by("id")
-        su = caseclass.objects.filter(language="zh").order_by("id")
-        fl = friendlink.objects.filter(language="zh")
     Article = article.objects.all()
     paginator = Paginator(Article, 6)
     page = req.GET.get('page')
@@ -316,7 +318,8 @@ def information(req):
             rangedpages = paginator.page_range
 
         else:
-            rangedpages = [page - 2 if page - 2 > 1 else 1, page - 1 if page > 2 else 1, page, page + 1, page + 2, page + 3,
+            rangedpages = [page - 2 if page - 2 > 1 else 1, page - 1 if page > 2 else 1, page, page + 1, page + 2,
+                           page + 3,
                            page + 4]
         rangedpages = list(set(rangedpages))
 
@@ -333,7 +336,22 @@ def information(req):
             paged = paginator.page(1)
             lastpagenum = paginator.num_pages
             rangedpages = [1, 2, 3, 4, 5]
-    return render(req, 'web/information.html', locals())
+    language = req.session.get("language", 'zh')
+    if language == "en":
+        about = syspara.objects.filter(language="en")
+        fac = facilityclass.objects.filter(language="en").order_by("id")
+        pro = productclass.objects.filter(language="en").order_by("id")
+        su = caseclass.objects.filter(language="en").order_by("id")
+        fl = friendlink.objects.filter(language="en")
+        return render(req, 'web/information_en.html', locals())
+    else:
+        about = syspara.objects.filter(language="zh")
+        fac = facilityclass.objects.filter(language="zh").order_by("id")
+        pro = productclass.objects.filter(language="zh").order_by("id")
+        su = caseclass.objects.filter(language="zh").order_by("id")
+        fl = friendlink.objects.filter(language="zh")
+
+        return render(req, 'web/information.html', locals())
 
 
 def information_detail(req, aid=0):
