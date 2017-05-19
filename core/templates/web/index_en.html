@@ -95,7 +95,7 @@
                                 <li>
                                     {% for i in about %}
                                         {% if forloop.first %}
-                                            <a href="/about/{{ i.id }}"  class="menu-main">关于金镭</a>
+                                            <a href="/about/{{ i.id }}"  class="menu-main">About Jinlei</a>
                                         {% endif %}
                                     {% endfor %}
                                     <div class="sub-menu">
@@ -116,7 +116,7 @@
                                     <!-- sub-menu end-->
                                 </li>
                                 <li>
-                                    <a href="/product_index/0">产品中心</a>
+                                    <a href="/product_index/0">Product center</a>
                                     <div class="sub-menu">
                                         <div class="row">
                                             <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
@@ -136,7 +136,7 @@
                                 <li>
                                     {% for i in fac %}
                                         {% if forloop.first %}
-                                            <a href="/facility/{{ i.id }}" class="menu-main">设备资质</a>
+                                            <a href="/facility/{{ i.id }}" class="menu-main">Equipment qualification</a>
                                         {% endif %}
                                     {% endfor %}
                                     <div class="sub-menu">
@@ -157,7 +157,7 @@
                                 </li>
                                 {% for i in su %}
                                     {% if forloop.first %}
-                                        <li><a href="/success/{{ i.id }}" >成功案例</a>
+                                        <li><a href="/success/{{ i.id }}" >Successful case</a>
                                     {% endif  %}
                                 {% endfor %}
                                 <!-- sub-menu start-->
@@ -181,9 +181,9 @@
                                 </ul>
                                 </li>
 
-                                <li><a href="/jobs" id="career_planning">加入金镭</a></li>
-                                <li><a href="/contact" id="assistedliving">联系我们</a></li>
-                                <li><a href="/?language=en">English</a></li>
+                                <li><a href="/jobs" id="career_planning">Join us</a></li>
+                                <li><a href="/contact" id="assistedliving">Contact us</a></li>
+                                <li><a href="/">中文</a></li>
                             </ul>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
         <div id="hxco-testimonial" style="background: #fff;">
             <div class="hxco-container">
                 <div class="row feature-title text-center">
-                    <h3>产品展示</h3>
+                    <h3>Products</h3>
                 </div>
                 <div class="container" style="margin-top: -7em;">
                     <div id="owl-car" class="owl-carousel owl-carousel-fullwidth ">
@@ -364,14 +364,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-8 col-xs-offset-2 text-center hxco-heading">
-                    <h2>为什么选择我们</h2>
+                    <h2>why choose us?</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6">
 
                     <div style="margin-bottom: 20px;">
-                        <span style="font-size: 25px;color:#383838;">资讯中心<a href="/information" style="font-size: 16px;margin-left: 10px;">MORE+</a></span>
+                        <span style="font-size: 25px;color:#383838;">Infomation<a href="/information" style="font-size: 16px;margin-left: 10px;">MORE+</a></span>
                         {#                        <span style=""></span>#}
                     </div>
 
@@ -445,59 +445,59 @@
         <div class="hxco-container">
             <div class="row row-pb-md">
                 <div class="col-xs-3 text-center">
-                    <h3>关注微信公众号</h3>
+                    <h3>Public Wechat</h3>
                     <img src="/static/images/erweima.png" style="width: 160px;height:160px;">
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>联系信息</h3>
+                    <h3>Contacts</h3>
                     <hr />
-                    <p style="margin-top: 1em"><i class="icon-location"></i>联系地址：四川省内江市威远县建业大道777号</p>
-                    <p style="margin-top: 1em"><i class="icon-phone"></i>咨询电话：0832-8247655</p>
-                    <p style="margin-top: 1em"><i class="icon-mail"></i> fan@scjlzg.com</p>
-                    <p style="margin-top: 1em"><i class="icon-url"></i> 官网：金镭重工.中国</p>
+                    <p style="margin-top: 1em"><i class="icon-location"></i>address：四川省内江市威远县建业大道777号</p>
+                    <p style="margin-top: 1em"><i class="icon-phone"></i>Tel：0832-8247655</p>
+                    <p style="margin-top: 1em"><i class="icon-mail"></i>emial:fan@scjlzg.com</p>
+                    <p style="margin-top: 1em"><i class="icon-url"></i>site：金镭重工.中国</p>
                 </div>
                 <div class="col-xs-3">
-                    <h3>快速链接</h3>
+                    <h3>Quick Links</h3>
                     <hr />
                     <div style="margin-top: 1em">
                         {% for i in about %}
                             {% if forloop.first %}
                                 <a class="tagA" href="/about/{{ i.id }}">
-                                    关于金镭
+                                    About Jinlei
                                 </a>
                             {% endif %}
                         {% endfor %}
                         <a class="tagA" href="/product_index/0">
-                            产品中心
+                            Product Center
                         </a>
                         {% for i in fac %}
                             {% if forloop.first %}
-                                <a href="/facility/{{ i.id }}" class="tagA">设备资质</a>
+                                <a href="/facility/{{ i.id }}" class="tagA">Equipment qualification</a>
                             {% endif %}
                         {% endfor %}
 
                         <a class="tagA" href="/jobs">
-                            加入金镭
+                            Join us
                         </a>
                         {% for i in su %}
                             {% if forloop.first %}
-                                <a href="/success/{{ i.id }}" class="tagA">成功案例</a>
+                                <a href="/success/{{ i.id }}" class="tagA">Successful case</a>
                             {% endif  %}
                         {% endfor %}
 
                         <a class="tagA" href="/contact">
-                            联系我们
+                            Contact us
                         </a>
                     </div>
 
                 </div>
                 <div class="col-xs-3">
-                    <h3>友情链接</h3>
+                    <h3>friendly link</h3>
                     <hr/>
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
-                            友情链接
+                            friendly link
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">

@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .hxco-nav ul li a {
   font-size: 14px;
   padding: 30px 10px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: rgba(255, 255, 255, 0.5);
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
