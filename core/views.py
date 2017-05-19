@@ -181,6 +181,7 @@ def faclity_index(req, fid):
         pro = productclass.objects.filter(language="en").order_by("id")
         su = caseclass.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
+        fa = facility.objects.filter(type_id=fid).order_by("id")
         return render(req, 'web/faclity_en.html', locals())
     else:
         about = syspara.objects.filter(language="zh")
