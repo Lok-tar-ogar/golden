@@ -112,6 +112,16 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-right: 15px;
 }
 
+.hxco-container1 {
+  max-width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+
+
 .hxco-nav {
   position: relative;
   top: 0;
