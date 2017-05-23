@@ -48,7 +48,7 @@ def index(req):
         fa = facility.objects.filter(language="en")
         vide = video.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
-        c = carousel.objects.all()
+        c = carousel.objects.filter(language="en").order_by("id")
         a = article.objects.all()
         return render(req, 'web/index_en.html', locals())
 
@@ -61,7 +61,7 @@ def index(req):
         fa = facility.objects.filter(language="zh")
         vide = video.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
-        c = carousel.objects.all()
+        c = carousel.objects.filter(language="zh").order_by("id")
         a = article.objects.all()
         return render(req, 'web/index.html', locals())
 
