@@ -84,7 +84,7 @@ class product(models.Model):
         return self.name
     class Meta:
         verbose_name = '产品'
-        ordering = ['-dimDate'] # sorted news by dimdate
+        ordering = ['-type'] # sorted news by dimdate
 class facilityclass(models.Model):
     '''
     产品
@@ -118,7 +118,7 @@ class facility(models.Model):
         return self.name
     class Meta:
         verbose_name = '设备'
-        ordering = ['-dimDate'] # sorted news by dimdate
+        ordering = ['-type'] # sorted news by dimdate
         
 class certificateclass(models.Model):
     '''
@@ -182,7 +182,7 @@ class case(models.Model):
         return self.name
     class Meta:
         verbose_name = '案例'
-        ordering = ['-dimDate'] # sorted news by dimdate
+        ordering = ['-type'] # sorted news by dimdate
 
 class friendlink(models.Model):
     '''
