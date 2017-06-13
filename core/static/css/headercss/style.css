@@ -120,8 +120,44 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-right: 15px;
 }
 
+.bd_l_day {
+    display: block;
+    font-size: 50px;
+    color: #e60012;
+    line-height: 50px;
+}
 
+.bd_l {
+  font-size: 14px;
+  color: #8d8b8b;
+  padding: 0 2% 2% 0;
+  border-right: 1px solid #e6e6e6;
+  font-family: Arial;
+  width: 8%;
+}
 
+.list_title a{
+  font-size: 20px;
+    color: #202020 !important;
+    font-weight: normal;
+}
+.list_title a:hover {
+    color: #e60012 !important;
+}
+
+.list_title {
+    font-size: 20px;
+    color: #202020 !important;
+    font-weight: normal;
+}
+
+.list_p {
+    font-size: 14px;
+    color: #464646;
+    line-height: 26px;
+    height: 52px;
+    overflow: hidden;
+}
 .hxco-nav {
   position: relative;
   top: 0;

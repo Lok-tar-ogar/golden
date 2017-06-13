@@ -26,8 +26,13 @@
                             <div class="add-article-box-content">
                                 <input type="text" autocomplete="off" name="title" value="{{ title }}" placeholder="请输入标题" class="form-control">
                                 <input type="hidden" autocomplete="off" name="id" value="{{ id }}" placeholder="请输入标题" class="form-control">
-
                             </div>
+
+                            <h2 class="add-article-box-title"><span>文章简介</span></h2>
+                            <div class="add-article-box-content">
+                                <input type="text" autocomplete="off" name="summary" value="{% if summary %}{{ summary }}{% endif %}" placeholder="请输入简介" class="form-control">
+                            </div>
+
                             <h2 class="add-article-box-title"><span>标题图像</span></h2>
                             <div class="add-article-box-content">
                                 <select class="chosen-select form-control" name="pid" id="picselect" data-placeholder="">
@@ -42,10 +47,10 @@
                         </div>
                         <div class="clearfix" style="margin-bottom: 50px;"></div>
                         <textarea id="richtext" name="content" style="height: 300px;">
-
-{{ content }}
-
-                            </textarea>
+                        {% if content %}
+                            {{ content }}
+                        {% endif %}
+                        </textarea>
                         <div id="dialog" title="TinyMCE dialog" style="display: none">
                         </div>
 
@@ -64,16 +69,16 @@
                                     {% endfor %}
                                 </select>
                             </div>
-                        <div class="clearfix" ></div>
-                        <h2 class="add-article-box-title"><span>语言</span></h2>
-                        <div class="add-article-box-content">
+                            <div class="clearfix" ></div>
+                            <h2 class="add-article-box-title"><span>语言</span></h2>
+                            <div class="add-article-box-content">
                                 <select class="chosen-select form-control" name="language" id="languageselect" data-placeholder="">
                                     {% for l in languages %}
-                                          {% if l.key == language %}
+                                        {% if l.key == language %}
                                             <option value="{{ l.key }}" selected="true">{{ l.value }}</option>
-                                            {% else %}
+                                        {% else %}
 
-                                        <option value="{{ l.key }}">{{ l.value }}</option>
+                                            <option value="{{ l.key }}">{{ l.value }}</option>
                                         {% endif %}
                                     {% endfor %}
                                 </select>
@@ -102,7 +107,7 @@
             tinymce.init({
                 selector: '#richtext',
                 plugins: ' advlist autolink link image lists charmap print preview code ' ,
-                 toolbar: "undo redo pastetext | styleselect | fontselect | fontsizeselect",
+                toolbar: "undo redo pastetext | styleselect | fontselect | fontsizeselect",
                 fontsize_formats: "8pt 9pt 10pt 11pt 12pt 26pt 36pt",
                 convert_urls :false,
                 file_browser_callback: FileBrowser

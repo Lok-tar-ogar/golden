@@ -851,6 +851,7 @@ def edit_content(req):
             ps = picture.objects.all()
             if id=='new':
                 title=''
+                summary=""
                 content=''
                 viewedTimes=''
                 languages = [{'key':'zh','value':'中文'},{'key':'en','value':'英文'}]
@@ -863,6 +864,7 @@ def edit_content(req):
                 title = c.title
                 title_pic = c.imgs
                 content = c.content
+                summary= c.summary
                 viewedTimes = c.viewedTimes
                 language = c.language
                 languages = [{'key': 'zh', 'value': '中文'}, {'key': 'en', 'value': '英文'}]
@@ -879,6 +881,7 @@ def edit_content(req):
             args=req.POST
             id=args.get('id')
             title=args.get('title')
+            summary = args.get('summary')
             cont=args.get('content')
             language = args.get('language')
 
@@ -890,6 +893,7 @@ def edit_content(req):
                 c=article.objects.get(id=id)
                 c.title=title
                 c.content=cont
+                c.summary = summary
                 c.language=language
                 c.type=type
                 c.imgs = picture.objects.get(id=args.get('pid'))
@@ -901,6 +905,7 @@ def edit_content(req):
                 c = article()
                 c.title = title
                 c.content = cont
+                c.summary = summary
                 c.type = type
                 c.language = language
                 c.imgs = picture.objects.get(id=args.get('pid'))
