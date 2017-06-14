@@ -155,7 +155,7 @@ h1, h2, h3, h4, h5, h6, figure {
     font-size: 14px;
     color: #464646;
     line-height: 26px;
-    height: 52px;
+    /*height: 52px;*/
     overflow: hidden;
 }
 .hxco-nav {
