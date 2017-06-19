@@ -49,7 +49,7 @@ def index(req):
         vide = video.objects.filter(language="en").order_by("id")
         fl = friendlink.objects.filter(language="en")
         c = carousel.objects.filter(language="en").order_by("id")
-        a = article.objects.all()
+        a = article.objects.filter(language="en").order_by("id")
         return render(req, 'web/index_en.html', locals())
 
     else:
@@ -62,7 +62,7 @@ def index(req):
         vide = video.objects.filter(language="zh").order_by("id")
         fl = friendlink.objects.filter(language="zh")
         c = carousel.objects.filter(language="zh").order_by("id")
-        a = article.objects.all()
+        a = article.objects.filter(language="zh").order_by("id")
         return render(req, 'web/index.html', locals())
 
 
@@ -307,7 +307,11 @@ def information(req):
     '''
 
     '''
-    Article = article.objects.all()
+    language = req.session.get("language", 'zh')
+    if language == "en":
+        Article = article.objects.filter(language="en")
+    else:
+        Article = article.objects.filter(language="zh")
     paginator = Paginator(Article, 6)
     page = req.GET.get('page')
     try:
