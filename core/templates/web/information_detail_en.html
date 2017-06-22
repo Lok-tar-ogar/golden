@@ -86,10 +86,10 @@
     <nav class="hxco-nav hengxin-header" role="navigation">
         <div class="hxco-container1">
             <div class="row">
-                <div class="col-xs-3 text-center">
-                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/web/index/logo.png" style="height: 45px;width: auto;margin-top:-5px;"></a></div>
+                <div class="col-xs-2 text-center">
+                    <div id="hxco-logo" style="margin-top: 0px;"><a href="#"><img src="/static/images/LOGO2.png" style="height: auto;width: 90%;margin-top:-5px;"></a></div>
                 </div>
-                <div class="col-xs-9 text-left">
+                <div class="col-xs-10 text-left">
                     <div class="nav-contain1">
                         <div class="nav-inner1">
                             <ul class="am-nav1">
@@ -106,7 +106,7 @@
                                         <div class="row">
                                             <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                                 {% for i in about %}
-                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/about/{{ i.id }}" class="menu-a">{{ i.key }}</a></div>
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/about/{{ i.id }}" class="menu-a"><p style="margin-top: -24px">{{ i.key }}</p></a></div>
                                                 {% endfor %}
                                             </div>
                                             <div class="col-xs-6">
@@ -120,12 +120,12 @@
                                     <!-- sub-menu end-->
                                 </li>
                                 <li>
-                                    <a href="/product_index/0">Product center</a>
+                                    <a href="/product_index/0">Product Center</a>
                                     <div class="sub-menu">
                                         <div class="row">
                                             <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                                 {% for i in pro %}
-                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/product_index/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/product_index/{{ i.id }}" class="menu-a"><p style="margin-top: -24px">{{ i.name }}</p></a></div>
                                                 {% endfor %}
                                             </div>
                                             <div class="col-xs-6">
@@ -140,14 +140,14 @@
                                 <li>
                                     {% for i in fac %}
                                         {% if forloop.first %}
-                                            <a href="/facility/{{ i.id }}" class="menu-main">Equipment qualification</a>
+                                            <a href="/facility/{{ i.id }}" class="menu-main">Equipment Qualification</a>
                                         {% endif %}
                                     {% endfor %}
                                     <div class="sub-menu">
                                         <div class="row">
                                             <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                                 {% for i in fac %}
-                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/facility/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                    <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/facility/{{ i.id }}" class="menu-a"><p style="margin-top: -24px">{{ i.name }}</p></a></div>
                                                 {% endfor %}
                                             </div>
                                             <div class="col-xs-6">
@@ -161,7 +161,7 @@
                                 </li>
                                 {% for i in su %}
                                     {% if forloop.first %}
-                                        <li><a href="/success/{{ i.id }}" >Successful case</a>
+                                        <li><a href="/success/{{ i.id }}" >Successful Case</a>
                                     {% endif  %}
                                 {% endfor %}
                                 <!-- sub-menu start-->
@@ -170,7 +170,7 @@
                                     <div class="row">
                                         <div class="col-xs-6 text-center" style="margin-top: 30px;padding: 0 0 0 20px;">
                                             {% for i in su %}
-                                                <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/success/{{ i.id }}" class="menu-a">{{ i.name }}</a></div>
+                                                <div class="text-center col-xs-6"><img src="/static/images/arrow_down.png" style="width:13px;height: auto;margin-bottom: -10px;"> <a href="/success/{{ i.id }}" class="menu-a"><p style="margin-top: -24px">{{ i.name }}</p></a></div>
                                             {% endfor %}
                                         </div>
                                         <div class="col-xs-6" style="">
@@ -185,8 +185,8 @@
                                 </ul>
                                 </li>
 
-                                <li><a href="/jobs" id="career_planning">Join us</a></li>
-                                <li><a href="/contact" id="assistedliving">Contact us</a></li>
+                                <li><a href="/jobs" id="career_planning">Join Us</a></li>
+                                <li><a href="/contact" id="assistedliving">Contact Us</a></li>
                                 <li><a href="/setlanguage?language=zh">中文</a></li>
                             </ul>
                         </div>
