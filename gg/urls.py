@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^jobs/$', views.jobs_index, name="jobs"),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name="contact"),
+    url(r'^contact1/$', views.ajax_contact, name="contact"),
     url(r'^about_sample/$', views.about_sample, name="contact"),
     url(r'^success/(?P<aid>\d+)$', views.success, name="success"),
     url(r'^facility/(\d+)/$',views.faclity_index),

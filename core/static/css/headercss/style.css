@@ -176,7 +176,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-size: 20px;
   margin: 0;
   padding: 0;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: bold;
 }
 .hxco-nav a {
@@ -566,7 +566,7 @@ form label {
   margin: 0;
   padding: 0;
   color: white;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 #hxco-header .display-tc h1,
 #hxco-counter .display-tc h1,
@@ -597,7 +597,7 @@ form label {
   color: #52d3aa;
   border: none !important;
   font-size: 18px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 #hxco-header .display-tc .btn:hover,
 #hxco-counter .display-tc .btn:hover,
@@ -621,7 +621,7 @@ form label {
 }
 #hxco-counter .counter-label {
   margin-bottom: 0;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: .1em;
   font-size: 22px;
@@ -630,7 +630,7 @@ form label {
 
 .counter-label h2{
   margin-bottom: 0;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: .1em;
   font-size: 22px;
@@ -915,7 +915,7 @@ form label {
   margin-bottom: 20px;
 }
 .feature-center h3 {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-size: 18px;
   color: #333;
   font-weight:500;
@@ -1064,7 +1064,7 @@ form label {
 }
 #hxco-testimonial .testimony-slide span {
   font-size: 12px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: 2px;
   font-weight: 700;
   display: block;
@@ -1238,7 +1238,7 @@ form label {
   background: #52d3aa;
   color: #fff;
   font-size: 16px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   font-weight: 400;
   padding-left: 50px;
   padding-right: 50px;
@@ -1561,7 +1561,7 @@ form label {
   color: #000;
   margin-bottom: 10px;
   font-weight: 700;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .gototop {
@@ -1621,7 +1621,7 @@ form label {
   height: 2px;
   color: #252525;
   font: bold 14px/.4 Helvetica;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   text-indent: -55px;
   background: #252525;
   transition: all .2s ease-out;
@@ -2211,7 +2211,7 @@ form label {
     font-size: 12px;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 
 .heading-section h3 {
@@ -2295,7 +2295,7 @@ form label {
 .heading-section h3 {
   font-size: 32px;
   letter-spacing: 2px;
-  /*text-transform: uppercase;*/
+  /*/*text-transform: uppercase;*/*/
   position: relative;
   color:#333;
 }
@@ -2459,7 +2459,7 @@ form label {
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 50px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 .fh5co-testimonial figure {
     background-size: cover;
@@ -3108,7 +3108,7 @@ h1{
   }
 }
 .feature-banner .feature-banner-copy h4 {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   color: #262626;
   font-size: 20px;
   font-weight: bold;
@@ -3117,7 +3117,7 @@ h1{
 }
 
 .feature-banner .feature-banner-copy p {
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin-bottom: 0.5em;
   color: #969696;
     font-size: 16px;
@@ -3722,4 +3722,154 @@ li.col-md-4.active a {
     line-height: 20px;
     color: #333;
     width: 100%;
+}
+@charset "utf-8";
+body {
+ background:#fff;
+ font-family:'微软雅黑',Helvetica,HiraginoSansGB-W3
+}
+#building-blocks .block {
+ -webkit-transition-duration:.2s;
+ -moz-transition-duration:.2s;
+ -o-transition-duration:.2s;
+ transition-duration:.2s;
+ float:right;
+ clear:both;
+ overflow:hidden;
+ border-radius:.5rem 0 0 .5rem;
+ margin:.5rem 0;
+ box-shadow:0 5px 10px rgba(0,0,0,0.3);
+ width:6rem;
+ height:6rem
+}
+#building-blocks .block.active {
+ background-color:#e9e8e8;
+ width:28rem
+}
+#building-blocks .block .tab {
+ font-family:'微软雅黑',Helvetica,HiraginoSansGB-W3;
+ float:left;
+ height:100%;
+ padding-top:1.4rem;
+ width:6rem;
+ background-color:rgba(63, 209, 234, 1);
+ color:white;
+ text-align:center;
+ cursor:pointer
+}
+#building-blocks .block {
+ -webkit-transition-duration:.2s;
+ -moz-transition-duration:.2s;
+ -o-transition-duration:.2s;
+ transition-duration:.2s;
+ float:right;
+ clear:both;
+ overflow:hidden;
+ border-radius:.5rem 0 0 .5rem;
+ margin:.5rem 0;
+ box-shadow:0 5px 10px rgba(0,0,0,0.3)
+}
+#building-blocks .block .tab:hover {
+ background-color:rgba(63, 209, 234, 1)
+}
+#building-blocks .block .content .inner-content {
+ width:22rem;
+ padding:.5rem 3rem .5rem 1rem;
+ position:relative;
+ overflow:hidden
+}
+.new_form_submission select {
+ margin-bottom:.33rem;
+ padding:.3rem .3rem .3rem .8rem;
+ height:2.46rem;
+ color:#999;
+ border:2px solid #d8d3cb;
+ width:276px
+}
+#building-blocks .block.learn-more-block input[type="text"] {
+ padding-left:1rem;
+ /*width:250px;*/
+ margin-bottom:0;
+ height:32px
+}
+#building-blocks .block.learn-more-block .learn-more-privacy-note {
+ line-height:200%
+}
+#building-blocks .learn-more-privacy-note img {
+ vertical-align:middle;
+ margin-left:20px;
+ width:15px
+}
+#building-blocks .learn-more-privacy-note b {
+ font-size:16px
+}
+.form-group {
+ position:relative;
+ margin-bottom:0!important
+}
+.learn-more-prompt {
+ font-size:16px;
+ font-weight:100!important;
+ padding-bottom:5px
+}
+.has-error .form-control {
+ border-color:#b94a48!important;
+ -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)!important;
+ box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)!important
+}
+.has-success .form-control {
+ border-color:#468847!important;
+ -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+ box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)
+}
+.new_form_submission {
+ margin:.75rem 0 0
+}
+.btn.hiring {
+ margin-left:.5rem;
+ padding:.1rem .75rem;
+ font-size:.8rem;
+ vertical-align:.20rem;
+ font-weight:bold;
+ min-height:inherit
+}
+.btn.btn-turquoise {
+ background-color:#2aaadd;
+ color:#fff;
+ border-radius:8px;
+ padding:3px 8px;
+ margin:15px 0
+}
+.twitter img {
+ margin-right:4px
+}
+#building-blocks {
+ position:fixed;
+ bottom:100px;
+ right:0;
+ z-index:999
+}
+.seq-container {
+ width:22rem;
+ float:right
+}
+.btn-turquoise:hover {
+ background-color:#56bce4
+}
+#building-blocks .block .content .close {
+ position:relative;
+ right:30px;
+ top:13px;
+ float:right;
+ width:24px;
+ height:25px;
+ background:url(/img/close.gif) 0 0 no-repeat;
+ opacity:1
+}
+.icon-info-sign {
+ width:26px;
+ height:28px;
+ display:block;
+ background:url(/img/close.gif) 0 -23px no-repeat;
+ margin:0 auto
 }

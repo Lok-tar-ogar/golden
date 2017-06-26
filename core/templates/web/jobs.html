@@ -78,6 +78,92 @@
 <script> var _hmt = _hmt || []; (function() {   var hm = document.createElement("script");   hm.src = "https://hm.baidu.com/hm.js?876288ea115507f6079ce1ccb15b058e";   var s = document.getElementsByTagName("script")[0];    s.parentNode.insertBefore(hm, s); })(); </script>
 </head>
 <body>
+<script>
+    var form_status = $('#form_status');
+    function su() {
+        var formData = new FormData($( "#main-contact-form" )[0]);
+        $.ajax({
+            type: "POST",
+            data: formData,
+            enctype:"multipart/form-data",
+            contentType: false,
+            /**
+             * 必须false才会避开jQuery对 formdata 的默认处理
+             * XMLHttpRequest会对 formdata 进行正确的处理
+             */
+            processData: false,
+            url: '/contact1/',
+            success: function (data) {
+                data=JSON.parse(data);
+                if (data.status == "200") {
+
+                                        if($('#learn-more-flyout').css('height')=='510px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','510');$('#learn-more-flyout').toggleClass('active');
+{#                    form_status.html('<p class="text-success">谢谢您联系我们，我们会尽可能在24小时内联系您。</p>').delay(4000).fadeOut();#}
+                }
+                if (data.status == "500") {
+                                        alert("error");
+{#                    form_status.html('<p class="text-warning">出错了，请您留下您正确的联系方式。</p>').delay(4000).fadeOut();#}
+                }
+            },
+            error: function () {
+                                alert("留言发送失败！");
+{#                form_status.html('<p class="text-warning">出错了，请您留下您正确的联系方式。</p>').delay(4000).fadeOut();#}
+            }
+        });
+
+    }
+</script>
+<div id="building-blocks" class="hidden-xs activated animated slideInRight modal3">
+	<div id="learn-more-flyout" class="block learn-more-block active" style="height: 510px;">
+		<div class="tab" id="tab" onclick="if($('#learn-more-flyout').css('height')=='510px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','510');$('#learn-more-flyout').toggleClass('active');"> <i class="icon-bubbles4" style="font-size: large"></i> 留言 </div>
+		<div class="content form-wrapper seq-container" id="bd" style="display: block; background: rgb(233, 232, 232) none repeat scroll 0% 0%;">
+			<div class="inner-content">
+
+                 <p style="text-align: center"><br>填写一下表单或者发送邮件到 info@scjlzg.com</p>
+					<form id="main-contact-form" action="/contact1/" method="post">
+                        {% csrf_token %}
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="fname">姓名</label>
+								<input type="text" id="fname" name="fname" class="form-control" placeholder="你的名字...">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="email">电子邮件</label>
+								<input type="text" id="email" name="email" class="form-control" placeholder="你的电子邮件...">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="subject">电话</label>
+								<input type="text" id="tel" name="tel" class="form-control" placeholder="你的电话...">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="message">留言信息</label>
+								<textarea name="message" id="message" cols="30" rows="2" class="form-control" placeholder="给我们留言..."></textarea>
+							</div>
+						</div>
+                        <br>
+						<div class="form-group">
+							<input type="button" onclick="su()" value="提交信息" class="btn btn-primary" style="width: 100%">
+						</div>
+
+					</form>
+{#					<p class="learn-more-privacy-note">#}
+{#						我们会尽可能在24小时内联系您<a href="nation.html"><img src="img/n_jiaoying.png"></a><br>#}
+{#						<b>无需等待，可直接致电400-613-0088</b></p>#}
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 
 
 <div id="page">

@@ -30,6 +30,9 @@ from core.models import *
 import logging
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponseRedirect
+from email.mime.text import MIMEText
+from email.header import Header
+import smtplib
 
 def set_language(req):
     req.session['language']=req.GET.get('language')
@@ -216,6 +219,50 @@ def jobs_index(req):
         fl = friendlink.objects.filter(language="zh")
         return render(req, 'web/jobs.html', locals())
 
+def send(text):
+
+    # 第三方 SMTP 服务
+    mail_host = "smtp.qq.com"  # 设置服务器
+    mail_user = "540508865@qq.com"  # 用户名
+    # mail_pass = "ddtuauwmqygjdcfe"  # 口令
+    mail_pass="fbxxloocvfurbcda"
+    sender = '540508865@qq.com'
+    receivers = ['info@scjlzg.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱info@scjlzg.com    fbxxloocvfurbcda
+
+    msg = text
+    message = MIMEText(msg, 'plain', 'utf-8')
+    message['From'] = "540508865@qq.com"
+    message['To'] = receivers[0]
+
+    subject = '通知:'
+    message['Subject'] = Header(subject, 'utf-8')
+
+    try:
+        smtpObj =smtplib.SMTP_SSL(mail_host, 465)
+        # smtpObj.connect(mail_host, 465)  # 25 为 SMTP 端口号
+        # smtpObj.set_debuglevel(2)
+        smtpObj.login(mail_user, mail_pass)
+        a=smtpObj.sendmail(sender, receivers, message.as_string())
+        return "邮件发送成功"
+    except smtplib.SMTPException as e:
+        return str(e)
+
+def send2():
+    server = "smtp.sina.com"
+    fromaddr = "13989111165@sina.cn"
+    toaddr = "418586403@qq.com"
+
+    msg = """
+    to:%s
+    from:%s
+    Hello,I am smtp server
+    """ % (toaddr, fromaddr)
+    s = smtplib.SMTP(server)
+    # 开启调试信息
+    s.set_debuglevel(1)
+    # 进行认证，通过后可以发送邮件
+    s.login("13989111165@sina.cn", "8817656")
+    s.sendmail(fromaddr, toaddr, msg)
 @csrf_exempt
 def contact(req):
     '''
@@ -250,9 +297,27 @@ def contact(req):
             c.tel = tel
             c.info = message
             c.save()
+            msg='名字:'+name+'\n 电邮地址:'+email +'\n 电话:'+tel + '\n 信息:'+message
+            send(msg)
         return HttpResponseRedirect('/contact/')
         # return render(req, 'web/contact.html', locals())
+@csrf_exempt
+def ajax_contact(req):
+    name = req.POST.get("fname", None)
+    email = req.POST.get("email", None)
+    tel = req.POST.get("tel", None)
+    message = req.POST.get("message", None)
 
+    if name or email or tel or message:
+        c = Contact()
+        c.name = name
+        c.email = email
+        c.tel = tel
+        c.info = message
+        c.save()
+        msg = '名字:' + name + '\n 电邮地址:' + email + '\n 电话:' + tel + '\n 信息:' + message
+        send(msg)
+    return HttpResponse(json.dumps({'msg':'ok','status':'200'}))
 
 def about_sample(req):
     '''
