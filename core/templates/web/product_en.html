@@ -328,7 +328,7 @@
                     {% for i in prod %}
                         <div class="col-md-3 col-sm-3 animate-box" data-animate-effect="fadeIn" style="height:450px;">
                         <div class="feature-center text-center">
-                            <img src="{{ i.imgs.filepath }}" style="width: 100%;height: auto;">
+                            <a href="/product_detail/{{ i.id }}" ><img src="{{ i.imgs.filepath }}" style="width: 100%;height: auto;"></a>
                             <h3 style="margin-top: 10px;"><a href="/product_detail/{{ i.id }}">{{ i.name }}</a></h3>
 {#                            <p style="text-align: left;">{{ i.brief | safe }}</p>#}
 {#                            <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>#}
