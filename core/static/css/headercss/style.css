@@ -706,7 +706,7 @@ form label {
   left: 50%;
   width: 100px;
   margin-left: -50px;
-  height: 2px;
+  /*height: 2px;*/
   background: #4cc1bd;
   background: -moz-linear-gradient(-45deg, #4cc1bd 0%, #3f95ea 100%);
   /*background: -webkit-gradient(left top, right bottom, color-stop(0%, #4cc1bd), color-stop(100%, #3f95ea));*/
