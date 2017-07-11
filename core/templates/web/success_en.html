@@ -98,7 +98,7 @@
                 data=JSON.parse(data);
                 if (data.status == "200") {
 
-                                        if($('#learn-more-flyout').css('height')=='455px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','455');$('#learn-more-flyout').toggleClass('active');$('#rightarrow').toggleClass('hide');
+                                        if($('#learn-more-flyout').css('height')=='455px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','455');$('#learn-more-flyout').toggleClass('active');$('#rightarrow').toggleClass('hide');$('#imessa').toggleClass('hide');
 {#                    form_status.html('<p class="text-success">谢谢您联系我们，我们会尽可能在24小时内联系您。</p>').delay(4000).fadeOut();#}
                 }
                 if (data.status == "500") {
@@ -116,7 +116,7 @@
 </script>
 <div id="building-blocks" class="hidden-xs activated animated slideInRight modal3">
 	<div id="learn-more-flyout" class="block learn-more-block active" style="height: 455px;">
-		<div class="tab" id="tab" onclick="if($('#learn-more-flyout').css('height')=='455px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','455');$('#learn-more-flyout').toggleClass('active');$('#rightarrow').toggleClass('hide');"> <i class="icon-bubbles4" style="font-size: large"></i> Contact Us <i id="rightarrow" class="icon-arrow-right" style="font-size: large;margin-top: 50%;position: absolute;left:25px;"></i></div>
+		<div class="tab" id="tab" onclick="if($('#learn-more-flyout').css('height')=='455px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','455');$('#learn-more-flyout').toggleClass('active');$('#rightarrow').toggleClass('hide');$('#imessa').toggleClass('hide');"> <i id="imessa" class="icon-bubbles4 hide" style="font-size: large">Contact Us</i>  <i id="rightarrow" class="icon-arrow-right" style="font-size: large;margin-top: 50%;position: absolute;left:25px;"></i></div>
 		<div class="content form-wrapper seq-container" id="bd" style="display: block; background: rgb(233, 232, 232) none repeat scroll 0% 0%;">
 			<div class="inner-content">
                 <p style="text-align: center">Please fill the form below or email us at info@scjlzg.com</p>
@@ -366,13 +366,13 @@
                    <h3>Social Media</h3>
                     <hr/>
                     <div class="col-xs-3">
-                        <a href="https://www.facebook.com/Sichuan-Jinlei-Heavy-Industry-Co-Ltd-1528204530524430/?ref=bookmarks"><img src="/static/images/fb.png"  width="52px" height="52px" alt="link"></a>
+                        <a href="https://www.facebook.com/Sichuan-Jinlei-Heavy-Industry-Co-Ltd-1528204530524430/?ref=bookmarks"><img src="/static/images/fb.png"  width="30px" height="30px" alt="link"></a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="https://www.youtube.com/channel/UCZ8w5GeI49qyWn9raGhi6Gw"><img src="/static/images/youtube.png"  width="52px" height="52px" alt="link"></a>
+                        <a href="https://www.youtube.com/channel/UCZ8w5GeI49qyWn9raGhi6Gw"><img src="/static/images/youtube.png"  width="30px" height="30px" alt="link"></a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="https://twitter.com/Stanley26417153"><img src="/static/images/tw.png"  width="52px" height="52px" alt="link"></a>
+                        <a href="https://twitter.com/Stanley26417153"><img src="/static/images/tw.png"  width="30px" height="30px" alt="link"></a>
                     </div>
                 </div>
             </div>
