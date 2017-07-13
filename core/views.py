@@ -308,7 +308,7 @@ def ajax_contact(req):
     tel = req.POST.get("tel", None)
     message = req.POST.get("message", None)
 
-    if name or email or tel or message:
+    if name and email and tel and message:
         c = Contact()
         c.name = name
         c.email = email
@@ -317,6 +317,8 @@ def ajax_contact(req):
         c.save()
         msg = '名字:' + name + '\n 电邮地址:' + email + '\n 电话:' + tel + '\n 信息:' + message
         send(msg)
+    else:
+        return HttpResponse(json.dumps({'msg':'not ok','status':'400'}))
     return HttpResponse(json.dumps({'msg':'ok','status':'200'}))
 
 def about_sample(req):

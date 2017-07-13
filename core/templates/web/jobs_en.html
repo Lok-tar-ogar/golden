@@ -98,15 +98,20 @@
                 if (data.status == "200") {
 
                                         if($('#learn-more-flyout').css('height')=='455px') $('#learn-more-flyout').css('height','85');else $('#learn-more-flyout').css('height','455');$('#learn-more-flyout').toggleClass('active');$('#rightarrow').toggleClass('hide');$('#imessa').toggleClass('hide');
+                                        alert("success.");
 {#                    form_status.html('<p class="text-success">谢谢您联系我们，我们会尽可能在24小时内联系您。</p>').delay(4000).fadeOut();#}
                 }
                 if (data.status == "500") {
                                         alert("error");
 {#                    form_status.html('<p class="text-warning">出错了，请您留下您正确的联系方式。</p>').delay(4000).fadeOut();#}
                 }
+                if (data.status == "400") {
+                    alert("please fill all the field.");
+                    {#                    form_status.html('<p class="text-warning">出错了，请您留下您正确的联系方式。</p>').delay(4000).fadeOut();#}
+                }
             },
             error: function () {
-                                alert("留言发送失败！");
+                                alert("error!!");
 {#                form_status.html('<p class="text-warning">出错了，请您留下您正确的联系方式。</p>').delay(4000).fadeOut();#}
             }
         });
@@ -123,29 +128,29 @@
                         {% csrf_token %}
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label for="fname">Name</label>
-								<input type="text" id="fname" name="fname" class="form-control" placeholder="Your Name...">
+								<label for="fname">Name<em style="color: #ff0000;">*</em></label>
+								<input type="text" id="fname" name="fname" required class="form-control" placeholder="Your Name...">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label for="email">Email</label>
-								<input type="text" id="email" name="email" class="form-control" placeholder="Your Email...">
+								<label for="email">Email<em style="color: #ff0000;">*</em></label>
+								<input type="text" id="email" name="email" required class="form-control" placeholder="Your Email...">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label for="subject">Tel</label>
-								<input type="text" id="tel" name="tel" class="form-control" placeholder="Your Tel...">
+								<label for="subject">Tel<em style="color: #ff0000;">*</em></label>
+								<input type="text" id="tel" name="tel" required class="form-control" placeholder="Your Tel...">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label for="message">Messages</label>
-								<textarea name="message" id="message" cols="30" rows="2" class="form-control" placeholder="Messages..."></textarea>
+								<label for="message">Messages<em style="color: #ff0000;">*</em></label>
+								<textarea name="message" id="message" required cols="30" rows="2" class="form-control" placeholder="Messages..."></textarea>
 							</div>
 						</div>
                         <br>
@@ -161,6 +166,7 @@
 			</div>
 		</div>
 	</div>
+
 
 
 
