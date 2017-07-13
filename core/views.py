@@ -308,7 +308,7 @@ def ajax_contact(req):
     tel = req.POST.get("tel", None)
     message = req.POST.get("message", None)
 
-    if name and email and tel and message:
+    if name and email  and message:
         c = Contact()
         c.name = name
         c.email = email
