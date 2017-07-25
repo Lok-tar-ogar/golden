@@ -2624,7 +2624,7 @@ def edit_join(req):
             # ps = picture.objects.all()
             if id != 'new':
                 c = job.objects.get(id=id)
-                c.title = title
+                c.name = title
                 c.content = cont
                 c.language = language
                 # c.type = type
