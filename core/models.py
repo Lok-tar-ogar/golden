@@ -249,7 +249,7 @@ class article(models.Model):
     '''
     文章
     '''
-    title = models.CharField('文章标题', max_length=50)
+    title = models.CharField('文章标题', max_length=500)
     imgs = models.ForeignKey(picture, to_field='id', null=True)
     summary = models.CharField('文章简介', max_length=5000,null=True)
     content = models.TextField('文章详情')
