@@ -227,7 +227,7 @@ def send(text):
     # mail_pass = "ddtuauwmqygjdcfe"  # 口令
     mail_pass="fbxxloocvfurbcda"
     sender = '540508865@qq.com'
-    receivers = ['info@scjlzg.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱info@scjlzg.com    fbxxloocvfurbcda
+    receivers = ['fan@scjlzg.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱info@scjlzg.com    fbxxloocvfurbcda
 
     msg = text
     message = MIMEText(msg, 'plain', 'utf-8')
